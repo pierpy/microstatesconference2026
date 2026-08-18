@@ -335,10 +335,38 @@
     margin-bottom: 0.35rem;
     text-transform: uppercase; letter-spacing: 0.06em;
   }
-  .tag-keynote { background: var(--purple-light); color: var(--purple); }
-  .tag-break   { background: var(--amber-light);  color: var(--amber);  }
-  .tag-session { background: var(--blue-light);   color: var(--blue);   }
-  .tag-social  { background: var(--coral-light);  color: var(--coral);  }
+  .tag-keynote  { background: var(--purple-light); color: var(--purple);    }
+  .tag-lecture  { background: var(--teal-light);   color: var(--teal-dark); }
+  .tag-tutorial { background: var(--blue-light);   color: var(--blue);      }
+  .tag-workshop { background: var(--blue-light);   color: var(--blue);      }
+  .tag-oral     { background: #eef0f3;             color: var(--ink-mid);   }
+  .tag-poster   { background: var(--amber-light);  color: var(--amber);     }
+  .tag-break    { background: #f2f1ed;             color: var(--muted);     }
+  .tag-session  { background: var(--coral-light);  color: var(--coral);     }
+  .tag-social   { background: var(--coral-light);  color: var(--coral);     }
+
+  /* fascia di intestazione sessione */
+  .session-band {
+    display: flex; align-items: baseline;
+    gap: 0.9rem; flex-wrap: wrap;
+    background: var(--teal-light);
+    border-left: 3px solid var(--teal);
+    border-radius: 0 10px 10px 0;
+    padding: 0.6rem 1rem;
+    margin: 2rem 0 0.25rem;
+  }
+  .session-band:first-child { margin-top: 0.5rem; }
+  .band-time {
+    font-family: var(--ff-display);
+    font-style: italic; font-size: 0.85rem;
+    color: var(--teal); flex-shrink: 0;
+  }
+  .band-title {
+    font-family: var(--ff-body);
+    font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--teal-dark); line-height: 1.6;
+  }
 
   /* ── VENUE ── */
   #venue { background: #f7f8fa; }
@@ -574,6 +602,14 @@
     .about-grid, .venue-grid, .committee-sections { grid-template-columns: 1fr; }
     nav a.nav-link { display: none; }
     .hero-title { font-size: 2.2rem; }
+    .day-tabs {
+      overflow-x: auto; -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .day-tabs::-webkit-scrollbar { display: none; }
+    .day-tab { flex: 0 0 auto; padding: 0.6rem 0.9rem; font-size: 0.72rem; }
+    .schedule-item { grid-template-columns: 68px 1fr; gap: 0.9rem; }
+    .sched-time { font-size: 0.8rem; }
   }
 
   /* ── ANIMATIONS ── */
@@ -749,205 +785,475 @@
 </section>  -->
 
 <!-- ══════════════ PROGRAM ══════════════ -->
-<!-- <section id="program">
+<section id="program">
   <div class="container">
-    <div class="section-label">Scientific program</div>
+    <div class="section-label">Scientific programme</div>
     <h2 class="section-title">Congress schedule</h2>
-    <p class="section-sub">[Brief note, e.g. "Full program subject to minor changes. All times in CET."]</p>
+    <p class="section-sub">Preliminary scientific programme — subject to minor changes. All times are local (CEST, UTC+2).</p>
 
     <div class="day-tabs">
-      <button class="day-tab active" onclick="switchDay('day1', this)">Day 1 · [Date]</button>
-      <button class="day-tab"        onclick="switchDay('day2', this)">Day 2 · [Date]</button>
-      <button class="day-tab"        onclick="switchDay('day3', this)">Day 3 · [Date]</button>
-    </div> -->
+      <button class="day-tab active" onclick="switchDay('day1', this)">Tue 15 Sep</button>
+      <button class="day-tab"        onclick="switchDay('day2', this)">Wed 16 Sep</button>
+      <button class="day-tab"        onclick="switchDay('day3', this)">Thu 17 Sep</button>
+      <button class="day-tab"        onclick="switchDay('day4', this)">Fri 18 Sep</button>
+    </div>
 
-    <!-- DAY 1 -->
-    <!-- <div id="day1" class="day-content active">
+    <!-- ─────────── DAY 1 · Tuesday 15 September ─────────── -->
+    <div id="day1" class="day-content active">
+
+      <div class="session-band">
+        <span class="band-time">13:30–16:30</span>
+        <span class="band-title">Pre-conference tutorials · EEG Microstate Analysis: From Principles to Practice</span>
+      </div>
+
       <div class="schedule-item">
-        <div class="sched-time">09:00</div>
+        <div class="sched-time">13:30</div>
         <div>
-          <span class="sched-tag tag-session">Opening</span>
-          <div class="sched-title">Opening ceremony & welcome address</div>
-          <div class="sched-speaker">[Organizing committee chair]</div>
+          <span class="sched-tag tag-tutorial">Tutorial</span>
+          <div class="sched-title">EEG Microstate Analysis with Cartool</div>
+          <div class="sched-speaker">Armen Bagdasarov</div>
         </div>
       </div>
+
       <div class="schedule-item">
-        <div class="sched-time">09:30</div>
+        <div class="sched-time">15:00</div>
         <div>
-          <span class="sched-tag tag-keynote">Keynote</span>
-          <div class="sched-title">[Keynote talk title]</div>
-          <div class="sched-speaker">[Speaker name, Affiliation]</div>
+          <span class="sched-tag tag-tutorial">Tutorial</span>
+          <div class="sched-title">EEG Microstate Analysis with the Microstate Lab Plugin for EEGLAB</div>
+          <div class="sched-speaker">Thomas Koenig — University of Bern, Switzerland</div>
         </div>
-      </div> -->
-      <!-- <div class="schedule-item">
-        <div class="sched-time">10:30</div>
+      </div>
+
+      <div class="session-band">
+        <span class="band-time">17:30–18:30</span>
+        <span class="band-title">Opening lecture</span>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">17:30</div>
         <div>
-          <span class="sched-tag tag-break">Break</span>
-          <div class="sched-title">Coffee break</div>
+          <span class="sched-tag tag-lecture">Opening lecture</span>
+          <div class="sched-title">Title to be announced</div>
+          <div class="sched-speaker">Marco Catani — University College London, UK</div>
         </div>
-      </div> -->
-      <!-- <div class="schedule-item">
-        <div class="sched-time">11:00</div>
-        <div>
-          <span class="sched-tag tag-session">Session</span>
-          <div class="sched-title">[Session title — e.g. "Methods in microstate analysis"]</div>
-          <div class="sched-speaker">Chair: [Name]</div>
-        </div>
-      </div> -->
-      <!-- <div class="schedule-item">
-        <div class="sched-time">13:00</div>
-        <div>
-          <span class="sched-tag tag-break">Break</span>
-          <div class="sched-title">Lunch</div>
-        </div>
-      </div> -->
-      <!-- <div class="schedule-item">
-        <div class="sched-time">14:30</div>
-        <div>
-          <span class="sched-tag tag-session">Session</span>
-          <div class="sched-title">[Afternoon session title]</div>
-          <div class="sched-speaker">Chair: [Name]</div>
-        </div>
-      </div> -->
-      <!-- <div class="schedule-item">
-        <div class="sched-time">16:00</div>
-        <div>
-          <span class="sched-tag tag-break">Break</span>
-          <div class="sched-title">Coffee break</div>
-        </div>
-      </div> -->
-      <!-- <div class="schedule-item">
-        <div class="sched-time">16:30</div>
-        <div>
-          <span class="sched-tag tag-session">Session</span>
-          <div class="sched-title">[Late afternoon session title]</div>
-          <div class="sched-speaker">Chair: [Name]</div>
-        </div>
-      </div> -->
-      <!-- <div class="schedule-item">
+      </div>
+
+      <div class="schedule-item">
         <div class="sched-time">19:00</div>
         <div>
           <span class="sched-tag tag-social">Social</span>
-          <div class="sched-title">Welcome reception</div>
-          <div class="sched-speaker">[Location]</div>
+          <div class="sched-title">Welcome aperitif</div>
         </div>
       </div>
-    </div> -->
 
-    <!-- DAY 2 -->
-    <!-- <div id="day2" class="day-content">
+    </div>
+
+    <!-- ─────────── DAY 2 · Wednesday 16 September ─────────── -->
+    <div id="day2" class="day-content">
+
       <div class="schedule-item">
         <div class="sched-time">09:00</div>
         <div>
           <span class="sched-tag tag-keynote">Keynote</span>
-          <div class="sched-title">[Keynote talk title]</div>
-          <div class="sched-speaker">[Speaker name, Affiliation]</div>
+          <div class="sched-title">Title to be announced</div>
+          <div class="sched-speaker">Satu Palva — University of Helsinki, Finland</div>
         </div>
-      </div> -->
-      <!-- <div class="schedule-item">
-        <div class="sched-time">10:30</div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">10:00</div>
         <div>
           <span class="sched-tag tag-break">Break</span>
           <div class="sched-title">Coffee break</div>
         </div>
-      </div> -->
-      <!-- <div class="schedule-item">
-        <div class="sched-time">11:00</div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">10:30</div>
         <div>
-          <span class="sched-tag tag-session">Session</span>
-          <div class="sched-title">[Session title]</div>
-          <div class="sched-speaker">Chair: [Name]</div>
+          <span class="sched-tag tag-lecture">State of the field</span>
+          <div class="sched-title">EEG Microstates: Where We Come From, Where We Are, and Where We Are Going</div>
+          <div class="sched-speaker">Christoph M. Michel — University of Geneva, Switzerland</div>
         </div>
-      </div> -->
-      <!-- <div class="schedule-item">
-        <div class="sched-time">13:00</div>
+      </div>
+
+      <div class="session-band">
+        <span class="band-time">11:15–12:30</span>
+        <span class="band-title">Oral Session I · Methods and Computational Approaches to EEG Microstates</span>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">11:15</div>
+        <div>
+          <span class="sched-tag tag-oral">Oral</span>
+          <div class="sched-title">Deep Clustering for EEG Microstate Analysis: Convergent Validation with Modified K-Means</div>
+          <div class="sched-speaker">Arjun Vinayak Chikkankod — Technological University Dublin, Ireland</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">11:40</div>
+        <div>
+          <span class="sched-tag tag-oral">Oral</span>
+          <div class="sched-title">Are EEG Microstates Robust to the Choice of Clustering Algorithm? Modified k-Means, AAHC and TAAHC across k = 4–7</div>
+          <div class="sched-speaker">Sneha S. Shetty &amp; Prewal Fredlin Fernandes — Sahyadri College of Engineering and Management, India</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">12:05</div>
+        <div>
+          <span class="sched-tag tag-oral">Oral</span>
+          <div class="sched-title">From GFP and stability to backfitting credibility: microstate-equivalent electric dipoles for EEG microstate validation</div>
+          <div class="sched-speaker">Leonardo Corsi — IRCCS Fondazione Don Carlo Gnocchi ETS, Florence &amp; Sant'Anna School of Advanced Studies, Pisa, Italy</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">12:30</div>
         <div>
           <span class="sched-tag tag-break">Break</span>
           <div class="sched-title">Lunch</div>
         </div>
-      </div> -->
-      <!-- <div class="schedule-item">
-        <div class="sched-time">14:00</div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">13:30</div>
         <div>
-          <span class="sched-tag tag-session">Session</span>
-          <div class="sched-title">Poster session</div>
-          <div class="sched-speaker">[Location within venue]</div>
+          <span class="sched-tag tag-workshop">Thematic workshop</span>
+          <div class="sched-title">Information Theory and the Temporal Organization of EEG Microstate Sequences</div>
+          <div class="sched-speaker">Frederic von Wegner — University of New South Wales (UNSW Sydney), Australia</div>
         </div>
-      </div> -->
-      <!-- <div class="schedule-item">
-        <div class="sched-time">16:00</div>
+      </div>
+
+      <div class="session-band">
+        <span class="band-time">14:45–15:35</span>
+        <span class="band-title">Oral Session II · Temporal Organization and Complexity of EEG Microstates</span>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">14:45</div>
+        <div>
+          <span class="sched-tag tag-oral">Oral</span>
+          <div class="sched-title">Structural regularities in microstate transitions revealed by a grammar induction algorithm</div>
+          <div class="sched-speaker">Fabio Strappazzon — G. d'Annunzio University of Chieti-Pescara, Italy</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">15:10</div>
+        <div>
+          <span class="sched-tag tag-oral">Oral</span>
+          <div class="sched-title">Microstate sequence entropy captures early cognitive decline beyond classical ERP measures</div>
+          <div class="sched-speaker">Michael Lassi — Sant'Anna School of Advanced Studies, Pisa, Italy</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">15:35</div>
         <div>
           <span class="sched-tag tag-break">Break</span>
           <div class="sched-title">Coffee break</div>
         </div>
-      </div> -->
-      <!-- <div class="schedule-item">
+      </div>
+
+      <div class="session-band">
+        <span class="band-time">16:05–17:15</span>
+        <span class="band-title">Oral Session II — continued · Temporal Organization, Computational and Multimodal Brain States</span>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">16:05</div>
+        <div>
+          <span class="sched-tag tag-oral">Oral</span>
+          <div class="sched-title">EEG Microstates and fMRI Networks: Is There a Simple Link?</div>
+          <div class="sched-speaker">Tomáš Jordánek — Masaryk University &amp; CEITEC, Brno, Czech Republic</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
         <div class="sched-time">16:30</div>
         <div>
-          <span class="sched-tag tag-session">Session</span>
-          <div class="sched-title">[Session title]</div>
-          <div class="sched-speaker">Chair: [Name]</div>
-        </div>
-      </div> -->
-      <!-- <div class="schedule-item">
-        <div class="sched-time">20:00</div>
-        <div>
-          <span class="sched-tag tag-social">Social</span>
-          <div class="sched-title">Congress dinner</div>
-          <div class="sched-speaker">[Restaurant / location]</div>
+          <span class="sched-tag tag-poster">Poster spotlight</span>
+          <div class="sched-title">Assaying Brain Dynamics During Artistic Performance using EEG Microstates</div>
+          <div class="sched-speaker">Yoshua Erenoldo Lima Carmona — IUCRC BRAIN, University of Houston, USA</div>
         </div>
       </div>
-    </div> -->
 
-    <!-- DAY 3 -->
-    <!-- <div id="day3" class="day-content">
+      <div class="schedule-item">
+        <div class="sched-time">16:55</div>
+        <div>
+          <span class="sched-tag tag-poster">Poster spotlight</span>
+          <div class="sched-title">Beyond Canonical EEG Microstates: An EEG-Energy Landscape Analysis Framework for Modeling Complex Dynamics</div>
+          <div class="sched-speaker">Anubhav — The University of Tokyo, Japan</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">17:05</div>
+        <div>
+          <span class="sched-tag tag-poster">Poster spotlight</span>
+          <div class="sched-title">Limited evidence for associations between EEG microstates and spontaneous thought</div>
+          <div class="sched-speaker">Quentin Chenot — Fédération ENAC ISAE-SUPAERO ONERA, Université de Toulouse, France</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ─────────── DAY 3 · Thursday 17 September ─────────── -->
+    <div id="day3" class="day-content">
+
       <div class="schedule-item">
         <div class="sched-time">09:00</div>
         <div>
           <span class="sched-tag tag-keynote">Keynote</span>
-          <div class="sched-title">[Keynote talk title]</div>
-          <div class="sched-speaker">[Speaker name, Affiliation]</div>
+          <div class="sched-title">Plasticity of the Predictive Mind</div>
+          <div class="sched-speaker">Heleen A. Slagter — Vrije Universiteit Amsterdam, The Netherlands</div>
         </div>
       </div>
+
       <div class="schedule-item">
-        <div class="sched-time">10:30</div>
+        <div class="sched-time">10:00</div>
         <div>
           <span class="sched-tag tag-break">Break</span>
           <div class="sched-title">Coffee break</div>
         </div>
       </div>
+
       <div class="schedule-item">
-        <div class="sched-time">11:00</div>
+        <div class="sched-time">10:30</div>
         <div>
-          <span class="sched-tag tag-session">Session</span>
-          <div class="sched-title">[Session title]</div>
-          <div class="sched-speaker">Chair: [Name]</div>
+          <span class="sched-tag tag-workshop">Thematic workshop</span>
+          <div class="sched-title">EEG Microstates in Psychiatry</div>
+          <div class="sched-speaker">Giorgio Di Lorenzo — University of Rome Tor Vergata, Italy</div>
         </div>
       </div>
+
+      <div class="session-band">
+        <span class="band-time">11:40–12:30</span>
+        <span class="band-title">Oral Session III · EEG Microstates in Psychiatry</span>
+      </div>
+
       <div class="schedule-item">
-        <div class="sched-time">13:00</div>
+        <div class="sched-time">11:40</div>
+        <div>
+          <span class="sched-tag tag-oral">Oral</span>
+          <div class="sched-title">Temporal Stability of EEG Microstates is Reduced in Individuals at Clinical High Risk for Psychosis and Associated With Clinical Outcomes</div>
+          <div class="sched-speaker">Matthias Liebrand — University of Bern, Switzerland</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">12:05</div>
+        <div>
+          <span class="sched-tag tag-oral">Oral</span>
+          <div class="sched-title">Resting-State EEG microstates during pharmacotherapy of a depressive episode</div>
+          <div class="sched-speaker">Alena Damborská — Masaryk University &amp; Brno University Hospital, Czech Republic</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">12:30</div>
         <div>
           <span class="sched-tag tag-break">Break</span>
           <div class="sched-title">Lunch</div>
         </div>
       </div>
+
+      <div class="session-band">
+        <span class="band-time">13:30–14:50</span>
+        <span class="band-title">Oral Session IV · Clinical and Altered Brain States</span>
+      </div>
+
       <div class="schedule-item">
-        <div class="sched-time">14:00</div>
+        <div class="sched-time">13:30</div>
         <div>
-          <span class="sched-tag tag-session">Session</span>
-          <div class="sched-title">[Afternoon session title]</div>
-          <div class="sched-speaker">Chair: [Name]</div>
+          <span class="sched-tag tag-oral">Oral</span>
+          <div class="sched-title">Transcranial Alternating Current Stimulation Is Associated with Changes in EEG Microstate Dynamics in Disorders of Consciousness</div>
+          <div class="sched-speaker">Eren Toplutaş — Istanbul Medipol University, Türkiye</div>
         </div>
       </div>
+
       <div class="schedule-item">
-        <div class="sched-time">16:00</div>
+        <div class="sched-time">13:55</div>
+        <div>
+          <span class="sched-tag tag-oral">Oral</span>
+          <div class="sched-title">Temporal Dynamics of EEG Microstates During Postural Control in Parkinson's Disease</div>
+          <div class="sched-speaker">Sneha S. Shetty &amp; Prewal Fredlin Fernandes — Reykjavik University, Iceland</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">14:20</div>
+        <div>
+          <span class="sched-tag tag-poster">Poster spotlight</span>
+          <div class="sched-title">State-dependent EEG microstate dynamics differentiate patients with epilepsy and functional/dissociative seizures across a guided mindfulness paradigm</div>
+          <div class="sched-speaker">Cosmina A. Duțică — University Medicine Essen, University of Duisburg-Essen, Germany</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">14:30</div>
+        <div>
+          <span class="sched-tag tag-poster">Poster spotlight</span>
+          <div class="sched-title">EEG Microstate Dynamics at Rest, Scrolling Social-Media, and Working Memory in Psychiatric Outpatients</div>
+          <div class="sched-speaker">Rustin Berlow — ABSC</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">14:40</div>
+        <div>
+          <span class="sched-tag tag-poster">Poster spotlight</span>
+          <div class="sched-title">The Effect of Ketamine on MEG Microstates</div>
+          <div class="sched-speaker">Victoria Smart — University of Exeter, UK</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">14:50</div>
+        <div>
+          <span class="sched-tag tag-break">Break</span>
+          <div class="sched-title">Coffee break</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">15:20</div>
+        <div>
+          <span class="sched-tag tag-lecture">State of the field</span>
+          <div class="sched-title">Best Practices in EEG Microstate Analysis</div>
+          <div class="sched-speaker">Thomas Koenig — University of Bern, Switzerland</div>
+        </div>
+      </div>
+
+      <div class="session-band">
+        <span class="band-time">16:05–16:55</span>
+        <span class="band-title">Oral Session V · Cognitive and Physiological Brain States</span>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">16:05</div>
+        <div>
+          <span class="sched-tag tag-oral">Oral</span>
+          <div class="sched-title">The Maintenance of Attention Over Time Influences the Dynamics of EEG Microstates</div>
+          <div class="sched-speaker">Anthony P. Zanesco — University of Kentucky, USA</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">16:30</div>
+        <div>
+          <span class="sched-tag tag-oral">Oral</span>
+          <div class="sched-title">Spatiotemporal Dynamics of EEG Microstates Throughout the Sleep Cycle</div>
+          <div class="sched-speaker">Angelica Quercia — Oasi Research Institute-IRCCS, Troina, Italy</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">Evening</div>
+        <div>
+          <span class="sched-tag tag-social">Social</span>
+          <div class="sched-title">Social dinner</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ─────────── DAY 4 · Friday 18 September ─────────── -->
+    <div id="day4" class="day-content">
+
+      <div class="session-band">
+        <span class="band-time">09:30–10:45</span>
+        <span class="band-title">Oral Session VI · Emerging Perspectives on Brain-State Dynamics</span>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">09:30</div>
+        <div>
+          <span class="sched-tag tag-oral">Oral</span>
+          <div class="sched-title">Tracking Brain Adaptation to Mindfulness-Based Stress Reduction Through EEG Microstate Dynamics</div>
+          <div class="sched-speaker">Antea D'Andrea — G. d'Annunzio University of Chieti-Pescara, Italy</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">09:55</div>
+        <div>
+          <span class="sched-tag tag-oral">Oral</span>
+          <div class="sched-title">Mapping and Characterizing Transient MEG Brain States During Distinct Meditation Practices via Hidden Markov Modeling</div>
+          <div class="sched-speaker">Lorenza Guerriero / Laura Marzetti — G. d'Annunzio University of Chieti-Pescara, Italy</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">10:20</div>
+        <div>
+          <span class="sched-tag tag-oral">Oral</span>
+          <div class="sched-title">Where and When Local Brain Dynamics Shape TMS Response Variability</div>
+          <div class="sched-speaker">Saeed Makkinayeri — G. d'Annunzio University of Chieti-Pescara, Italy</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">10:45</div>
+        <div>
+          <span class="sched-tag tag-break">Break</span>
+          <div class="sched-title">Coffee break</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">11:15</div>
+        <div>
+          <span class="sched-tag tag-session">Networking</span>
+          <div class="sched-title">BRAIN-AccelNet: Building International Connections in Movement, Music, Neurotechnology and Brain Health</div>
+          <div class="sched-speaker">Yoshua Erenoldo Lima Carmona — President, BRAIN-AccelNet Student Network</div>
+        </div>
+      </div>
+
+      <div class="session-band">
+        <span class="band-time">11:30–12:15</span>
+        <span class="band-title">Oral Session VI — continued · Emerging Perspectives on Brain-State Dynamics</span>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">11:30</div>
+        <div>
+          <span class="sched-tag tag-oral">Oral</span>
+          <div class="sched-title">Hyper-Brain EEG Microstates Analysis for Investigating Functional Inter-Brain Dynamics During Dyadic Joint Action</div>
+          <div class="sched-speaker">Filippo Zappasodi — G. d'Annunzio University of Chieti-Pescara, Italy</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">11:55</div>
+        <div>
+          <span class="sched-tag tag-poster">Poster spotlight</span>
+          <div class="sched-title">Cardiac-to-Cortical Information Flow Distinguishes Focused Attention from Open Monitoring Meditation: Evidence from Magnetoencephalography</div>
+          <div class="sched-speaker">Delia Lucarelli — G. d'Annunzio University of Chieti-Pescara, Italy</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">12:05</div>
+        <div>
+          <span class="sched-tag tag-poster">Poster spotlight</span>
+          <div class="sched-title">Reduced temporal expression of resting-state EEG microstate C is associated with problematic media use in children and adolescents</div>
+          <div class="sched-speaker">Christoph Berger — University Medicine Rostock, Germany</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">12:15</div>
         <div>
           <span class="sched-tag tag-session">Closing</span>
-          <div class="sched-title">Closing ceremony & awards</div>
-          <div class="sched-speaker">[Organizing committee]</div>
+          <div class="sched-title">General discussion &amp; closing remarks</div>
         </div>
       </div>
+
     </div>
+
   </div>
 </section>
 
