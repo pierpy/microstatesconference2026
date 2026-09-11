@@ -1,0 +1,1675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3rd International Conference on EEG Microstates 2026 — Pescara</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --teal:       #1D9E75;
+    --teal-dark:  #085041;
+    --teal-light: #E1F5EE;
+    --teal-mid:   #5DCAA5;
+    --coral:      #D85A30;
+    --coral-light:#FAECE7;
+    --amber:      #BA7517;
+    --amber-light:#FAEEDA;
+    --purple:     #534AB7;
+    --purple-light:#EEEDFE;
+    --blue:       #185FA5;
+    --blue-light: #E6F1FB;
+    --ink:        #1a1a2e;
+    --ink-mid:    #2e2e45;
+    --muted:      #6b7280;
+    --border:     rgba(0,0,0,0.09);
+    --ff-display: 'Playfair Display', Georgia, serif;
+    --ff-body:    'Lato', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--ff-body);
+    font-weight: 300;
+    color: var(--ink);
+    background: #f5f4f0;
+    line-height: 1.8;
+  }
+
+  /* ── NAVBAR ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex; align-items: center; gap: 1rem;
+    height: 64px;
+  }
+  .nav-logo {
+    font-family: var(--ff-display);
+    font-weight: 700; font-size: 1.05rem;
+    color: var(--teal-dark);
+    letter-spacing: 0.01em;
+    font-style: italic;
+    margin-right: auto;
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--teal); font-style: normal; }
+  nav a.nav-link {
+    font-size: 0.82rem; font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-mid); text-decoration: none;
+    padding: 0.3rem 0.6rem; border-radius: 6px;
+    transition: color 0.2s, background 0.2s;
+    white-space: nowrap;
+  }
+  nav a.nav-link:hover { background: var(--teal-light); color: var(--teal-dark); }
+  .nav-cta {
+    display: flex; gap: 0.5rem; margin-left: 0.5rem;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.3rem;
+    font-family: var(--ff-body); font-weight: 500; font-size: 0.8rem;
+    padding: 0.45rem 1rem; border-radius: 8px;
+    text-decoration: none; border: none; cursor: pointer;
+    transition: transform 0.15s, opacity 0.15s;
+    white-space: nowrap;
+  }
+  .btn:hover { transform: translateY(-1px); opacity: 0.9; }
+  .btn-teal { background: var(--teal); color: #fff; }
+  .btn-coral { background: var(--coral); color: #fff; }
+  .btn-outline-teal {
+    background: transparent; color: var(--teal);
+    border: 1.5px solid var(--teal);
+  }
+  .btn-lg { font-size: 0.95rem; padding: 0.75rem 1.6rem; border-radius: 10px; }
+
+  /* ── SECTIONS ── */
+  section { padding: 5rem 2rem; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-family: var(--ff-body);
+    font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 0.6rem;
+  }
+  .section-title {
+    font-family: var(--ff-display);
+    font-size: 2.4rem; font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 1rem;
+    line-height: 1.15;
+  }
+  .section-sub {
+    font-size: 1rem; color: var(--muted);
+    max-width: 640px; line-height: 1.8;
+    font-weight: 300;
+  }
+
+  #home {
+    padding-top: 7rem;
+    background: #1a1a2e;
+    position: relative; overflow: hidden;
+    min-height: 92vh;
+    display: flex; align-items: center;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background-image: url('logo1.0.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    opacity: 0.65;
+  }
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background:
+  linear-gradient(135deg, rgba(10,12,28,0.92) 0%, rgba(10,20,28,0.75) 50%, rgba(10,12,28,0.88) 100%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0; opacity: 0.025;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-content { position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    background: rgba(29,158,117,0.15);
+    border: 1px solid rgba(93,202,165,0.3);
+    border-radius: 20px; padding: 0.3rem 0.9rem;
+    font-size: 0.72rem; font-weight: 400;
+    font-family: var(--ff-body);
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--teal-mid);
+    margin-bottom: 1.8rem;
+  }
+  .hero-badge::before {
+    content: '';
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--teal-mid);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity:1; } 50% { opacity:0.3; }
+  }
+  .hero-title {
+    font-family: var(--ff-display);
+    font-size: clamp(2.6rem, 6vw, 5rem);
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: -0.02em; line-height: 1.05;
+    margin-bottom: 0.5rem;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--teal-mid);
+  }
+  .hero-title .accent { color: var(--teal-mid); font-style: italic; }
+  .hero-subtitle {
+    font-size: clamp(0.95rem, 1.8vw, 1.2rem);
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 2rem;
+    font-weight: 300;
+    font-style: italic;
+    letter-spacing: 0.02em;
+  }
+  .hero-meta {
+    display: flex; flex-wrap: wrap; gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .hero-meta-item {
+    display: flex; align-items: center; gap: 0.5rem;
+    font-size: 0.9rem; color: rgba(255,255,255,0.75);
+  }
+  .meta-icon {
+    width: 32px; height: 32px; border-radius: 8px;
+    background: rgba(255,255,255,0.08);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+  }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+  /* ── ABOUT ── */
+  #about { background: #fff; }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: start;
+    margin-top: 3rem;
+  }
+  .about-text p { color: var(--muted); margin-bottom: 1rem; }
+  .dates-card {
+    background: var(--ink);
+    border-radius: 16px; padding: 2rem;
+    color: #fff;
+  }
+  .dates-title {
+    font-family: var(--ff-body);
+    font-size: 0.68rem; font-weight: 700;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--teal-mid); margin-bottom: 1.2rem;
+  }
+  .date-item {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    font-size: 0.85rem;
+  }
+  .date-item:last-child { border-bottom: none; }
+  .date-item .label { color: rgba(255,255,255,0.6); }
+  .date-item .date {
+    font-family: var(--ff-display);
+    font-weight: 600; color: var(--teal-mid);
+  }
+  .topics-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 0.5rem; margin-top: 1.5rem;
+  }
+  .topic-chip {
+    background: var(--teal-light); color: var(--teal-dark);
+    border-radius: 8px; padding: 0.5rem 0.75rem;
+    font-size: 0.78rem; font-weight: 500;
+  }
+
+  /* ── SPEAKERS ── */
+  #speakers { background: #f7f8fa; }
+  .speakers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.5rem; margin-top: 3rem;
+  }
+  .speaker-card {
+    background: #fff; border-radius: 16px;
+    border: 1px solid var(--border);
+    padding: 1.5rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .speaker-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+  }
+  .speaker-avatar {
+    width: 72px; height: 72px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--teal-light), var(--purple-light));
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--ff-display);
+    font-size: 1.4rem; font-weight: 800;
+    color: var(--teal-dark); margin-bottom: 1rem;
+    border: 3px solid var(--teal-light);
+  }
+  .speaker-name {
+    font-family: var(--ff-display);
+    font-size: 1.05rem; font-weight: 600;
+    font-style: italic;
+    color: var(--ink); margin-bottom: 0.2rem;
+  }
+  .speaker-affil {
+    font-size: 0.78rem; color: var(--muted);
+    margin-bottom: 0.75rem;
+  }
+  .speaker-talk {
+    font-size: 0.8rem; color: var(--ink);
+    background: var(--teal-light); color: var(--teal-dark);
+    border-radius: 8px; padding: 0.5rem 0.75rem;
+    font-style: italic; line-height: 1.5;
+  }
+
+  /* ── PROGRAM ── */
+  #program { background: #fff; }
+  .day-tabs {
+    display: flex; gap: 0.5rem; margin: 2rem 0 2.5rem;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 0;
+  }
+  .day-tab {
+    font-family: var(--ff-body);
+    font-size: 0.78rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.6rem 1.2rem; border-radius: 8px 8px 0 0;
+    cursor: pointer; border: none;
+    background: transparent; color: var(--muted);
+    position: relative; bottom: -2px;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s;
+  }
+  .day-tab.active {
+    color: var(--teal-dark);
+    border-bottom-color: var(--teal);
+    background: var(--teal-light);
+  }
+  .day-content { display: none; }
+  .day-content.active { display: block; }
+  .schedule-item {
+    display: grid; grid-template-columns: 100px 1fr;
+    gap: 1.5rem; padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
+    align-items: start;
+  }
+  .schedule-item:last-child { border-bottom: none; }
+  .sched-time {
+    font-family: var(--ff-display);
+    font-size: 0.85rem; font-weight: 400;
+    font-style: italic;
+    color: var(--teal); padding-top: 0.15rem;
+  }
+  .sched-title {
+    font-size: 0.95rem; font-weight: 400; color: var(--ink);
+    margin-bottom: 0.2rem;
+    font-family: var(--ff-display);
+  }
+  .sched-speaker {
+    font-size: 0.8rem; color: var(--muted);
+  }
+  .sched-tag {
+    display: inline-block;
+    font-size: 0.68rem; font-weight: 600;
+    padding: 0.15rem 0.6rem; border-radius: 20px;
+    margin-bottom: 0.35rem;
+    text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  .tag-keynote  { background: var(--purple-light); color: var(--purple);    }
+  .tag-lecture  { background: var(--teal-light);   color: var(--teal-dark); }
+  .tag-tutorial { background: var(--blue-light);   color: var(--blue);      }
+  .tag-workshop { background: var(--blue-light);   color: var(--blue);      }
+  .tag-oral     { background: #eef0f3;             color: var(--ink-mid);   }
+  .tag-poster   { background: var(--amber-light);  color: var(--amber);     }
+  .tag-break    { background: #f2f1ed;             color: var(--muted);     }
+  .tag-session  { background: var(--coral-light);  color: var(--coral);     }
+  .tag-social   { background: var(--coral-light);  color: var(--coral);     }
+
+  /* fascia di intestazione sessione */
+  .session-band {
+    display: flex; align-items: baseline;
+    gap: 0.9rem; flex-wrap: wrap;
+    background: var(--teal-light);
+    border-left: 3px solid var(--teal);
+    border-radius: 0 10px 10px 0;
+    padding: 0.6rem 1rem;
+    margin: 2rem 0 0.25rem;
+  }
+  .session-band:first-child { margin-top: 0.5rem; }
+  .band-time {
+    font-family: var(--ff-display);
+    font-style: italic; font-size: 0.85rem;
+    color: var(--teal); flex-shrink: 0;
+  }
+  .band-title {
+    font-family: var(--ff-body);
+    font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--teal-dark); line-height: 1.6;
+  }
+
+  /* ── VENUE ── */
+  #venue { background: #f7f8fa; }
+  .venue-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 3rem; margin-top: 3rem; align-items: start;
+  }
+  .venue-map-placeholder {
+    background: var(--ink); border-radius: 16px;
+    height: 320px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    color: rgba(255,255,255,0.4); gap: 0.5rem;
+    position: relative; overflow: hidden;
+  }
+  .venue-map-placeholder::after {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 50% 50% at 50% 50%, rgba(29,158,117,0.15) 0%, transparent 70%);
+  }
+  .map-pin { font-size: 2.5rem; }
+  .venue-info h3 {
+    font-family: var(--ff-display);
+    font-size: 1.3rem; font-weight: 600;
+    font-style: italic;
+    color: var(--ink); margin-bottom: 0.3rem;
+  }
+  .venue-info p { color: var(--muted); font-size: 0.9rem; margin-bottom: 1.5rem; }
+  .travel-options { display: flex; flex-direction: column; gap: 0.75rem; }
+  .travel-item {
+    display: flex; gap: 0.75rem; align-items: flex-start;
+    background: #fff; border-radius: 10px; padding: 0.85rem 1rem;
+    border: 1px solid var(--border);
+  }
+  .travel-icon {
+    font-size: 1.1rem; width: 32px; flex-shrink: 0; text-align: center;
+  }
+  .travel-label { font-size: 0.85rem; font-weight: 500; color: var(--ink); }
+  .travel-desc  { font-size: 0.78rem; color: var(--muted); }
+
+  /* ── COMMITTEE ── */
+  #committee { background: #fff; }
+  .committee-sections {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 3rem; margin-top: 3rem;
+  }
+  .comm-group-title {
+    font-family: var(--ff-body);
+    font-size: 0.68rem; font-weight: 700;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--teal); margin-bottom: 1rem;
+  }
+  .person-row {
+    display: flex; align-items: center; gap: 0.75rem;
+    padding: 0.6rem 0; border-bottom: 1px solid var(--border);
+  }
+  .person-row:last-child { border-bottom: none; }
+  .person-initials {
+    width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--ff-display); font-size: 0.7rem; font-weight: 600;
+    font-style: italic;
+  }
+  .person-name  { font-size: 0.92rem; font-weight: 400; font-family: var(--ff-display); font-style: italic; color: var(--ink); }
+  .person-role  { font-size: 0.75rem; color: var(--muted); font-weight: 300; }
+/* Stile aggiornato per le foto del comitato */
+  .person-photo {
+    width: 60px; /* Dimensione ideale per non appesantire il layout */
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 2px solid var(--teal-light);
+    background: #f0f0f0; /* Grigio chiaro se la foto non carica */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .person-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Fondamentale: non schiaccia la foto */
+  }
+
+  .person-row {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem; /* Più spazio tra foto e nome */
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  /* ── GALLERY ── */
+  #gallery { background: var(--ink); padding: 5rem 2rem; }
+  #gallery .section-label { color: var(--teal-mid); }
+  #gallery .section-title { color: #fff; }
+  #gallery .section-sub   { color: rgba(255,255,255,0.45); }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 220px 220px;
+    gap: 10px;
+    margin-top: 2.5rem;
+  }
+  .gallery-item {
+    position: relative; overflow: hidden;
+    border-radius: 12px; cursor: pointer;
+    background: #2a2a3e;
+  }
+  .gallery-item:first-child {
+    grid-row: 1 / 3;
+  }
+  .gallery-item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+  .gallery-item:hover img { transform: scale(1.05); }
+  .gallery-placeholder {
+    width: 100%; height: 100%;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 0.5rem;
+    color: rgba(255,255,255,0.2);
+    font-size: 0.75rem; font-weight: 300;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    border: 1.5px dashed rgba(255,255,255,0.1);
+    border-radius: 12px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .gallery-placeholder:hover {
+    border-color: rgba(29,158,117,0.4);
+    color: var(--teal-mid);
+  }
+  .gallery-placeholder .ph-icon { font-size: 1.6rem; opacity: 0.4; }
+  .gallery-caption {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 1.2rem 1rem 0.8rem;
+    background: linear-gradient(transparent, rgba(0,0,0,0.6));
+    font-family: var(--ff-display); font-style: italic;
+    font-size: 0.82rem; color: rgba(255,255,255,0.75);
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .gallery-item:hover .gallery-caption { opacity: 1; }
+
+  /* Lightbox */
+  .lightbox {
+    display: none; position: fixed; inset: 0; z-index: 999;
+    background: rgba(0,0,0,0.92);
+    align-items: center; justify-content: center;
+    flex-direction: column; gap: 1rem;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox img {
+    max-width: 90vw; max-height: 80vh;
+    border-radius: 8px; object-fit: contain;
+  }
+  .lightbox-close {
+    position: absolute; top: 1.5rem; right: 2rem;
+    font-size: 2rem; color: rgba(255,255,255,0.5);
+    cursor: pointer; background: none; border: none;
+    line-height: 1; transition: color 0.2s;
+  }
+  .lightbox-close:hover { color: #fff; }
+  .lightbox-caption {
+    font-family: var(--ff-display); font-style: italic;
+    font-size: 0.9rem; color: rgba(255,255,255,0.5);
+  }
+  .lightbox-nav {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: rgba(255,255,255,0.1); border: none;
+    color: #fff; font-size: 1.5rem; padding: 0.75rem 1rem;
+    border-radius: 8px; cursor: pointer;
+    transition: background 0.2s;
+  }
+  .lightbox-nav:hover { background: rgba(255,255,255,0.2); }
+  .lightbox-prev { left: 1.5rem; }
+  .lightbox-next { right: 1.5rem; }
+  @media (max-width: 768px) {
+    .gallery-grid {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: repeat(3, 180px);
+    }
+    .gallery-item:first-child { grid-row: 1 / 2; }
+  }
+
+  /* ── SPONSORS ── */
+  #sponsors { background: #f7f8fa; text-align: center; }
+  .sponsors-grid {
+    display: flex; flex-wrap: wrap;
+    gap: 1.5rem; justify-content: center;
+    margin-top: 2.5rem;
+  }
+  .sponsor-slot {
+    width: 160px; height: 70px;
+    background: #fff; border-radius: 12px;
+    border: 1.5px dashed var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; color: var(--muted);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink); color: rgba(255,255,255,0.5);
+    padding: 3rem 2rem 2rem;
+  }
+  .footer-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: flex; flex-wrap: wrap;
+    gap: 2rem; justify-content: space-between; align-items: flex-start;
+  }
+  .footer-brand .nav-logo { color: var(--teal-mid); font-size: 1.1rem; }
+  .footer-brand p { font-size: 0.8rem; margin-top: 0.5rem; max-width: 260px; }
+  .footer-links { display: flex; flex-direction: column; gap: 0.4rem; }
+  .footer-links a {
+    font-size: 0.8rem; color: rgba(255,255,255,0.4);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--teal-mid); }
+  .footer-bottom {
+    max-width: 1100px; margin: 2rem auto 0;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .about-grid, .venue-grid, .committee-sections { grid-template-columns: 1fr; }
+    nav a.nav-link { display: none; }
+    .hero-title { font-size: 2.2rem; }
+    .day-tabs {
+      overflow-x: auto; -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .day-tabs::-webkit-scrollbar { display: none; }
+    .day-tab { flex: 0 0 auto; padding: 0.6rem 0.9rem; font-size: 0.72rem; }
+    .schedule-item { grid-template-columns: 68px 1fr; gap: 0.9rem; }
+    .sched-time { font-size: 0.8rem; }
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity:0; transform: translateY(24px); }
+    to   { opacity:1; transform: translateY(0); }
+  }
+  .hero-content > * {
+    animation: fadeUp 0.7s ease both;
+  }
+  .hero-content > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero-content > *:nth-child(2) { animation-delay: 0.2s; }
+  .hero-content > *:nth-child(3) { animation-delay: 0.3s; }
+  .hero-content > *:nth-child(4) { animation-delay: 0.4s; }
+  .hero-content > *:nth-child(5) { animation-delay: 0.5s; }
+</style>
+</head>
+<body>
+
+<!-- ══════════════ NAVBAR ══════════════ -->
+<nav>
+  <img src="logo1.0.png" style="width:34px; height:34px; border-radius:50%; object-fit:cover; object-position:center; border:1.5px solid rgba(29,158,117,0.4);" alt="logo">
+  <a class="nav-logo" href="#home">EEG<span>·</span>MS 2026</a>
+  <a class="nav-link" href="#about">About</a>
+  <a class="nav-link" href="#speakers">Speakers</a>
+  <a class="nav-link" href="#program">Program</a>
+  <a class="nav-link" href="#venue">Venue</a>
+  <a class="nav-link" href="#gallery">Gallery</a>
+  <a class="nav-link" href="#committee">Committee</a>
+  <div class="nav-cta">
+    <a class="btn btn-outline-teal" href="https://abruzzoincoming.it/tour/e-e-g-2026/" target="_blank">Register</a>
+    <a class="btn btn-coral" href="https://forms.gle/ihDgAqkW3H4MYK486" target="_blank">Submit Abstract →</a>
+  </div>
+</nav>
+
+<!-- ══════════════ HERO ══════════════ -->
+<section id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-grid"></div>
+  <div class="container hero-content">
+    <div class="hero-badge">3rd International Conference · 2026</div>
+    <h1 class="hero-title">
+      EEG <em>Microstates</em><br>Conference 2026
+    </h1>
+    <p class="hero-subtitle">
+      Bridging brain dynamics, methodology and clinical neuroscience
+    </p>
+<div class="hero-meta">
+  <div class="hero-meta-item">
+    <div class="meta-icon">📅</div>
+    <div>
+      <div style="font-weight:500; color:#fff; font-size:1.1rem;">September 2026</div>
+      <div style="font-size:1rem; color:rgba(255,255,255,0.75); font-weight:400;">15 – 18</div>
+    </div>
+  </div>
+  <div class="hero-meta-item">
+    <div class="meta-icon">📍</div>
+    <div>
+      <div style="font-weight:500; color:#fff; font-size:1.1rem;">Pescara, Italy</div>
+      <div style="font-size:0.85rem; color:rgba(255,255,255,0.55);">Aurum, Largo Gardone Riviera</div>
+    </div>
+  </div>
+  <div class="hero-meta-item">
+    <div class="meta-icon">🧠</div>
+    <div>
+      <div style="font-weight:500; color:#fff; font-size:1.1rem;">Keynote speakers</div>
+      <div style="font-size:0.85rem; color:rgba(255,255,255,0.55);">International experts</div>
+    </div>
+  </div>
+</div>
+    <div class="hero-actions">
+      <a class="btn btn-teal btn-lg" href="https://abruzzoincoming.it/tour/e-e-g-2026/" target="_blank">Register now →</a>
+      <a class="btn btn-lg" style="background:rgba(255,255,255,0.1); color:#fff; border:1px solid rgba(255,255,255,0.15);"
+         href="https://forms.gle/ihDgAqkW3H4MYK486" target="_blank">Submit abstract</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ ABOUT ══════════════ -->
+<section id="about">
+  <div class="container">
+    <div class="section-label">About the congress</div>
+    <h2 class="section-title">The 3rd International<br><em>EEG Microstates</em> Conference</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>EEG microstates have emerged as a powerful approach for exploring the complex dynamics of the human brain. These rapidly fluctuating, short-lasting patterns of global brain activity provide a direct window into the temporal organization of large-scale neural networks. </p>
+        <p>In recent years, research on EEG and ERP microstates has grown substantially, highlighting their relevance for understanding cognitive and emotional processes. At the same time, microstate parameters have shown promise in identifying and differentiating neuropsychiatric conditions and in tracking treatment-related changes.</p>
+        <p>This international conference will bring together researchers working on EEG and ERP microstates to present recent findings, discuss methodological innovations, and address open theoretical and clinical questions. The goal is to foster dialogue among basic, translational, and clinical research, consolidate current knowledge, and promote collaborations to advance the study of brain dynamics through microstate analysis.</p>
+        <div class="section-label" style="margin-top:1.5rem;">Topics covered</div>
+        <div class="topics-grid">
+          <span class="topic-chip">EEG Dynamics</span>
+          <span class="topic-chip">Brain Networks</span>
+          <span class="topic-chip">Clinical applications</span>
+          <span class="topic-chip">Neural Activity</span>
+          <span class="topic-chip">Cognitive Processes</span>
+          <span class="topic-chip">Clinical Applications</span>
+          <span class="topic-chip">Computational Methods</span>
+          <span class="topic-chip">Neuroimaging Techniques</span>
+        </div>
+      </div>
+      <div>
+        <div class="dates-card">
+          <div class="dates-title">Important dates</div>
+          <div class="date-item">
+            <span class="label">Registration opens</span>
+            <span class="date">29 Mar 2026</span>
+          </div>
+          <div class="date-item">
+            <span class="label">Abstract submission opens</span>
+            <span class="date">24 Mar 2026</span>
+          </div>
+          <div class="date-item">
+            <span class="label">Abstract deadline</span>
+            <span class="date">20 Aug 2026</span>
+          </div>
+          <div class="date-item">
+            <span class="label">Early-bird registration deadline</span>
+            <span class="date">20 Jul 2026</span>
+          </div>
+          <div class="date-item">
+            <span class="label">Congress dates</span>
+            <span class="date">15–18 Sep 2026</span>
+          </div>
+          <a class="btn btn-teal" style="margin-top:1.5rem; width:100%; justify-content:center;"
+             href="https://abruzzoincoming.it/tour/e-e-g-2026/" target="_blank">Register now →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ SPEAKERS ══════════════ -->
+<!-- <section id="speakers">
+  <div class="container">
+    <div class="section-label">Keynote speakers</div>
+    <h2 class="section-title">International experts</h2>
+    <p class="section-sub">[Optional intro sentence about the speaker lineup.]</p>
+    <div class="speakers-grid">
+
+      <
+      Repeat this block for each speaker -->
+      <!-- <div class="speaker-card">
+        <div class="speaker-avatar">[AB]</div>
+        <div class="speaker-name">[Speaker Full Name]</div>
+        <div class="speaker-affil">[Title, University / Institution, Country]</div>
+        <div class="speaker-talk">"[Title of talk or 'Talk title TBA']"</div>
+      </div> -->
+
+      <!-- <div class="speaker-card">
+        <div class="speaker-avatar" style="background: linear-gradient(135deg, var(--amber-light), var(--coral-light)); color: var(--coral);">[CD]</div>
+        <div class="speaker-name">[Speaker Full Name]</div>
+        <div class="speaker-affil">[Title, University / Institution, Country]</div>
+        <div class="speaker-talk">"[Title of talk or 'Talk title TBA']"</div>
+      </div> -->
+
+      <!-- <div class="speaker-card">
+        <div class="speaker-avatar" style="background: linear-gradient(135deg, var(--blue-light), var(--purple-light)); color: var(--blue);">[EF]</div>
+        <div class="speaker-name">[Speaker Full Name]</div>
+        <div class="speaker-affil">[Title, University / Institution, Country]</div>
+        <div class="speaker-talk">"[Title of talk or 'Talk title TBA']"</div>
+      </div> -->
+
+      <!-- <div class="speaker-card">
+        <div class="speaker-avatar" style="background: linear-gradient(135deg, var(--coral-light), var(--amber-light)); color: var(--amber);">[GH]</div>
+        <div class="speaker-name">[Speaker Full Name]</div>
+        <div class="speaker-affil">[Title, University / Institution, Country]</div>
+        <div class="speaker-talk">"[Title of talk or 'Talk title TBA']"</div>
+      </div> -->
+
+    <!-- </div>
+  </div>
+</section>  -->
+
+<!-- ══════════════════════════════════════════════════════════════════
+     SOSTITUIRE in index.html l'intera sezione
+         <section id="program"> ... </section>
+     con il blocco qui sotto. Nient'altro del file va toccato.
+     ══════════════════════════════════════════════════════════════════ -->
+
+<!-- ══════════════════════════════════════════════════════════════════
+     SOSTITUIRE in index.html l'intera sezione
+         <section id="program"> ... </section>
+     con il blocco qui sotto. Nient'altro del file va toccato.
+     ══════════════════════════════════════════════════════════════════ -->
+
+<!-- ══════════════ PROGRAM ══════════════ -->
+<section id="program">
+  <div class="container">
+    <div class="section-label">Scientific programme</div>
+    <h2 class="section-title">Congress schedule</h2>
+    <p class="section-sub">Preliminary scientific programme — subject to minor changes. All times are local (CEST, UTC+2).</p>
+
+    <div class="day-tabs">
+      <button class="day-tab active" onclick="switchDay('day1', this)">Tue 15 Sep</button>
+      <button class="day-tab"        onclick="switchDay('day2', this)">Wed 16 Sep</button>
+      <button class="day-tab"        onclick="switchDay('day3', this)">Thu 17 Sep</button>
+      <button class="day-tab"        onclick="switchDay('day4', this)">Fri 18 Sep</button>
+    </div>
+
+    <!-- ─────────── DAY 1 · Tuesday 15 September ─────────── -->
+    <div id="day1" class="day-content active">
+
+      <div class="session-band">
+        <span class="band-time">13:30–16:30</span>
+        <span class="band-title">Pre-conference tutorials · EEG Microstate Analysis: From Principles to Practice</span>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">13:30</div>
+        <div>
+          <span class="sched-tag tag-tutorial">Tutorial</span>
+          <div class="sched-title">EEG Microstate Analysis with Cartool</div>
+          <div class="sched-speaker">Armen Bagdasarov — Medical College of Wisconsin, USA</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">15:00</div>
+        <div>
+          <span class="sched-tag tag-tutorial">Tutorial</span>
+          <div class="sched-title">EEG Microstate Analysis with the Microstate Lab Plugin for EEGLAB</div>
+          <div class="sched-speaker">Thomas Koenig — University of Bern, Switzerland</div>
+        </div>
+      </div>
+
+      <div class="session-band">
+        <span class="band-time">17:30–18:30</span>
+        <span class="band-title">Opening lecture</span>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">17:30</div>
+        <div>
+          <span class="sched-tag tag-lecture">Opening lecture</span>
+          <div class="sched-title">Computational role of white matter fibres</div>
+          <div class="sched-speaker">Marco Catani — University "G.d'Annunzio" of Chieti-Pescara, IT</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">19:00</div>
+        <div>
+          <span class="sched-tag tag-social">Social</span>
+          <div class="sched-title">Welcome aperitif</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ─────────── DAY 2 · Wednesday 16 September ─────────── -->
+    <div id="day2" class="day-content">
+
+      <div class="schedule-item">
+        <div class="sched-time">09:00</div>
+        <div>
+          <span class="sched-tag tag-keynote">Keynote</span>
+          <div class="sched-title">New Vistas for Brain Criticality and Brain State Dynamics</div>
+          <div class="sched-speaker">Matias Palva — University of Helsinki, Finland</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">10:00</div>
+        <div>
+          <span class="sched-tag tag-break">Break</span>
+          <div class="sched-title">Coffee break</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">10:30</div>
+        <div>
+          <span class="sched-tag tag-lecture">State of the field</span>
+          <div class="sched-title">EEG Microstates: From methodological foundation to clinical translation</div>
+          <div class="sched-speaker">Christoph M. Michel — University of Geneva, Switzerland</div>
+        </div>
+      </div>
+
+      <div class="session-band">
+        <span class="band-time">11:15–12:30</span>
+        <span class="band-title">Oral Session I · Methods and Computational Approaches to EEG Microstates</span>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">11:15</div>
+        <div>
+          <span class="sched-tag tag-oral">Oral</span>
+          <div class="sched-title">Deep Clustering for EEG Microstate Analysis: Convergent Validation with Modified K-Means</div>
+          <div class="sched-speaker">Arjun Vinayak Chikkankod — Technological University Dublin, Ireland</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">11:40</div>
+        <div>
+          <span class="sched-tag tag-oral">Oral</span>
+          <div class="sched-title">Are EEG Microstates Robust to the Choice of Clustering Algorithm? Modified k-Means, AAHC and TAAHC across k = 4–7</div>
+          <div class="sched-speaker">Sneha S. Shetty &amp; Prewal Fredlin Fernandes — Sahyadri College of Engineering and Management, India</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">12:05</div>
+        <div>
+          <span class="sched-tag tag-oral">Oral</span>
+          <div class="sched-title">From GFP and stability to backfitting credibility: microstate-equivalent electric dipoles for EEG microstate validation</div>
+          <div class="sched-speaker">Leonardo Corsi — IRCCS Fondazione Don Carlo Gnocchi ETS, Florence &amp; Sant'Anna School of Advanced Studies, Pisa, Italy</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">12:30</div>
+        <div>
+          <span class="sched-tag tag-poster">Poster spotlight</span>
+          <div class="sched-title">Limited evidence for associations between EEG microstates and spontaneous thought</div>
+          <div class="sched-speaker">Quentin Chenot — Fédération ENAC ISAE-SUPAERO ONERA, Université de Toulouse, France</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">12:40</div>
+        <div>
+          <span class="sched-tag tag-break">Break</span>
+          <div class="sched-title">Lunch</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">13:40</div>
+        <div>
+          <span class="sched-tag tag-workshop">Thematic workshop</span>
+          <div class="sched-title">Information Theory and the Temporal Organization of EEG Microstate Sequences</div>
+          <div class="sched-speaker">Frederic von Wegner — University of New South Wales (UNSW Sydney), Australia</div>
+        </div>
+      </div>
+
+      <div class="session-band">
+        <span class="band-time">15:00</span>
+        <span class="band-title">Oral Session II · Temporal Organization and Complexity of EEG Microstates</span>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">15:00</div>
+        <div>
+          <span class="sched-tag tag-oral">Oral</span>
+          <div class="sched-title">Structural regularities in microstate transitions revealed by a grammar induction algorithm</div>
+          <div class="sched-speaker">Fabio Strappazzon — G. d'Annunzio University of Chieti-Pescara, Italy</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">15:25</div>
+        <div>
+          <span class="sched-tag tag-oral">Oral</span>
+          <div class="sched-title">Microstate sequence entropy captures early cognitive decline beyond classical ERP measures</div>
+          <div class="sched-speaker">Michael Lassi — Sant'Anna School of Advanced Studies, Pisa, Italy</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">15:50</div>
+        <div>
+          <span class="sched-tag tag-oral">Oral</span>
+          <div class="sched-title">EEG Microstates and fMRI Networks: Is There a Simple Link?</div>
+          <div class="sched-speaker">Tomáš Jordánek — Masaryk University &amp; CEITEC, Brno, Czech Republic</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">16:15</div>
+        <div>
+          <span class="sched-tag tag-break">Break</span>
+          <div class="sched-title">Coffee break</div>
+        </div>
+      </div>
+
+      <div class="session-band">
+        <span class="band-time">16:45</span>
+        <span class="band-title">Oral Session II — continued · Temporal Organization, Computational and Multimodal Brain States</span>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">16:45</div>
+        <div>
+          <span class="sched-tag tag-oral">Oral</span>
+          <div class="sched-title">Assaying Brain Dynamics During Artistic Performance using EEG Microstates</div>
+          <div class="sched-speaker">Yoshua Erenoldo Lima Carmona — IUCRC BRAIN, University of Houston, USA</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">17:10</div>
+        <div>
+          <span class="sched-tag tag-oral">Oral</span>
+          <div class="sched-title">Temporal Dynamics of EEG Microstates During Postural Control in Parkinson's Disease</div>
+          <div class="sched-speaker">Carmine Gelormini — Reykjavik University, Iceland</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">17:35</div>
+        <div>
+          <span class="sched-tag tag-poster">Poster spotlight</span>
+          <div class="sched-title">Beyond Canonical EEG Microstates: An EEG-Energy Landscape Analysis Framework for Modeling Complex Dynamics</div>
+          <div class="sched-speaker">Anubhav — The University of Tokyo, Japan</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">17:45</div>
+        <div>
+          <span class="sched-tag tag-poster">Poster spotlight</span>
+          <div class="sched-title">EEG Microstate Dynamics at Rest, Scrolling Social-Media, and Working Memory in Psychiatric Outpatients</div>
+          <div class="sched-speaker">Rustin Berlow — ABSC</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">17:55</div>
+        <div>
+          <span class="sched-tag tag-poster">Poster spotlight</span>
+          <div class="sched-title">State-dependent EEG microstate dynamics differentiate patients with epilepsy and functional/dissociative seizures across a guided mindfulness paradigm</div>
+          <div class="sched-speaker">Cosmina A. Duțică — University Medicine Essen, University of Duisburg-Essen, Germany</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">18:05</div>
+        <div>
+          <span class="sched-tag tag-poster">Poster spotlight</span>
+          <div class="sched-title">Reduced temporal expression of resting-state EEG microstate C is associated with problematic media use in children and adolescents</div>
+          <div class="sched-speaker">Christoph Berger — University Medicine Rostock, Germany</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ─────────── DAY 3 · Thursday 17 September ─────────── -->
+    <div id="day3" class="day-content">
+
+      <div class="schedule-item">
+        <div class="sched-time">09:00</div>
+        <div>
+          <span class="sched-tag tag-keynote">Keynote</span>
+          <div class="sched-title">Plasticity of the Predictive Mind</div>
+          <div class="sched-speaker">Heleen A. Slagter — Vrije Universiteit Amsterdam, The Netherlands</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">10:00</div>
+        <div>
+          <span class="sched-tag tag-break">Break</span>
+          <div class="sched-title">Coffee break</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">10:30</div>
+        <div>
+          <span class="sched-tag tag-workshop">Thematic workshop</span>
+          <div class="sched-title">EEG Microstates in Psychiatry</div>
+          <div class="sched-speaker">Giorgio Di Lorenzo — University of Rome Tor Vergata, Italy</div>
+        </div>
+      </div>
+
+      <div class="session-band">
+        <span class="band-time">11:40–12:30</span>
+        <span class="band-title">Oral Session III · EEG Microstates in Psychiatry</span>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">11:40</div>
+        <div>
+          <span class="sched-tag tag-oral">Oral</span>
+          <div class="sched-title">Temporal Stability of EEG Microstates is Reduced in Individuals at Clinical High Risk for Psychosis and Associated With Clinical Outcomes</div>
+          <div class="sched-speaker">Matthias Liebrand — University of Bern, Switzerland</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">12:05</div>
+        <div>
+          <span class="sched-tag tag-oral">Oral</span>
+          <div class="sched-title">Resting-State EEG microstates during pharmacotherapy of a depressive episode</div>
+          <div class="sched-speaker">Alena Damborská — Masaryk University &amp; Brno University Hospital, Czech Republic</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">12:30</div>
+        <div>
+          <span class="sched-tag tag-break">Break</span>
+          <div class="sched-title">Lunch</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">13:30</div>
+        <div>
+          <span class="sched-tag tag-lecture">State of the field</span>
+          <div class="sched-title">Best Practices in EEG Microstate Analysis</div>
+          <div class="sched-speaker">Thomas Koenig — University of Bern, Switzerland</div>
+        </div>
+      </div>
+
+      <div class="session-band">
+        <span class="band-time">14:15</span>
+        <span class="band-title">Oral Session IV · Clinical and Altered Brain States</span>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">14:15</div>
+        <div>
+          <span class="sched-tag tag-oral">Oral</span>
+          <div class="sched-title">Transcranial Alternating Current Stimulation Is Associated with Changes in EEG Microstate Dynamics in Disorders of Consciousness</div>
+          <div class="sched-speaker">Eren Toplutaş — Istanbul Medipol University, Türkiye</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">14:40</div>
+        <div>
+          <span class="sched-tag tag-oral">Oral</span>
+          <div class="sched-title">Comparative EEG microstate analysis of psilocin</div>
+          <div class="sched-speaker">Václava Piorecká — Czech Technical University in Prague, Czech Republic</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">15:05</div>
+        <div>
+          <span class="sched-tag tag-oral">Oral</span>
+          <div class="sched-title">EEG microstates, acute phase negative symptoms of schizophrenia and antipsychotic treatment response</div>
+          <div class="sched-speaker">Marco de Pieri — Geneva University Hospital, Switzerland</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">15:30</div>
+        <div>
+          <span class="sched-tag tag-break">Break</span>
+          <div class="sched-title">Coffee break</div>
+        </div>
+      </div>
+
+      <div class="session-band">
+        <span class="band-time">16:00</span>
+        <span class="band-title">Oral Session V · Clinical and Altered Brain States / Cognitive and Physiological Brain States</span>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">16:00</div>
+        <div>
+          <span class="sched-tag tag-oral">Oral</span>
+          <div class="sched-title">Exploring microstates in biotyping schizophrenia</div>
+          <div class="sched-speaker">Romain Aubonnet — Tor Vergata University of Rome, Italy</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">16:25</div>
+        <div>
+          <span class="sched-tag tag-oral">Oral</span>
+          <div class="sched-title">Microstate sequencing distinguishes schizophrenia beyond duration, occurrence, and coverage</div>
+          <div class="sched-speaker">Carmine Gelormini — Reykjavik University, Iceland</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">16:50</div>
+        <div>
+          <span class="sched-tag tag-oral">Oral</span>
+          <div class="sched-title">The Maintenance of Attention Over Time Influences the Dynamics of EEG Microstates</div>
+          <div class="sched-speaker">Anthony P. Zanesco — University of Kentucky, USA</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">17:15</div>
+        <div>
+          <span class="sched-tag tag-oral">Oral</span>
+          <div class="sched-title">Spatiotemporal Dynamics of EEG Microstates Throughout the Sleep Cycle</div>
+          <div class="sched-speaker">Angelica Quercia — Oasi Research Institute-IRCCS, Troina, Italy</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">17:40</div>
+        <div>
+          <span class="sched-tag tag-oral">Oral</span>
+          <div class="sched-title">EEG microstate dynamics associated with perceptual experience among different altered states of consciousness paradigms</div>
+          <div class="sched-speaker">Thomas Koenig — University of Bern, Switzerland</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">18:05</div>
+        <div>
+          <span class="sched-tag tag-oral">Oral</span>
+          <div class="sched-title">EEG Microstate dynamics during an extended cognitive reaching task in adults with ADHD</div>
+          <div class="sched-speaker">Martina De Cesaris — G. d'Annunzio University of Chieti-Pescara, Italy</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">Evening</div>
+        <div>
+          <span class="sched-tag tag-social">Social</span>
+          <div class="sched-title">Social dinner</div>
+          <div class="sched-speaker">
+            <span style="font-family:var(--ff-display); font-style:italic; font-size:0.92rem; color:var(--coral);">La Barcaccia</span>
+            &nbsp;·&nbsp; Piazza I Maggio 33, 65122 Pescara
+            &nbsp;<a href="https://www.google.com/maps/search/?api=1&amp;query=La+Barcaccia+Piazza+I+Maggio+33+Pescara"
+               target="_blank" rel="noopener"
+               style="color:var(--teal); text-decoration:none; border-bottom:1px solid rgba(29,158,117,0.35);">map&nbsp;↗</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ─────────── DAY 4 · Friday 18 September ─────────── -->
+    <div id="day4" class="day-content">
+
+      <div class="session-band">
+        <span class="band-time">09:30–10:45</span>
+        <span class="band-title">Oral Session VI · Emerging Perspectives on Brain-State Dynamics</span>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">09:30</div>
+        <div>
+          <span class="sched-tag tag-oral">Oral</span>
+          <div class="sched-title">Convergent Minds: A Common EEG Microstate Signature of Meditation Across Traditions</div>
+          <div class="sched-speaker">Christoph M. Michel — University of Geneva, Switzerland</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">09:55</div>
+        <div>
+          <span class="sched-tag tag-oral">Oral</span>
+          <div class="sched-title">Tracking Brain Adaptation to Mindfulness-Based Stress Reduction Through EEG Microstate Dynamics</div>
+          <div class="sched-speaker">Antea D'Andrea — G. d'Annunzio University of Chieti-Pescara, Italy</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">10:20</div>
+        <div>
+          <span class="sched-tag tag-oral">Oral</span>
+          <div class="sched-title">Mapping and Characterizing Transient MEG Brain States During Distinct Meditation Practices via Hidden Markov Modeling</div>
+          <div class="sched-speaker">Lorenza Guerriero / Laura Marzetti — G. d'Annunzio University of Chieti-Pescara, Italy</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">10:45</div>
+        <div>
+          <span class="sched-tag tag-break">Break</span>
+          <div class="sched-title">Coffee break</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">11:15</div>
+        <div>
+          <span class="sched-tag tag-session">Networking</span>
+          <div class="sched-title">BRAIN-AccelNet: Building International Connections in Movement, Music, Neurotechnology and Brain Health</div>
+          <div class="sched-speaker">Yoshua Erenoldo Lima Carmona — President, BRAIN-AccelNet Student Network</div>
+        </div>
+      </div>
+
+      <div class="session-band">
+        <span class="band-time">11:30–12:15</span>
+        <span class="band-title">Oral Session VI — continued · Emerging Perspectives on Brain-State Dynamics</span>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">11:30</div>
+        <div>
+          <span class="sched-tag tag-oral">Oral</span>
+          <div class="sched-title">Two-brain EEG microstate analysis for investigating functional inter-brain dynamics during dyadic joint action</div>
+          <div class="sched-speaker">Filippo Zappasodi — G. d'Annunzio University of Chieti-Pescara, Italy</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">11:55</div>
+        <div>
+          <span class="sched-tag tag-oral">Oral</span>
+          <div class="sched-title">Where and When Local Brain Dynamics Shape TMS Response Variability</div>
+          <div class="sched-speaker">Saeed Makkinayeri — G. d'Annunzio University of Chieti-Pescara, Italy</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">12:20</div>
+        <div>
+          <span class="sched-tag tag-poster">Poster spotlight</span>
+          <div class="sched-title">Cardiac-to-Cortical Information Flow Distinguishes Focused Attention from Open Monitoring Meditation: Evidence from Magnetoencephalography</div>
+          <div class="sched-speaker">Vittorio Aceto — G. d'Annunzio University of Chieti-Pescara, Italy</div>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="sched-time">12:30</div>
+        <div>
+          <span class="sched-tag tag-session">Closing</span>
+          <div class="sched-title">General discussion &amp; closing remarks</div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════ VENUE ══════════════ -->
+<section id="venue">
+  <div class="container">
+    <div class="section-label">Venue & travel</div>
+    <h2 class="section-title">Getting there</h2>
+    <div class="venue-grid">
+      <div class="venue-map-placeholder">
+        <div class="map-pin" style="position:relative;z-index:1;">📍</div>
+        
+        <div style="position:relative;z-index:1; font-size:0.8rem; text-align:center; padding:0 1rem;">
+          <br>
+          <span style="font-size:0.7rem; color:rgba(255,255,255,0.25);">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5887.537902842714!2d14.233203976714226!3d42.4539318711844!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1331a6346d631a1d%3A0x70c4b786de6fa1e1!2sAurum!5e0!3m2!1sen!2sit!4v1774276118857!5m2!1sen!2sit" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </span>
+        </div>
+      </div>
+      <div class="venue-info">
+        <h3>AURUM</h3>
+        <p>Largo Gardone Riviera - 65127 Pescara (PE)</p>
+
+        <div class="section-label">How to reach us</div>
+        <div class="travel-options">
+          <div class="travel-item">
+            <div class="travel-icon">✈️</div>
+            <div>
+              <div class="travel-label">By plane</div>
+              <div class="travel-desc">Pescara Airport (IATA: PSR) is the only international airport in Abruzzo, located approximately 4 km from the city centre. Wikipedia Direct flights connect Pescara to 25 destinations in 12 countries, with Ryanair, Wizz Air Malta, and Neos as the main carriers. FlightConnections Key routes include London Stansted, Brussels, Frankfurt, Düsseldorf, Tirana, Bucharest, and Kraków — please verify seasonal availability at time of booking.
+For guests without a direct connection, Rome Fiumicino (FCO) is the recommended international hub, with onward connections by train or car.
+TUA bus lines 8 and 38 run from the airport to the city centre and Pescara Centrale station (approx. €1.50). Taxis are available outside Arrivals.</div>
+            </div>
+          </div>
+          <div class="travel-item">
+            <div class="travel-icon">🚂</div>
+            <div>
+              <div class="travel-label">By train</div>
+              <div class="travel-desc">From Rome Termini, direct trains run ~13 times daily; fastest journey ~3 hours 20 minutes. Trainline
+From Milan, Frecciarossa and Intercity services operate ~17 times daily, with the fastest journey around 4 hours. Trainline
+An overnight Intercity Notte also connects Turin–Bologna–Ancona–Pescara. Wikipedia
+Book via Trenitalia or Trainline. Advance booking recommended.</div>
+            </div>
+          </div>
+          <div class="travel-item">
+            <div class="travel-icon">🚗</div>
+            <div>
+              <div class="travel-label">By car</div>
+              <div class="travel-desc">From Rome (~2.5 h): A24 motorway → Torano junction → A25 → A14 toward Pescara.
+From Milan/Bologna (~4–5 h): A1 to Bologna → A14 Adriatic motorway southbound.
+From the south (Bari, Naples): A14 northbound.
+
+Exit at Pescara Ovest (A14) or Sambuceto (A25) for the airport and city centre.</div>
+            </div>
+          </div>
+          <div class="travel-item">
+            <div class="travel-icon">🏨</div>
+            <div>
+              <div class="travel-label">Suggested hotels</div>
+              <div class="travel-desc">
+                <div class="hero-actions">
+      <a class="btn btn-teal btn-lg" href="https://abruzzoincoming.it/tour/e-e-g-2026/" target="_blank">Consult the hotels</a>
+    </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ GALLERY ══════════════ -->
+<section id="gallery">
+  <div class="container">
+    <div class="section-label">The venue</div>
+    <h2 class="section-title">A glimpse of the location</h2>
+    <p class="section-sub">Pescara — a lively Adriatic city where sea, culture, and innovation come together in the heart of Italy</p>
+
+    <div class="gallery-grid">
+
+      <!-- PHOTO 1 — large, left (replace src with your image path) -->
+      <div class="gallery-item" onclick="openLightbox(0)">
+        <img src="foto/Aurum.jpg" alt="Aurum Pescara - Sede del Congresso">
+    
+        <div class="gallery-caption">The Aurum, Pescara — historic venue of the event</div>
+      </div>
+
+      <!-- PHOTO 2 — top right -->
+      <div class="gallery-item" onclick="openLightbox(1)">
+        <img src="foto/Pescara1.jpg" alt="Aurum Pescara - Sede del Congresso">
+    
+        <div class="gallery-caption">Where the Adriatic begins — Pescara's marina, a gateway between land and open sea.</div>
+      </div>
+
+      <!-- PHOTO 3 — top far right -->
+      <div class="gallery-item" onclick="openLightbox(2)">
+        <img src="foto/Pescara2.jpg" alt="Aurum Pescara - Sede del Congresso">
+    
+        <div class="gallery-caption">A city that looks forward — modern skyline, ancient river, mountains always in sight.</div>
+      </div>
+
+      <!-- PHOTO 4 — bottom right -->
+      <div class="gallery-item" onclick="openLightbox(3)">
+        <img src="foto/Pescara3.jpg" alt="Aurum Pescara - Sede del Congresso">
+    
+        <div class="gallery-caption">Miles of golden sand, turquoise water, and a city that lives by the sea.</div>
+      </div>
+
+      <!-- PHOTO 5 — bottom far right -->
+      <div class="gallery-item" onclick="openLightbox(4)">
+        <img src="foto/Pescara4.jpg" alt="Aurum Pescara - Sede del Congresso">
+    
+        <div class="gallery-caption">When the sun sets, Pescara lights up — and the river becomes the heart of the city</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+  <button class="lightbox-nav lightbox-prev" onclick="event.stopPropagation(); shiftLightbox(-1)">&#8249;</button>
+  <img id="lightbox-img" src="" alt="">
+  <div class="lightbox-caption" id="lightbox-caption"></div>
+  <button class="lightbox-nav lightbox-next" onclick="event.stopPropagation(); shiftLightbox(1)">&#8250;</button>
+</div>
+
+<!-- ══════════════ COMMITTEE ══════════════ -->
+<section id="committee">
+  <div class="container">
+    <div class="section-label">Organizers</div>
+    <!-- <h2 class="section-title">Organizing & scientific committee</h2> -->
+    <div class="committee-sections">
+
+      <div>
+        <!-- <div class="comm-group-title">Congress chairs</div> -->
+        <!-- <div class="person-row">
+          <div class="person-initials" style="background:var(--teal-light); color:var(--teal-dark);">[AB]</div>
+          <div>
+            <div class="person-name">[Chair Full Name]</div>
+            <div class="person-role">[Title, Institution, Country]</div>
+          </div>
+        </div> -->
+        <!-- <div class="person-row">
+          <div class="person-initials" style="background:var(--purple-light); color:var(--purple);">[CD]</div>
+          <div>
+            <div class="person-name">[Co-chair Full Name]</div>
+            <div class="person-role">[Title, Institution, Country]</div>
+          </div>
+        </div> -->
+
+        <!-- <div class="comm-group-title" style="margin-top:2rem;">Organizers</div> -->
+        <div class="person-row">
+          <div class="person-photo">
+            <img src="foto/Filippo.png" alt="Prof. Nome Cognome">
+          </div>
+          <div class="person-initials" style="background:var(--amber-light); color:var(--amber);">FZ</div>
+          <div>
+            <div class="person-name">Filippo Zappasodi</div>
+            <div class="person-role">University of Chieti-Pescara</div>
+          </div>
+        </div>
+        <div class="person-row">
+          <div class="person-photo">
+            <img src="foto/Pierpaolo.png" alt="Prof. Nome Cognome">
+          </div>
+          <div class="person-initials" style="background:var(--amber-light); color:var(--amber);">PC</div>
+          <div>
+            <div class="person-name">Pierpaolo Croce</div>
+            <div class="person-role">University of Chieti-Pescara</div>
+          </div>
+        </div>
+        <div class="person-row">
+          <div class="person-photo">
+            <img src="foto/Laura.png" alt="Prof. Nome Cognome">
+          </div>
+          <div class="person-initials" style="background:var(--amber-light); color:var(--amber);">LM</div>
+          <div>
+            <div class="person-name">Laura Marzetti</div>
+            <div class="person-role">University of Chieti-Pescara</div>
+          </div>
+        </div>
+        <div class="person-row">
+          <div class="person-photo">
+            <img src="foto/Thomas.png" alt="Prof. Nome Cognome">
+          </div>
+          <div class="person-initials" style="background:var(--coral-light); color:var(--coral);">TK</div>
+          <div>
+            <div class="person-name">Thomas Koenig</div>
+            <div class="person-role">University of Bern</div>
+          </div>
+        </div>
+        <div class="person-row">
+          <div class="person-photo">
+            <img src="foto/Cristoph.png" alt="Prof. Nome Cognome">
+          </div>
+          <div class="person-initials" style="background:var(--blue-light); color:var(--blue);">CM</div>
+          <div>
+            <div class="person-name">Cristoph Michel</div>
+            <div class="person-role">University of Geneva</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div>
+        <div class="comm-group-title">Scientific committee</div>
+        <div class="person-row">
+          <div class="person-initials" style="background:var(--teal-light); color:var(--teal-dark);">[KL]</div>
+          <div>
+            <div class="person-name">[Name]</div>
+            <div class="person-role">[Institution, Country]</div>
+          </div>
+        </div>
+        <div class="person-row">
+          <div class="person-initials" style="background:var(--purple-light); color:var(--purple);">[MN]</div>
+          <div>
+            <div class="person-name">[Name]</div>
+            <div class="person-role">[Institution, Country]</div>
+          </div>
+        </div>
+        <div class="person-row">
+          <div class="person-initials" style="background:var(--amber-light); color:var(--amber);">[OP]</div>
+          <div>
+            <div class="person-name">[Name]</div>
+            <div class="person-role">[Institution, Country]</div>
+          </div>
+        </div>
+        <div class="person-row">
+          <div class="person-initials" style="background:var(--coral-light); color:var(--coral);">[QR]</div>
+          <div>
+            <div class="person-name">[Name]</div>
+            <div class="person-role">[Institution, Country]</div>
+          </div>
+        </div>
+        <div class="person-row">
+          <div class="person-initials" style="background:var(--blue-light); color:var(--blue);">[ST]</div>
+          <div>
+            <div class="person-name">[Name]</div>
+            <div class="person-role">[Institution, Country]</div>
+          </div>
+        </div>
+        <div class="person-row">
+          <div class="person-initials" style="background:var(--teal-light); color:var(--teal-dark);">[UV]</div>
+          <div>
+            <div class="person-name">[Name]</div>
+            <div class="person-role">[Institution, Country]</div>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ SPONSORS ══════════════ -->
+<!-- <section id="sponsors">
+  <div class="container">
+    <div class="section-label">Acknowledgements</div>
+    <h2 class="section-title">Sponsors & institutional support</h2>
+    <p class="section-sub">[Optional sentence about sponsorship opportunities or acknowledgements.]</p>
+    <div class="sponsors-grid">
+      <div class="sponsor-slot">Logo sponsor 1</div>
+      <div class="sponsor-slot">Logo sponsor 2</div>
+      <div class="sponsor-slot">Logo sponsor 3</div>
+      <div class="sponsor-slot">Logo sponsor 4</div>
+    </div>
+  </div>
+</section> -->
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a class="nav-logo" href="#home">EEG<span style="color:var(--teal-mid); font-style:normal;">·</span>MS 2026</a>
+      <p>EEG Microstates 2026 — Mapping the Temporal Structure of Brain Activity · Pescara, Italy</p>
+    </div>
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#speakers">Speakers</a>
+      <a href="#program">Program</a>
+      <a href="#venue">Venue & Travel</a>
+      <a href="#committee">Committee</a>
+    </div>
+    <div class="footer-links">
+      <a href="https://abruzzoincoming.it/tour/e-e-g-2026/" target="_blank">Register</a>
+      <a href="https://forms.gle/ihDgAqkW3H4MYK486" target="_blank">Submit Abstract</a>
+      <a href="mailto:congress@yourdomain.com">[congress email]</a>
+      <a href="#">Privacy policy</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Microstates Congress. </span>
+    <span>University of Chieti-Pescara</span>
+  </div>
+</footer>
+
+<script>
+  function switchDay(dayId, btn) {
+    document.querySelectorAll('.day-content').forEach(d => d.classList.remove('active'));
+    document.querySelectorAll('.day-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById(dayId).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  // Gallery data — fill in your image paths and captions here
+  const galleryImages = [
+    { src: 'foto/Pescara1.jpg', caption: 'The Aurum, Pescara — historic venue of the event' },
+    { src: 'foto/Pescara2.jpg', caption: 'Pescara marina, a gateway between land and open sea.' },
+    { src: 'foto/Pescara3.jpg', caption: 'A city that looks forward — modern skyline, ancient river, mountains always in sight.' },
+    { src: 'foto/Pescara4.jpg', caption: 'Miles of golden sand, turquoise water, and a city that lives by the sea.' },
+    { src: 'foto/Pescara5.jpg', caption: 'When the sun sets, Pescara lights up — and the river becomes the heart of the city' },
+  ];
+  let currentPhoto = 0;
+
+  function openLightbox(index) {
+    const item = galleryImages[index];
+    if (!item.src || item.src.startsWith('photo')) return; // skip placeholders
+    currentPhoto = index;
+    document.getElementById('lightbox-img').src = item.src;
+    document.getElementById('lightbox-caption').textContent = item.caption;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox(e) {
+    if (e && e.target !== document.getElementById('lightbox')) return;
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function shiftLightbox(dir) {
+    let next = (currentPhoto + dir + galleryImages.length) % galleryImages.length;
+    openLightbox(next);
+  }
+
+  document.addEventListener('keydown', e => {
+    const lb = document.getElementById('lightbox');
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') { lb.classList.remove('open'); document.body.style.overflow = ''; }
+    if (e.key === 'ArrowRight') shiftLightbox(1);
+    if (e.key === 'ArrowLeft')  shiftLightbox(-1);
+  });
+</script>
+</body>
+</html>
