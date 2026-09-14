@@ -367,6 +367,38 @@
     letter-spacing: 0.1em; text-transform: uppercase;
     color: var(--teal-dark); line-height: 1.6;
   }
+  .abs-toggle {
+    margin-top: 0.55rem;
+    font-family: var(--ff-body); font-size: 0.66rem; font-weight: 700;
+    letter-spacing: 0.11em; text-transform: uppercase;
+    color: var(--teal); background: transparent;
+    border: 1px solid rgba(29,158,117,0.35); border-radius: 20px;
+    padding: 0.22rem 0.75rem; cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .abs-toggle:hover { background: var(--teal-light); border-color: var(--teal); }
+  .abs-toggle::after { content: ' \25BE'; }
+  .abs-toggle.open::after { content: ' \25B4'; }
+  .abs-body {
+    display: none;
+    margin-top: 0.8rem;
+    padding: 1rem 1.2rem;
+    background: #fafaf7;
+    border-left: 3px solid var(--teal-light);
+    border-radius: 0 10px 10px 0;
+    font-size: 0.86rem; line-height: 1.75;
+    color: var(--ink-mid); font-weight: 300;
+  }
+  .abs-body.open { display: block; }
+  .abs-body p { margin-bottom: 0.65rem; }
+  .abs-body p:last-child { margin-bottom: 0; }
+
+  .band-chair {
+    font-family: var(--ff-display);
+    font-style: italic; font-size: 0.8rem;
+    color: var(--teal-dark); opacity: 0.7;
+    margin-left: auto; flex-shrink: 0;
+  }
 
   /* ── VENUE ── */
   #venue { background: #f7f8fa; }
@@ -610,6 +642,7 @@
     .day-tab { flex: 0 0 auto; padding: 0.6rem 0.9rem; font-size: 0.72rem; }
     .schedule-item { grid-template-columns: 68px 1fr; gap: 0.9rem; }
     .sched-time { font-size: 0.8rem; }
+    .band-chair { margin-left: 0; }
   }
 
   /* ── ANIMATIONS ── */
@@ -625,63 +658,6 @@
   .hero-content > *:nth-child(3) { animation-delay: 0.3s; }
   .hero-content > *:nth-child(4) { animation-delay: 0.4s; }
   .hero-content > *:nth-child(5) { animation-delay: 0.5s; }
-
-  /* ── ABSTRACT BUTTON & MODAL ── */
-  .abstract-btn {
-    display: inline-flex; align-items: center; gap: 0.35rem;
-    margin-top: 0.5rem;
-    font-family: var(--ff-body);
-    font-size: 0.72rem; font-weight: 700;
-    letter-spacing: 0.07em; text-transform: uppercase;
-    color: var(--teal);
-    background: var(--teal-light);
-    border: 1px solid rgba(29,158,117,0.25);
-    border-radius: 6px; padding: 0.28rem 0.75rem;
-    cursor: pointer; transition: background 0.2s, color 0.2s;
-  }
-  .abstract-btn:hover { background: var(--teal); color: #fff; }
-  .abstract-modal {
-    display: none; position: fixed; inset: 0; z-index: 1000;
-    background: rgba(0,0,0,0.55);
-    align-items: center; justify-content: center; padding: 1rem;
-  }
-  .abstract-modal.open { display: flex; }
-  .abstract-box {
-    background: #fff; border-radius: 16px;
-    max-width: 700px; width: 100%;
-    max-height: 88vh; overflow-y: auto;
-    padding: 2rem 2.2rem; position: relative;
-    box-shadow: 0 24px 64px rgba(0,0,0,0.18);
-  }
-  .abstract-box-close {
-    position: absolute; top: 1rem; right: 1.2rem;
-    font-size: 1.6rem; color: var(--muted);
-    background: none; border: none; cursor: pointer;
-    line-height: 1; transition: color 0.2s;
-  }
-  .abstract-box-close:hover { color: var(--ink); }
-  .abstract-tag {
-    font-family: var(--ff-body); font-size: 0.65rem; font-weight: 700;
-    letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--teal); margin-bottom: 0.5rem;
-  }
-  .abstract-title {
-    font-family: var(--ff-display); font-size: 1.1rem; font-weight: 600;
-    color: var(--ink); line-height: 1.3; margin-bottom: 0.4rem;
-  }
-  .abstract-authors {
-    font-size: 0.8rem; color: var(--muted);
-    margin-bottom: 1.2rem; font-style: italic;
-  }
-  .abstract-body {
-    font-size: 0.88rem; color: var(--ink-mid);
-    line-height: 1.85; white-space: pre-wrap;
-  }
-  .no-abstract {
-    font-size: 0.88rem; color: var(--muted);
-    font-style: italic; text-align: center; padding: 2rem 0;
-  }
-
 </style>
 </head>
 <body>
@@ -781,7 +757,7 @@
           </div>
           <div class="date-item">
             <span class="label">Abstract deadline</span>
-            <span class="date">20 Aug 2026</span>
+            <span class="date">30 Jun 2026</span>
           </div>
           <div class="date-item">
             <span class="label">Early-bird registration deadline</span>
@@ -841,24 +817,12 @@
   </div>
 </section>  -->
 
-<!-- ══════════════════════════════════════════════════════════════════
-     SOSTITUIRE in index.html l'intera sezione
-         <section id="program"> ... </section>
-     con il blocco qui sotto. Nient'altro del file va toccato.
-     ══════════════════════════════════════════════════════════════════ -->
-
-<!-- ══════════════════════════════════════════════════════════════════
-     SOSTITUIRE in index.html l'intera sezione
-         <section id="program"> ... </section>
-     con il blocco qui sotto. Nient'altro del file va toccato.
-     ══════════════════════════════════════════════════════════════════ -->
-
 <!-- ══════════════ PROGRAM ══════════════ -->
 <section id="program">
   <div class="container">
     <div class="section-label">Scientific programme</div>
     <h2 class="section-title">Congress schedule</h2>
-    <p class="section-sub">Preliminary scientific programme — subject to minor changes. All times are local (CEST, UTC+2).</p>
+    <p class="section-sub">Scientific programme — subject to minor changes. All times are local (CEST, UTC+2).</p>
 
     <div class="day-tabs">
       <button class="day-tab active" onclick="switchDay('day1', this)">Tue 15 Sep</button>
@@ -867,49 +831,41 @@
       <button class="day-tab"        onclick="switchDay('day4', this)">Fri 18 Sep</button>
     </div>
 
-    <!-- ─────────── DAY 1 · Tuesday 15 September ─────────── -->
+    <!-- ─────────── Tuesday 15 September ─────────── -->
     <div id="day1" class="day-content active">
 
       <div class="session-band">
         <span class="band-time">13:30–16:30</span>
         <span class="band-title">Pre-conference tutorials · EEG Microstate Analysis: From Principles to Practice</span>
       </div>
-
       <div class="schedule-item">
         <div class="sched-time">13:30</div>
         <div>
           <span class="sched-tag tag-tutorial">Tutorial</span>
           <div class="sched-title">EEG Microstate Analysis with Cartool</div>
           <div class="sched-speaker">Armen Bagdasarov — Medical College of Wisconsin, USA</div>
-          <button class="abstract-btn" onclick="openAbstract('EEG Microstate Analysis with Cartool')">📄 Abstract</button>
         </div>
       </div>
-
       <div class="schedule-item">
         <div class="sched-time">15:00</div>
         <div>
           <span class="sched-tag tag-tutorial">Tutorial</span>
           <div class="sched-title">EEG Microstate Analysis with the Microstate Lab Plugin for EEGLAB</div>
           <div class="sched-speaker">Thomas Koenig — University of Bern, Switzerland</div>
-          <button class="abstract-btn" onclick="openAbstract('EEG Microstate Analysis with the Microstate Lab Plugin for EEGLAB')">📄 Abstract</button>
         </div>
       </div>
-
       <div class="session-band">
         <span class="band-time">17:30–18:30</span>
         <span class="band-title">Opening lecture</span>
       </div>
-
       <div class="schedule-item">
         <div class="sched-time">17:30</div>
         <div>
           <span class="sched-tag tag-lecture">Opening lecture</span>
           <div class="sched-title">Computational role of white matter fibres</div>
-          <div class="sched-speaker">Marco Catani — University "G.d'Annunzio" of Chieti-Pescara, IT</div>
-          <button class="abstract-btn" onclick="openAbstract('Computational role of white matter fibres')">📄 Abstract</button>
+          <div class="sched-speaker">Marco Catani — G. d'Annunzio University of Chieti-Pescara, Italy</div>
         </div>
       </div>
-
       <div class="schedule-item">
         <div class="sched-time">19:00</div>
         <div>
@@ -917,10 +873,9 @@
           <div class="sched-title">Welcome aperitif</div>
         </div>
       </div>
-
     </div>
 
-    <!-- ─────────── DAY 2 · Wednesday 16 September ─────────── -->
+    <!-- ─────────── Wednesday 16 September ─────────── -->
     <div id="day2" class="day-content">
 
       <div class="schedule-item">
@@ -929,10 +884,8 @@
           <span class="sched-tag tag-keynote">Keynote</span>
           <div class="sched-title">New Vistas for Brain Criticality and Brain State Dynamics</div>
           <div class="sched-speaker">Matias Palva — University of Helsinki, Finland</div>
-          <button class="abstract-btn" onclick="openAbstract('New Vistas for Brain Criticality and Brain State Dynamics')">📄 Abstract</button>
         </div>
       </div>
-
       <div class="schedule-item">
         <div class="sched-time">10:00</div>
         <div>
@@ -940,115 +893,145 @@
           <div class="sched-title">Coffee break</div>
         </div>
       </div>
-
       <div class="schedule-item">
         <div class="sched-time">10:30</div>
         <div>
           <span class="sched-tag tag-lecture">State of the field</span>
           <div class="sched-title">EEG Microstates: From methodological foundation to clinical translation</div>
           <div class="sched-speaker">Christoph M. Michel — University of Geneva, Switzerland</div>
-          <button class="abstract-btn" onclick="openAbstract('EEG Microstates: From methodological foundation to clinical translation')">📄 Abstract</button>
         </div>
       </div>
-
       <div class="session-band">
         <span class="band-time">11:15–12:30</span>
         <span class="band-title">Oral Session I · Methods and Computational Approaches to EEG Microstates</span>
+        <span class="band-chair">Chair: Bastian Schiller</span>
       </div>
-
       <div class="schedule-item">
         <div class="sched-time">11:15</div>
         <div>
           <span class="sched-tag tag-oral">Oral</span>
-          <div class="sched-title">Deep Clustering for EEG Microstate Analysis: Convergent Validation with Modified K-Means</div>
-          <div class="sched-speaker">Arjun Vinayak Chikkankod — Technological University Dublin, Ireland</div>
-          <button class="abstract-btn" onclick="openAbstract('Deep Clustering for EEG Microstate Analysis: Convergent Validation with Modified K-Means')">📄 Abstract</button>
+          <div class="sched-title">Are EEG Microstates Robust to the Choice of Clustering Algorithm? Modified k-Means, AAHC and TAAHC across k = 4–7</div>
+          <div class="sched-speaker">Sneha S. Shetty &amp; Prewal Fredlin Fernandes — Sahyadri College of Engineering and Management, India</div>
+          <button class="abs-toggle" onclick="toggleAbstract(this)">Abstract</button>
+          <div class="abs-body">
+            <p>Introduction. Microstate analysis segments continuous EEG into a sequence of quasi-stable scalp topographies, most often extracted with modified k-means. Hierarchical alternatives — atomize-and-agglomerate hierarchical clustering (AAHC) and its topographic variant (TAAHC) — are widely used but rest on a different clustering principle. Whether these algorithm families recover the same microstates, and whether their agreement is stable as the number of states k varies, remains underexamined.</p>
+            <p>Methods. Resting-state, eyes-closed EEG from two independent datasets — LEMON (n = 60) and a within-session test–retest dataset (n = 60) — was clustered independently with modified k-means, AAHC and TAAHC for k = 4–7. For each algorithm pair, microstate maps were matched by polarity-invariant assignment and compared by spatial (Pearson) correlation; global explained variance (GEV) was computed per algorithm. Agreement was summarised per subject and across each cohort.</p>
+            <p>Results (preliminary). Analyses at k = 5 are complete in both datasets; the full k = 4–7 sweep is in progress. At k = 5, the three algorithms produced closely matching topographies. Mean inter-method map correlations were 0.92 (k-means–AAHC), 0.92 (k-means–TAAHC) and 0.96 (AAHC–TAAHC) in LEMON, and 0.93, 0.94 and 0.98 respectively in the test–retest dataset. In both cohorts the two hierarchical methods agreed most strongly, while k-means diverged modestly from both. GEV differed by ≤0.015 across algorithms within each dataset.</p>
+            <p>Conclusion. Preliminary results indicate that resting-state microstates for k = 5 are largely robust to the choice of clustering algorithm, reproducibly across two datasets, with a small but consistent gap between centroid- and hierarchy-based methods. The complete k = 4–7 analysis, characterising how cross-algorithm agreement depends on the number of microstates, will be presented.</p>
+          </div>
         </div>
       </div>
-
       <div class="schedule-item">
         <div class="sched-time">11:40</div>
         <div>
           <span class="sched-tag tag-oral">Oral</span>
-          <div class="sched-title">Are EEG Microstates Robust to the Choice of Clustering Algorithm? Modified k-Means, AAHC and TAAHC across k = 4–7</div>
-          <div class="sched-speaker">Sneha S. Shetty &amp; Prewal Fredlin Fernandes — Sahyadri College of Engineering and Management, India</div>
-          <button class="abstract-btn" onclick="openAbstract('Are EEG Microstates Robust to the Choice of Clustering Algorithm? Modified k-Means, AAHC and TAAHC across k = 4–7')">📄 Abstract</button>
-        </div>
-      </div>
-
-      <div class="schedule-item">
-        <div class="sched-time">12:05</div>
-        <div>
-          <span class="sched-tag tag-oral">Oral</span>
           <div class="sched-title">From GFP and stability to backfitting credibility: microstate-equivalent electric dipoles for EEG microstate validation</div>
           <div class="sched-speaker">Leonardo Corsi — IRCCS Fondazione Don Carlo Gnocchi ETS, Florence &amp; Sant'Anna School of Advanced Studies, Pisa, Italy</div>
-          <button class="abstract-btn" onclick="openAbstract('From GFP and stability to backfitting credibility: microstate-equivalent electric dipoles for EEG microstate validation')">📄 Abstract</button>
+          <button class="abs-toggle" onclick="toggleAbstract(this)">Abstract</button>
+          <div class="abs-body">
+            <p>Introduction: EEG microstate analysis relies on the observation that high global field power (GFP) samples tend to exhibit lower topographic dissimilarity (TD), motivating the operational use of GFP peaks for microstate fitting. However, GFP measures field strength, not scalp-potential geometry, and does not necessarily predict canonical-map resemblance or winner-takes-all assignment credibility. We introduce and characterize the microstate-equivalent electric dipole (MEED), a low-dimensional representation designed to capture the geometric structure of canonical microstate maps.</p>
+            <p>Methods: MEED uses a scalp-centred dipole as a geometric scaffold, summarizing scalp-potential shape by dipole azimuth, elevation, and projection strength. MEED captures topographies of meta-microstate solutions with &gt;95% explained variance, organizing lateralized linear gradients and radial frontal/posterior configurations in a common representation. Because MEED is a linear projection, TD can be decomposed exactly into MEED-explained and residual components, quantifying whether topographic change reflects movement between gradient-like smooth maps or unresolved instability. MEED may therefore predict similarity to the winning topography during backfitting and assess assignment credibility beyond GFP, independently of the fitted microstate solution.</p>
+            <p>Results: Across 190 resting-state EEG recordings from the LEMON dataset (Babayan et al., 2019, doi.org/10.1038/sdata.2018.308), MEED-space distance reproduced the GFP-stability law observed for TD,  and the MEED-explained fraction of TD accounted for the residual disagreement between the two measures. In leave-one-subject-out prediction of winning-template similarity, GFP explained 11.7% of variance, whereas projection strength explained 62.6%, with marginal improvement when adding GFP (63.4%). Projection strength also showed modest but consistent association with microstate assignment confidence and entropy, indicating that it indexes canonical-map resemblance and assignment reliability beyond GFP.</p>
+            <p>Conclusions: These findings address the methodological concern that winner-takes-all labels can conceal more complex evidence: MEED separates field strength, template geometry, and transition-related instability. Rather than replacing standard microstates, it provides an interpretable validation layer for template comparability, backfitting credibility, and data-driven optimization of microstate workflows.</p>
+          </div>
         </div>
       </div>
-
       <div class="schedule-item">
-        <div class="sched-time">12:30</div>
+        <div class="sched-time">12:05</div>
         <div>
           <span class="sched-tag tag-poster">Poster spotlight</span>
           <div class="sched-title">Limited evidence for associations between EEG microstates and spontaneous thought</div>
           <div class="sched-speaker">Quentin Chenot — Fédération ENAC ISAE-SUPAERO ONERA, Université de Toulouse, France</div>
-          <button class="abstract-btn" onclick="openAbstract('Limited evidence for associations between EEG microstates and spontaneous thought')">📄 Abstract</button>
+          <button class="abs-toggle" onclick="toggleAbstract(this)">Abstract</button>
+          <div class="abs-body">
+            <p>Introduction. Although resting-state activity has been studied for more than 25 years in fMRI (Biswal &amp; Uddin, 2025), only four studies have investigated associations between EEG microstates and spontaneous thought using the Amsterdam Resting-State Questionnaire (ARSQ; Diaz et al., 2014), with inconsistent findings across samples (Pipinis et al., 2017; Tarailis et al., 2021; Zanesco et al., 2021, 2026). The present study aimed to assess the robustness of these associations in a larger sample.</p>
+            <p>Methods. Participants (n = 325) completed a 5-min resting-state EEG recording (BIOSEMI 64 channels) followed by the 54-item ARSQ. EEG data were preprocessed in MNE-Python using REST re-referencing, 2-20 Hz filtering, and ICA. Microstates were extracted with the Pycrostates toolbox (Férat et al., 2022) following a standard pipeline (see Chenot et al., 2024). The optimal solution consisted of four microstates, from which occurrences and mean-duration metrics were calculated. ARSQ items were grouped into seven factors according to Diaz et al. (2014). Bravais-Pearson correlations were computed between microstate metrics and ARSQ factors.</p>
+            <p>Results. The results are reported in Table 1 and show that once corrected, no significant correlation was found.</p>
+            <p>Discussion. In a relatively large sample, our study reveals that if associations between spontaneous thought and spatio-temporal dynamics exist, they are likely to be small, in the range of 1 to 3% of explained variance. These findings are consistent with previous studies, as most reported associations have not been replicated across independent samples, suggesting that some of them may reflect false positives. More generally, our findings challenge the historical view that microstates represent “atoms of thought” (Lehmann et al., 1998). They also echo the reproducibility crisis in the MRI field, where it has been suggested that reproducible brain-wide association studies may require thousands of individuals as effect sizes are likely to be small (Marek et al., 2022).</p>
+          </div>
         </div>
       </div>
-
       <div class="schedule-item">
-        <div class="sched-time">12:40</div>
+        <div class="sched-time">12:15</div>
+        <div>
+          <span class="sched-tag tag-poster">Poster spotlight</span>
+          <div class="sched-title">Beyond Canonical EEG Microstates: An EEG-Energy Landscape Analysis Framework for Modeling Complex Dynamics</div>
+          <div class="sched-speaker">Anubhav — The University of Tokyo, Japan</div>
+          <button class="abs-toggle" onclick="toggleAbstract(this)">Abstract</button>
+          <div class="abs-body">
+            <p>Classical EEG microstate analysis fundamentally relies on clustering, exclusively restricting data to Global Field Power (GFP) peaks to manage high-dimensional state spaces. This practice oversimplifies the data by imposing rigid temporal smoothing, which discards the continuous transitional dynamics present in neural activity. Instead, we utilize Energy Landscape Analysis (ELA), a framework initially introduced for fMRI, to establish a formal thermodynamic definition of EEG microstates. While EEG topographies are traditionally constrained to K=4 or 5 templates, by fitting a Pairwise Maximum Entropy Model (pMEM) this framework reveals metastable brain states as naturally emergent local minima within the underlying energy landscape. In this context, neural activity is rigorously modeled as dynamic traversals through this landscape, with transitions between states occurring when specific energy barriers are overcome. Furthermore, by quantifying the number and depth of these accessible local minima, ELA provides a direct mechanistic metric of cognitive flexibility, in which a restricted state space mathematically captures pathological network rigidity. To validate the downstream utility, we compared classical descriptive features (empirical dwell times and transition rates) against their thermodynamic drivers (average system energy and the total repertoire of unique accessible basins) across Healthy Control (HC) and Major Depressive Disorder (MDD) cohorts. Notably, the ELA features demonstrated enhanced predictive power, resulting in a significant increase in the area under the curve (ΔAUC=+0.17). In conclusion, the proposed EEG-ELA framework successfully recovers a naturally richer, thermodynamically grounded repertoire of metastable states, moving beyond the restrictive, predefined cluster limits of classical analysis.</p>
+          </div>
+        </div>
+      </div>
+      <div class="schedule-item">
+        <div class="sched-time">12:30</div>
         <div>
           <span class="sched-tag tag-break">Break</span>
           <div class="sched-title">Lunch</div>
         </div>
       </div>
-
       <div class="schedule-item">
         <div class="sched-time">13:40</div>
         <div>
           <span class="sched-tag tag-workshop">Thematic workshop</span>
           <div class="sched-title">Information Theory and the Temporal Organization of EEG Microstate Sequences</div>
           <div class="sched-speaker">Frederic von Wegner — University of New South Wales (UNSW Sydney), Australia</div>
-          <button class="abstract-btn" onclick="openAbstract('Information Theory and the Temporal Organization of EEG Microstate Sequences')">📄 Abstract</button>
         </div>
       </div>
-
       <div class="session-band">
         <span class="band-time">15:00</span>
         <span class="band-title">Oral Session II · Temporal Organization and Complexity of EEG Microstates</span>
+        <span class="band-chair">Chair: Frederic von Wegner</span>
       </div>
-
       <div class="schedule-item">
         <div class="sched-time">15:00</div>
         <div>
           <span class="sched-tag tag-oral">Oral</span>
           <div class="sched-title">Structural regularities in microstate transitions revealed by a grammar induction algorithm</div>
           <div class="sched-speaker">Fabio Strappazzon — G. d'Annunzio University of Chieti-Pescara, Italy</div>
-          <button class="abstract-btn" onclick="openAbstract('Structural regularities in microstate transitions revealed by a grammar induction algorithm')">📄 Abstract</button>
+          <button class="abs-toggle" onclick="toggleAbstract(this)">Abstract</button>
+          <div class="abs-body">
+            <p>Introduction: EEG microstate analysis describes scalp potential topographies as a sequence of discrete, quasi-stable spatial configurations, providing a symbolic representation of large-scale brain dynamics, whose temporal organization carries information which extends beyond the properties of individual microstate classes. Existing approaches characterize sequence organization using transition statistics, information-theoretical descriptors, or predefined motifs, but do not directly infer the grammar underlying those sequences.</p>
+            <p>Methods: We used a grammar induction algorithm called ‘Sequitur’ to infer grammatical rules from EEG resting-state microstate sequences without prior assumptions about their structure. Alongside other conventional information-theoretical measures, we introduced the Grammar Randomness Index (GRI) to quantify the amount of information contained inside the extracted rules.  Grammar-based descriptors were evaluated using shuffled and first-order Markov surrogate sequences and compared between eyes closed and eyes open resting-state conditions.</p>
+            <p>Results: Grammar induction revealed a restricted repertoire of recurrent low-entropy motifs largely shared across participants. These motifs were not reproduced by Markov surrogates, indicating that they cannot be explained solely by first-order transition statistics. Inferred grammars were dominated by short motifs, primarily binary loops, revealing that microstate sequences are highly compressible and organized around reusable grammatical patterns. GRI differentiated empirical sequences from both surrogate classes in the eyes closed condition and showed the largest effect size among all metrics in discriminating eyes closed from eyes open sequences.</p>
+            <p>Conclusion: Grammar induction provides complementary information on the temporal organization of microstate sequences by directly characterizing the grammatical organization underlying their dynamics.</p>
+          </div>
         </div>
       </div>
-
       <div class="schedule-item">
         <div class="sched-time">15:25</div>
         <div>
           <span class="sched-tag tag-oral">Oral</span>
           <div class="sched-title">Microstate sequence entropy captures early cognitive decline beyond classical ERP measures</div>
           <div class="sched-speaker">Michael Lassi — Sant'Anna School of Advanced Studies, Pisa, Italy</div>
-          <button class="abstract-btn" onclick="openAbstract('Microstate sequence entropy captures early cognitive decline beyond classical ERP measures')">📄 Abstract</button>
+          <button class="abs-toggle" onclick="toggleAbstract(this)">Abstract</button>
+          <div class="abs-body">
+            <p>Background. Protracted neurophysiological alterations precede clinical dementia, making its prodromal stages, subjective cognitive decline (SCD) and mild cognitive impairment (MCI), critical windows for early detection. Resting-state EEG, including microstate dynamics, is increasingly altered across these stages, yet event-related microstate changes remain largely unexplored and may capture aspects missed by amplitude-based metrics. Here, we introduce microstate sequence entropy (MS-Ent), a measure of the trial-to-trial topographic variability of evoked responses, applied to a sustained visuo-attentive task (three-choice vigilance task, 3CVT) ERPs.</p>
+            <p>Methods. Healthy controls (HC, n=19), SCD (n=142) and MCI (n=42) performed the 3CVT. Polarity-sensitive microstate templates (K=3, chosen by the global-explained-variance elbow) were derived from single-subject grand-average ERPs and back-fitted to single trials. At each post-stimulus latency, MS-Ent was computed as the Shannon entropy of the across-trial distribution of microstate labels, with group differences localized by cluster-based permutation testing. For comparison, we extracted inter-trial voltage variability, model-free topographic entropy and classical ERP-component measures, comparing magnitudes via omega-squared effect size (ω²).</p>
+            <p>Results. For rare non-target stimuli, MS-Ent differed across groups in a late window (287–461ms, matching P3b latency; cluster-corrected p=0.018). The effect was non-monotonic as MS-Ent was maximal in SCD and comparable in HC and MCI, consistent with the compensatory hyperactivity reported along the Alzheimer’s continuum. A trend at sensory processing latencies (102–219ms, p=0.080) instead followed the decline gradient (HC&lt;SCD&lt;MCI), suggesting graded loss of early response consistency. Higher MS-Ent predicted faster reaction times (Spearman ρ=−0.34, p&lt;0.001), independent of diagnosis. Neither inter-trial voltage variability nor topographic entropy matched these effects, and P3b amplitude barely separated the groups (ω²=0.010); MS-Ent showed the largest effect of all measures (ω²=0.046).</p>
+            <p>Conclusions. Microstate sequence entropy captures stimulus- and stage-specific neural variability that classical time-domain measures miss, and warrants testing as a sensitive and behaviorally relevant marker of the earliest symptomatic phases of the Alzheimer&#x27;s continuum.</p>
+          </div>
         </div>
       </div>
-
       <div class="schedule-item">
         <div class="sched-time">15:50</div>
         <div>
           <span class="sched-tag tag-oral">Oral</span>
           <div class="sched-title">EEG Microstates and fMRI Networks: Is There a Simple Link?</div>
           <div class="sched-speaker">Tomáš Jordánek — Masaryk University &amp; CEITEC, Brno, Czech Republic</div>
-          <button class="abstract-btn" onclick="openAbstract('EEG Microstates and fMRI Networks: Is There a Simple Link?')">📄 Abstract</button>
+          <button class="abs-toggle" onclick="toggleAbstract(this)">Abstract</button>
+          <div class="abs-body">
+            <p>Introduction</p>
+            <p>Simultaneous EEG-fMRI provides valuable insights into the relationship between microstates (MS) and large-scale brain networks, despite technical challenges. Although nearly twenty years have passed since the first studies, findings remain inconsistent, often due to limited sample sizes. Using a larger cohort of 54 healthy subjects and a general linear model (GLM) approach, we investigated the link between microstates and fMRI networks.</p>
+            <p>Methods</p>
+            <p>During an 18-minute simultaneous EEG-fMRI recording, participants underwent three conditions: eyes closed, fixation on a cross, and natural viewing. Following preprocessing, microstate analysis identified 5 distinct classes based on subject- and group-level clustering. Only global field power (GFP) peaks were backfitted, with intermediate samples labeled according to the closest peak. Two separate GLM analyses were conducted using regressors based on global explained variance (GEV), mean duration, time coverage, and occurrence: (1) for each microstate class separately, and (2) for all classes together to investigate global microstate dynamics.</p>
+            <p>Results</p>
+            <p>The individual GLM analysis (1) revealed several smaller significant clusters (pFWE &lt; 0.05 at the cluster level), predominantly for the GEV regressor. MS A was associated with activations in the inferior frontal gyrus and Brodmann areas (BA) 6 and 9; MS B with the precentral gyrus and BA 6; and MS C with the precentral and postcentral gyri. The occurrence regressor showed activation in the middle occipital gyrus and BA 18 for MS A. The global dynamics GLM (2) revealed widespread clusters covering the precentral and postcentral gyri and BA 4 and 6.</p>
+            <p>Conclusion</p>
+            <p>While the GLM approach revealed significant clusters, our findings suggest that the link between microstates and fMRI networks is more complex as we expected robust clusters for each microstate. Instead, we hypothesize that microstates modulate network connectivity and influence information flow among them.</p>
+          </div>
         </div>
       </div>
-
       <div class="schedule-item">
         <div class="sched-time">16:15</div>
         <div>
@@ -1056,75 +1039,91 @@
           <div class="sched-title">Coffee break</div>
         </div>
       </div>
-
       <div class="session-band">
         <span class="band-time">16:45</span>
         <span class="band-title">Oral Session II — continued · Temporal Organization, Computational and Multimodal Brain States</span>
+        <span class="band-chair">Chair: Radek Mareček</span>
       </div>
-
       <div class="schedule-item">
         <div class="sched-time">16:45</div>
         <div>
           <span class="sched-tag tag-oral">Oral</span>
           <div class="sched-title">Assaying Brain Dynamics During Artistic Performance using EEG Microstates</div>
           <div class="sched-speaker">Yoshua Erenoldo Lima Carmona — IUCRC BRAIN, University of Houston, USA</div>
-          <button class="abstract-btn" onclick="openAbstract('Assaying Brain Dynamics During Artistic Performance using EEG Microstates')">📄 Abstract</button>
+          <button class="abs-toggle" onclick="toggleAbstract(this)">Abstract</button>
+          <div class="abs-body">
+            <p>EEG microstates are quasi-stable configurations of scalp electrical activity that reflect large-scale brain dynamics1. Although extensively investigated during resting-state EEG, their application to continuous, real-world behaviors remains largely unexplored. Advances in Mobile Brain-Body Imaging (MoBI) and adaptive noise canceling algorithms enable the acquisition of high-quality EEG during naturalistic behavior, including artistic domains such as music2,3, acting4, and dance5,6. Here, we present an EEG microstate framework, based on the methodological foundations7, for continuous MoBI recordings acquired during artistic performance, enabling the investigation of large-scale brain dynamics beyond resting-state paradigms.</p>
+            <p>Three MoBI datasets including professional butoh dancers (The Slowest Wave5), contemporary dancers (Livewire6), and musicians (Music in Medicine3) were analyzed (N=9 participants). Recordings contained 28-channel EEG (1 kHz), 4-channel EOG (1 kHz), and head-motion IMU recordings (128 Hz). EEG preprocessing combined band-pass filtering, adaptive H-Infinity filters for ocular8 and motion9 artifact removal, Artifact Subspace Reconstruction, Independent Component Analysis, and dipole fitting10. Denoised EEG was downsampled to 250 Hz, and microstate topographies were extracted at Global Field Power peaks. The optimal number of microstate classes was determined using the metacriterion11, and temporal parameters (mean duration, occurrence, and coverage) were quantified. The metacriterion identified twelve microstate classes that explained 62% of the global variance.</p>
+            <p>The seven canonical microstates (A–G) were consistently identified across datasets, while five additional topographies (H–L) emerged during artistic performance. Across datasets, microstate J exhibited the greatest temporal parameters, suggesting a stable neural state common across artistic modalities. In contrast, microstate E showed increased occurrence and coverage in butoh and music compared with contemporary dance, whereas its duration remained stable. These findings demonstrate the feasibility of applying EEG microstate analysis to continuous MoBI recordings in real-world artistic settings. The emergence of additional microstate topographies suggests that complex naturalistic behaviors recruit neural states beyond those observed during resting-state EEG.</p>
+          </div>
         </div>
       </div>
-
       <div class="schedule-item">
         <div class="sched-time">17:10</div>
         <div>
           <span class="sched-tag tag-oral">Oral</span>
           <div class="sched-title">Temporal Dynamics of EEG Microstates During Postural Control in Parkinson's Disease</div>
           <div class="sched-speaker">Carmine Gelormini — Reykjavik University, Iceland</div>
-          <button class="abstract-btn" onclick="openAbstract('Temporal Dynamics of EEG Microstates During Postural Control in Parkinson\'s Disease')">📄 Abstract</button>
+          <button class="abs-toggle" onclick="toggleAbstract(this)">Abstract</button>
+          <div class="abs-body">
+            <p>Parkinson&#x27;s disease (PD) is a progressive neurodegenerative disorder marked by alterations in motor function that extend to balance and postural regulation. While EEG abnormalities in oscillatory activity and functional connectivity are well documented in PD, less is known about how large-scale brain dynamics behave during tasks that directly engage postural control. Here we examine EEG microstate organisation during a virtual-reality postural-control task, the BioVRSea, comparing early-stage PD patients (n = 30) and matched healthy controls (n = 26). EEG microstates—brief, quasi-stable scalp topographies representing global neural states—provide a robust framework for characterising the rapid temporal structure of whole-brain activity. Although task-based microstate approaches exist, their application to PD remains limited, with most studies confined to the resting state. Topographical analyses showed pronounced between-group differences in microstates D and E, whose group-averaged maps diverged markedly from canonical configurations in PD. Because these maps were not topographically equivalent across groups, between-group comparisons of temporal parameters were restricted to the topographically comparable microstates A–C; on these, PD patients showed increased duration and coverage of microstates A and B across all task phases. A transition-probability analysis, similarly restricted to A–C, revealed a single Group × Phase interaction (A→C). These differences were stable across phases, indicating phase-invariant, group-level differences in microstate organisation observed in treated, early-stage PD. Because patients were assessed ON medication and no clinical or behavioural correlates were available, these findings represent candidate task-state EEG microstate alterations requiring validation rather than established disease-specific markers.</p>
+          </div>
         </div>
       </div>
-
       <div class="schedule-item">
         <div class="sched-time">17:35</div>
         <div>
           <span class="sched-tag tag-poster">Poster spotlight</span>
-          <div class="sched-title">Beyond Canonical EEG Microstates: An EEG-Energy Landscape Analysis Framework for Modeling Complex Dynamics</div>
-          <div class="sched-speaker">Anubhav — The University of Tokyo, Japan</div>
-          <button class="abstract-btn" onclick="openAbstract('Beyond Canonical EEG Microstates: An EEG-Energy Landscape Analysis Framework for Modeling Complex Dynamics')">📄 Abstract</button>
+          <div class="sched-title">EEG Microstate Dynamics at Rest, Scrolling Social-Media, and Working Memory in Psychiatric Outpatients</div>
+          <div class="sched-speaker">Rustin Berlow — ABSC</div>
+          <button class="abs-toggle" onclick="toggleAbstract(this)">Abstract</button>
+          <div class="abs-body">
+            <p>Introduction: Four-class EEG microstate segmentation captures sub-second dynamics of large-scale brain networks and changes with cognitive state. We examine working-memory effects on microstate dynamics and characterize, for the first time, the dynamics of naturalistic social-media scrolling — a frequent everyday behavior — comparing it to an active working-memory task within the same subjects.</p>
+            <p>Methods: 29-channel dry-electrode EEG (CGX Quick-32r, 500 Hz) was recorded in 288 psychiatric outpatients (≈50% male/female) across four within-subject conditions: eyes-open rest (eO), eyes-closed rest (eC), social-media scrolling (SM), and a working-memory task (WMc). Signal-quality gating yielded 1,278 recordings across 476 sessions (411 eC/299 eO/372 SM/196 WMc). Polarity-invariant modified k-means clustering at global-field-power peaks produced a canonical four-class solution (A–D), back-fitted to each recording to derive duration, occurrence, coverage, GFP, and transition probabilities. Within-subject contrasts against eO used Wilcoxon signed-rank tests with Benjamini–Hochberg FDR correction.</p>
+            <p>Results: Canonical class distribution replicated at scale, with classes C and D showing longer mean durations than A and B in eC. Relative to eO, eC showed longer, more stable C/D maps (d = 0.70, 0.58) and reduced A/B occurrence. Both task conditions showed the mirror-image pattern — shortened C/D durations and increased occurrence — with coverage largely preserved. Scrolling produced a moderate effect (durations d = −0.60 to −0.80; occurrence d = +0.61 to +0.68); working memory produced a substantially larger effect (durations d ≈ −0.91 to −0.95; occurrence d ≈ +0.92; all FDR p &lt; 10⁻¹¹). Effects were robust to one-recording-per-subject correction.</p>
+            <p>Conclusion: Scrolling social-media is not a resting state; it carries a task-like microstate signature — accelerated dynamics with increased salience/attention and frontoparietal/executive map expression — intermediate between eyes-open rest and active working memory, and identical in direction. This offers a scalable, physiologically grounded neural marker of everyday digital engagement in a clinical population.</p>
+          </div>
         </div>
       </div>
-
       <div class="schedule-item">
         <div class="sched-time">17:45</div>
         <div>
           <span class="sched-tag tag-poster">Poster spotlight</span>
-          <div class="sched-title">EEG Microstate Dynamics at Rest, Scrolling Social-Media, and Working Memory in Psychiatric Outpatients</div>
-          <div class="sched-speaker">Rustin Berlow — ABSC</div>
-          <button class="abstract-btn" onclick="openAbstract('EEG Microstate Dynamics at Rest, Scrolling Social-Media, and Working Memory in Psychiatric Outpatients')">📄 Abstract</button>
+          <div class="sched-title">State-dependent EEG microstate dynamics differentiate patients with epilepsy and functional/dissociative seizures across a guided mindfulness paradigm</div>
+          <div class="sched-speaker">Cosmina A. Duțică — University Medicine Essen, University of Duisburg-Essen, Germany</div>
+          <button class="abs-toggle" onclick="toggleAbstract(this)">Abstract</button>
+          <div class="abs-body">
+            <p>Background: Functional/dissociative seizures (FDS) are increasingly understood as disorders of large-scale brain network function. In a recent study, patients with FDS exhibited reduced dispositional mindfulness compared with healthy controls,1 and emerging evidence suggests that mindfulness is a promising therapeutic target.2 EEG microstate analysis provides a millisecond-resolution measure of large-scale brain network organization and has recently been linked to dispositional mindfulness. We therefore investigated whether microstate dynamics differ between patients with epilepsy and FDS during a guided mindfulness paradigm and whether microstate parameters relate to trait mindfulness in a mixed seizure disorder cohort.</p>
+            <p>Methods: Participants completed the Five Facet Mindfulness Questionnaire Short Form (FFMQ-SF) and underwent a 10-minute guided mindfulness exercise with EEG recorded during pre-task, task, and post-task periods from 65 patients in the Epilepsy Monitoring Unit dataset reported by Rahman et al.1. EEG microstate analysis found the best explaining solution with five microstate classes (A-E). Temporal microstate parameters were compared between patients with epilepsy and those with FDS using Wilcoxon rank-sum tests (Glass rank-biserial correlation coefficient, rg, as the effect size). Transdiagnostic associations between microstate parameters and FFMQ subscales were assessed with correction for multiple comparisons.</p>
+            <p>Results: During the pre-task resting period, patients with epilepsy showed a higher occurrence of microstate A than patients with FDS (W = 264, pcorr = .037, rg = .553). During the guided mindfulness task, the epilepsy group again demonstrated a higher occurrence of microstate A (W = 269, pcorr = .023, rg = .582) and additionally a higher occurrence of microstate D (W = 268, pcorr = .025, rg = .576). No significant between-group differences were observed during the post-task resting period. Across the full cohort, longer microstate C duration was associated with lower FFMQ “Non-judging” scores (r = −.29, corrected p &lt; .05), while greater microstate E occurrence was associated with lower FFMQ “Describing” scores (r = −.25, corrected p &lt; .05).</p>
+            <p>Conclusions: EEG microstate dynamics differentiated patients with epilepsy and FDS before and during, but not after, a guided mindfulness task, suggesting state-dependent alterations in large-scale brain network dynamics. Independent of diagnosis, specific facets of dispositional mindfulness were associated with microstates C and E, extending previous observations linking EEG microstates with mindfulness traits to a clinical population. These findings support EEG microstates as a promising marker for characterizing large-scale brain dynamics in FDS and provide a potential neurophysiological framework for investigating the mechanisms of mindfulness-based interventions in functional neurological disorders.</p>
+            <p>1.	Rahman S, Maheshwari K, Rivera A, Chang V, Baig MU, Moscoso B, Chavez A, Anderson ED, Maheshwari A. Low levels of mindfulness in the Epilepsy Monitoring Unit. Epilepsy Behav. 2026;178:110956.</p>
+            <p>2.	Michaelis R, Meibert J, Alimov N, Kleinschnitz C, Popkirov S. Mindfulness-based stress reduction for functional neurological disorder: A feasibility study. J Psychosom Res. 2026;204:112581.</p>
+          </div>
         </div>
       </div>
-
       <div class="schedule-item">
         <div class="sched-time">17:55</div>
         <div>
           <span class="sched-tag tag-poster">Poster spotlight</span>
-          <div class="sched-title">State-dependent EEG microstate dynamics differentiate patients with epilepsy and functional/dissociative seizures across a guided mindfulness paradigm</div>
-          <div class="sched-speaker">Cosmina A. Duțică — University Medicine Essen, University of Duisburg-Essen, Germany</div>
-          <button class="abstract-btn" onclick="openAbstract('State-dependent EEG microstate dynamics differentiate patients with epilepsy and functional/dissociative seizures across a guided mindfulness paradigm')">📄 Abstract</button>
-        </div>
-      </div>
-
-      <div class="schedule-item">
-        <div class="sched-time">18:05</div>
-        <div>
-          <span class="sched-tag tag-poster">Poster spotlight</span>
           <div class="sched-title">Reduced temporal expression of resting-state EEG microstate C is associated with problematic media use in children and adolescents</div>
           <div class="sched-speaker">Christoph Berger — University Medicine Rostock, Germany</div>
-          <button class="abstract-btn" onclick="openAbstract('Reduced temporal expression of resting-state EEG microstate C is associated with problematic media use in children and adolescents')">📄 Abstract</button>
+          <button class="abs-toggle" onclick="toggleAbstract(this)">Abstract</button>
+          <div class="abs-body">
+            <p>Introduction</p>
+            <p>Problematic media use (PMU) is an increasing mental health concern during childhood and adolescence. A recent resting-state EEG microstate study reported altered microstate dynamics in adults with problematic internet use, but evidence in younger populations is lacking. We therefore investigated the association between resting-state EEG microstates and PMU in children and adolescents.</p>
+            <p>Methods</p>
+            <p>Forty-one children and adolescents (10–19 years) recruited at the Rostock site of the nationwide Res@t study underwent resting-state EEG recordings. EEG microstates were segmented using a data-supported five-class solution based on canonical microstate maps. Coverage, duration and occurrence of microstates A–E were extracted. PMU was quantified using a composite score derived from validated questionnaires assessing gaming, social media and streaming disorder symptoms. Associations between PMU and microstate parameters were analysed using multiple linear regression controlling for age, sex and psychotropic medication, with false discovery rate (FDR) correction across 15 primary tests. Exploratory analyses additionally adjusted for general psychopathology (Strengths and Difficulties Questionnaire).</p>
+            <p>Results</p>
+            <p>Higher PMU was consistently associated with reduced temporal expression of microstate C, reflected by lower coverage (partial r = −0.43), duration (r = −0.37) and occurrence (r = −0.45). Occurrence of microstate E was positively associated with PMU (r = 0.35). The strongest association narrowly missed significance after FDR correction (q = 0.054). Associations with microstate C remained after adjustment for hyperactivity and overall psychopathology but were attenuated after adjustment for internalizing symptoms.</p>
+            <p>Conclusions</p>
+            <p>PMU was associated with a convergent reduction across three temporal characteristics of microstate C in children and adolescents. The concurrent increase in microstate E is consistent with recent adult findings, whereas the additional reduction of microstate C may reflect developmental aspects of PMU. These findings support resting-state EEG microstates as promising neurophysiological markers of problematic media use and warrant replication in larger cohorts.</p>
+          </div>
         </div>
       </div>
-
     </div>
 
-    <!-- ─────────── DAY 3 · Thursday 17 September ─────────── -->
+    <!-- ─────────── Thursday 17 September ─────────── -->
     <div id="day3" class="day-content">
 
       <div class="schedule-item">
@@ -1133,10 +1132,8 @@
           <span class="sched-tag tag-keynote">Keynote</span>
           <div class="sched-title">Plasticity of the Predictive Mind</div>
           <div class="sched-speaker">Heleen A. Slagter — Vrije Universiteit Amsterdam, The Netherlands</div>
-          <button class="abstract-btn" onclick="openAbstract('Plasticity of the Predictive Mind')">📄 Abstract</button>
         </div>
       </div>
-
       <div class="schedule-item">
         <div class="sched-time">10:00</div>
         <div>
@@ -1144,42 +1141,50 @@
           <div class="sched-title">Coffee break</div>
         </div>
       </div>
-
       <div class="schedule-item">
         <div class="sched-time">10:30</div>
         <div>
           <span class="sched-tag tag-workshop">Thematic workshop</span>
           <div class="sched-title">EEG Microstates in Psychiatry</div>
           <div class="sched-speaker">Giorgio Di Lorenzo — University of Rome Tor Vergata, Italy</div>
-          <button class="abstract-btn" onclick="openAbstract('EEG Microstates in Psychiatry')">📄 Abstract</button>
         </div>
       </div>
-
       <div class="session-band">
         <span class="band-time">11:40–12:30</span>
         <span class="band-title">Oral Session III · EEG Microstates in Psychiatry</span>
+        <span class="band-chair">Chair: Giorgio Di Lorenzo</span>
       </div>
-
       <div class="schedule-item">
         <div class="sched-time">11:40</div>
         <div>
           <span class="sched-tag tag-oral">Oral</span>
           <div class="sched-title">Temporal Stability of EEG Microstates is Reduced in Individuals at Clinical High Risk for Psychosis and Associated With Clinical Outcomes</div>
           <div class="sched-speaker">Matthias Liebrand — University of Bern, Switzerland</div>
-          <button class="abstract-btn" onclick="openAbstract('Temporal Stability of EEG Microstates is Reduced in Individuals at Clinical High Risk for Psychosis and Associated With Clinical Outcomes')">📄 Abstract</button>
+          <button class="abs-toggle" onclick="toggleAbstract(this)">Abstract</button>
+          <div class="abs-body">
+            <p>Introduction: Clinical criteria for identifying individuals at clinical high risk (CHR)  for psychosis have been established, but their predictive accuracy remains too limited to guide treatment decisions effectively. Identifying reliable biomarkers that reflect underlying mechanisms of illness and treatment response in CHR individuals is therefore a key research priority. In this study, we examined resting-state EEG microstates as a potential biomarker for this purpose.</p>
+            <p>Methods: Resting-state EEG data were collected as part of the eight-site, case–control North American Prodrome Longitudinal Study-2 (NAPLS-2). Baseline EEG microstates were analyzed from healthy controls (HC, n=183) and individuals at clinical high risk for psychosis (CHR, n=460), including those who later converted to psychosis (CHR-C, n=56) and non-converters (CHR-NC, n=185), followed for 24 months. The CHR-NC group was further subdivided into remitted (CHR-R, n=70) and symptomatic (CHR-S, n=115) subgroups.</p>
+            <p>Results: Across microstate classes, CHR participants showed shorter microstate durations (F = 6.8, p = .009, d = 0.22) and more frequent occurrences (F = 6.8, p = .009, d = 0.21) than healthy controls (HC), suggesting reduced microstate temporal stability. Among CHR subgroups, those who later converted to psychosis (CHR-C) showed greater instability compared to remitters (CHR-R) and HCs. Moreover, within the CHR group, lower microstate stability was linked to earlier conversion to psychosis. Finally, lower temporal stability of microstates was associated with increased positive symptoms and higher scores in attention tests.</p>
+            <p>Conclusion: EEG microstate stability, across all classes, was reduced in CHR participants compared to HC, and was especially diminished among those who later converted to psychosis. The link between lower stability and better attention suggests that this instability may, at least partly, reflect a compensatory mechanism for attention deficits. Overall, EEG microstate instability shows promise as a prognostic biomarker of clinical outcomes in CHR.</p>
+          </div>
         </div>
       </div>
-
       <div class="schedule-item">
         <div class="sched-time">12:05</div>
         <div>
           <span class="sched-tag tag-oral">Oral</span>
           <div class="sched-title">Resting-State EEG microstates during pharmacotherapy of a depressive episode</div>
           <div class="sched-speaker">Alena Damborská — Masaryk University &amp; Brno University Hospital, Czech Republic</div>
-          <button class="abstract-btn" onclick="openAbstract('Resting-State EEG microstates during pharmacotherapy of a depressive episode')">📄 Abstract</button>
+          <button class="abs-toggle" onclick="toggleAbstract(this)">Abstract</button>
+          <div class="abs-body">
+            <p>Introduction: Previous studies of EEG microstates have pointed to abnormal temporal characteristics in depressed patients under resting conditions.   The aim of this study is to determine whether antidepressant pharmacotherapy influences changes in the activity of resting-state brain networks in patients in the depressive episode.</p>
+            <p>Methods: We analysed resting-state EEG microstates in 8 patients in the moderate-to-severe depressive episode within bipolar disorder, depressive phase, and recurrent depression, and in 8 healthy controls. Data from patients were collected prior to stabilization of antidepressant medication (T1), 6 weeks after the first measurement (T2), and 6 months after the first measurement (T3). Controls were measured once (T1). The severity of depression was assessed using the Montgomery-Åsberg Depression Rating Scale (MADRS).</p>
+            <p>Results: Pharmacotherapy led to clinical improvement in all patients with the MADRS scores as follows: 27.1±7.7 (T1); 8.5±7.7 (T2); 13.4±11.6 (T3). Five microstates (A-E) were identified in segmentation across all subjects and measurements. We observed a higher presence of microstate C in patients vs. healthy controls: mean duration 143±39 ms (T1) vs. 108±12, temporal coverage 40±13% (T1) vs. 25±6%; with a tendency to normalize over time for both mean duration 144±45 ms (T2), 134±41 ms (T3), and temporal coverage 34±13% (T2), 32±12% (T3).</p>
+            <p>Conclusion: The results indicated that the improvement of the clinical condition in patients during the course of pharmacotherapy of the depressive episode was accompanied by changes in the temporal parameters of resting EEG microstates. Microstate analysis appears to be a promising tool for assessing the effect of pharmacotherapy on the dynamics of resting large-scale brain networks in patients with depression.</p>
+            <p>This work was financially supported by the Ministry of Education, Youth and Sports within the framework of specific university research (project MUNI/A/1769/2024) and by a grant from the Ministry of Health of the Czech Republic – RVO (FNBr, 65269705).</p>
+          </div>
         </div>
       </div>
-
       <div class="schedule-item">
         <div class="sched-time">12:30</div>
         <div>
@@ -1187,52 +1192,59 @@
           <div class="sched-title">Lunch</div>
         </div>
       </div>
-
       <div class="schedule-item">
         <div class="sched-time">13:30</div>
         <div>
           <span class="sched-tag tag-lecture">State of the field</span>
           <div class="sched-title">Best Practices in EEG Microstate Analysis</div>
           <div class="sched-speaker">Thomas Koenig — University of Bern, Switzerland</div>
-          <button class="abstract-btn" onclick="openAbstract('Best Practices in EEG Microstate Analysis')">📄 Abstract</button>
         </div>
       </div>
-
       <div class="session-band">
         <span class="band-time">14:15</span>
         <span class="band-title">Oral Session IV · Clinical and Altered Brain States</span>
+        <span class="band-chair">Chair: Rustin Berlow</span>
       </div>
-
       <div class="schedule-item">
         <div class="sched-time">14:15</div>
         <div>
           <span class="sched-tag tag-oral">Oral</span>
           <div class="sched-title">Transcranial Alternating Current Stimulation Is Associated with Changes in EEG Microstate Dynamics in Disorders of Consciousness</div>
           <div class="sched-speaker">Eren Toplutaş — Istanbul Medipol University, Türkiye</div>
-          <button class="abstract-btn" onclick="openAbstract('Transcranial Alternating Current Stimulation Is Associated with Changes in EEG Microstate Dynamics in Disorders of Consciousness')">📄 Abstract</button>
+          <button class="abs-toggle" onclick="toggleAbstract(this)">Abstract</button>
+          <div class="abs-body">
+            <p>Disorders of consciousness (DoC), including unresponsive wakefulness syndrome (UWS) and minimally conscious state (MCS), remain difficult to diagnose at the bedside. Electroencephalography (EEG) microstate analysis captures large-scale resting-state dynamics at high temporal resolution, but evidence on how neuromodulation reshapes these dynamics is limited. We evaluated the effect of a single 20-minute session of 40 Hz transcranial alternating current stimulation (tACS) over the bilateral dorsolateral prefrontal cortex (DLPFC) on resting-state EEG microstate parameters in DoC and their relationships with behavioral consciousness scores. Thirty-one patients (21 male; mean age 46.9 ± 16.2 years; 19 MCS, 12 UWS) underwent resting-state EEG immediately before and after a 2 mA, 40 Hz bilateral DLPFC tACS session. Microstate maps A–G were back-fitted to individual recordings, and mean duration, occurrence, coverage, and global explained variance (GEV) were extracted. Pre/post comparisons used paired t-tests with Benjamini–Hochberg correction; correlations with the Coma Recovery Scale–Revised (CRS-R) and the Simplified Evaluation of CONsciousness Disorders (SECONDs) used Spearman rank correlations. After tACS, the mean duration of microstate A decreased significantly (73.6 to 66.7 ms; t(30) = -3.19, p = 0.003, adjusted p = 0.023). Baseline GEV correlated with CRS-R (rho = 0.49, p = 0.005), and post-stimulation microstate E occurrence and coverage were inversely associated with CRS-R, while group-level CRS-R and SECONDs scores were unchanged. A single 40 Hz DLPFC tACS session produced measurable changes in resting-state microstate architecture without immediate behavioral improvement, supporting microstate-guided individualized neuromodulation in DoC.</p>
+          </div>
         </div>
       </div>
-
       <div class="schedule-item">
         <div class="sched-time">14:40</div>
         <div>
           <span class="sched-tag tag-oral">Oral</span>
           <div class="sched-title">Comparative EEG microstate analysis of psilocin</div>
           <div class="sched-speaker">Václava Piorecká — Czech Technical University in Prague, Czech Republic</div>
-          <button class="abstract-btn" onclick="openAbstract('Comparative EEG microstate analysis of psilocin')">📄 Abstract</button>
+          <button class="abs-toggle" onclick="toggleAbstract(this)">Abstract</button>
+          <div class="abs-body">
+            <p>Abstract</p>
+            <p>Introduction This study investigates the effects of psilocin on the temporal dynamics and spatial stability of EEG microstates—electrophysiological correlates of large-scale brain networks—in the broadband frequency range (1–40 Hz) in awake, resting-state rats.</p>
+            <p>Methods EEG data were acquired using 21 epidurally implanted electrodes in freely moving adult rats (N = 9). Recordings were conducted prior to drug administration (Baseline) and at 20 (T20) and 50 minutes (T50) following a subcutaneous injection of psilocin (4 mg/kg). Microstate analysis (1–40 Hz) used the AAHC clustering algorithm, identifying five optimal classes. We quantified changes in mean duration, occurrence frequency, fractional coverage, and network transitions (syntax).</p>
+            <p>Results Psilocin significantly altered microstate temporal dynamics. Microstate 2 showed a prolonged mean duration at both T20 and T50 compared to baseline, while the occurrence rate of Microstate 1 was significantly reduced. Regarding fractional coverage, a dominance shift occurred: the coverage of Microstates 1 and 4 decreased, which was compensated by an increase in Microstates 2 and 5. Network syntax analysis revealed disrupted bidirectional transitions between Microstates 1 and 4, shifting activity toward Microstates 2 and 5. The topographies (spatial distributions) of the microstates remained highly stable across all time points.</p>
+            <p>Conclusion Psilocin induces a widespread reorganization of rat brain dynamics within the 1–40 Hz spectrum. It specifically alters temporal parameters and network syntax, redistributing overall time from Microstates 1 and 4 toward Microstates 2 and 5. The spatial invariance of the topographies confirms that these captured states represent genuine dynamic shifts rather than artifacts of topographical deformation.</p>
+          </div>
         </div>
       </div>
-
       <div class="schedule-item">
         <div class="sched-time">15:05</div>
         <div>
           <span class="sched-tag tag-oral">Oral</span>
           <div class="sched-title">EEG microstates, acute phase negative symptoms of schizophrenia and antipsychotic treatment response</div>
           <div class="sched-speaker">Marco de Pieri — Geneva University Hospital, Switzerland</div>
-          <button class="abstract-btn" onclick="openAbstract('EEG microstates, acute phase negative symptoms of schizophrenia and antipsychotic treatment response')">📄 Abstract</button>
+          <button class="abs-toggle" onclick="toggleAbstract(this)">Abstract</button>
+          <div class="abs-body">
+            <p>EEG microstates are transient scalp topographies reflecting whole-brain electric potential that remain quasi-stable for 60-120 ms. Microstates exhibit alterations across all phases of schizophrenia; especially an increased microstate C and a decreased microstate D were linked to aberrant salience. We aimed to investigate the relationship of microstates with illness severity in the positive, negative, disorganized, excited and depressed symptoms domains, and with response to antipsychotics. Forty-five inpatients were clinically evaluated at admission and 40 patients were also assessed after 6 weeks, to determine response to treatment; patients and 31 healthy controls underwent a 5-min resting-state EEG with 128-electrodes, to assess microstates A-E. The severity of negative symptoms was negatively associated with microstate C time coverage (trend = - 0.5249; P = 0.0078) and duration (trend = -0.737; P = 0.0001). In responders vs non-responders to treatment, microstate C had increased time coverage (p = 0.0052; d = -0.979), duration (P = 0.0168; d = -0.836) and global explained variance (GEV; P = 0.0046; d = -0.995), microstate D occurrence was reduced (P = 0.0044; d = -1.010), microstate E time coverage (p = 0.0148; d = 0.853), occurrence (P = 0.0037; d = 1.030) and GEV were reduced (P = 0.0115; d = 0.885). All the above reported findings remained significant when controlling for multiple comparisons.In conclusion, findings corroborate the hypothesis that the microstate CD imbalance is a key pathophysiology mechanism of schizophrenia, herein not only related to negative symptoms, but also predicting the response to antipsychotics, together with microstate E dynamics.</p>
+          </div>
         </div>
       </div>
-
       <div class="schedule-item">
         <div class="sched-time">15:30</div>
         <div>
@@ -1240,72 +1252,79 @@
           <div class="sched-title">Coffee break</div>
         </div>
       </div>
-
       <div class="session-band">
         <span class="band-time">16:00</span>
         <span class="band-title">Oral Session V · Clinical and Altered Brain States / Cognitive and Physiological Brain States</span>
+        <span class="band-chair">Chair: Alena Damborská</span>
       </div>
-
       <div class="schedule-item">
         <div class="sched-time">16:00</div>
         <div>
           <span class="sched-tag tag-oral">Oral</span>
           <div class="sched-title">Exploring microstates in biotyping schizophrenia</div>
           <div class="sched-speaker">Romain Aubonnet — Tor Vergata University of Rome, Italy</div>
-          <button class="abstract-btn" onclick="openAbstract('Exploring microstates in biotyping schizophrenia')">📄 Abstract</button>
         </div>
       </div>
-
       <div class="schedule-item">
         <div class="sched-time">16:25</div>
         <div>
           <span class="sched-tag tag-oral">Oral</span>
           <div class="sched-title">Microstate sequencing distinguishes schizophrenia beyond duration, occurrence, and coverage</div>
           <div class="sched-speaker">Carmine Gelormini — Reykjavik University, Iceland</div>
-          <button class="abstract-btn" onclick="openAbstract('Microstate sequencing distinguishes schizophrenia beyond duration, occurrence, and coverage')">📄 Abstract</button>
         </div>
       </div>
-
       <div class="schedule-item">
         <div class="sched-time">16:50</div>
         <div>
           <span class="sched-tag tag-oral">Oral</span>
           <div class="sched-title">The Maintenance of Attention Over Time Influences the Dynamics of EEG Microstates</div>
           <div class="sched-speaker">Anthony P. Zanesco — University of Kentucky, USA</div>
-          <button class="abstract-btn" onclick="openAbstract('The Maintenance of Attention Over Time Influences the Dynamics of EEG Microstates')">📄 Abstract</button>
+          <button class="abs-toggle" onclick="toggleAbstract(this)">Abstract</button>
+          <div class="abs-body">
+            <p>Introduction: Human attention is inherently transient and limited in span to only a few moments without lapsing. The intrinsic dynamics of large-scale neurocognitive networks are thought to contribute to these lapses and result in the unavoidable fluctuations in attention that constrain its span. However, it remains unclear how the millisecond temporal dynamics of specific electrophysiological brain states contribute to the endogenous maintenance of attention or the onset of attentional lapses. In the present study, we investigated whether the strength and millisecond dynamics of brain electric microstates differentiate states of focus from inattention and contribute to the endogenous maintenance of attention over short and long timescales.</p>
+            <p>Methods: We recorded 128-channel EEG while participants maintained their attention during the wait time delay of trials in the Sustained Attention to Cue Task (SACT) and segmented the EEG into a categorized time series of microstates based on data-driven clustering of topographic voltage patterns. The SACT requires attention to be maintained at a cued location for a length of time to correctly detect a briefly presented target stimulus amidst an array of distractors.</p>
+            <p>Results: The findings revealed that the prevalence and rate of occurrence of microstates C and E in the wait time delay of trials differentiated trials in which the target stimulus was correctly detected from incorrectly detected. These same microstates were also implicated in the maintenance of attention over short and long timescales, with their time-varying dynamics changing systematically during the wait time delay of trials and over the course of the task session.</p>
+            <p>Conclusions: Together, these findings demonstrate the sensitivity of microstates to variation in attentional states and suggest that the millisecond dynamics of these brain states contribute to the maintenance of attention over time.</p>
+          </div>
         </div>
       </div>
-
       <div class="schedule-item">
         <div class="sched-time">17:15</div>
         <div>
           <span class="sched-tag tag-oral">Oral</span>
           <div class="sched-title">Spatiotemporal Dynamics of EEG Microstates Throughout the Sleep Cycle</div>
           <div class="sched-speaker">Angelica Quercia — Oasi Research Institute-IRCCS, Troina, Italy</div>
-          <button class="abstract-btn" onclick="openAbstract('Spatiotemporal Dynamics of EEG Microstates Throughout the Sleep Cycle')">📄 Abstract</button>
         </div>
       </div>
-
       <div class="schedule-item">
         <div class="sched-time">17:40</div>
         <div>
           <span class="sched-tag tag-oral">Oral</span>
           <div class="sched-title">EEG microstate dynamics associated with perceptual experience among different altered states of consciousness paradigms</div>
           <div class="sched-speaker">Thomas Koenig — University of Bern, Switzerland</div>
-          <button class="abstract-btn" onclick="openAbstract('EEG microstate dynamics associated with perceptual experience among different altered states of consciousness paradigms')">📄 Abstract</button>
+          <button class="abs-toggle" onclick="toggleAbstract(this)">Abstract</button>
+          <div class="abs-body">
+            <p>EEG microstates have emerged as candidate endophenotypes for schizophrenia. Hallucinations and uncontrolled thoughts are often reported symptoms in patients with schizophrenia; however, studies in clinical populations make it difficult to determine whether altered microstate dynamics are specifically associated with these symptoms or with psychosis more broadly.</p>
+            <p>The altered states of consciousness paradigm in healthy populations provides useful models for addressing this question. During the hypnagogic state at sleep onset, vivid dream-like experiences emerge, accompanied by uncontrolled thinking and perceptual images. During Ganzfeld, where participants are exposed to unstructured visual and auditory input during wakefulness, hallucinatory experiences occur by misinterpreting internally generated experiences as external perception. Here, we used EEG microstate analysis together with subjective experience reports to investigate the large-scale brain dynamics associated with perceptual experiences across these two states.</p>
+            <p>Our empirical results show that, during the transition to sleep, eyes-closed EEG indicated that dream-like experiences in the hypnagogic state were associated with decreased microstate B and increased microstate D, suggesting increased visual imagery and decreased reflective awareness. During eyes-open Ganzfeld stimulation, increased visual complexity of hallucinatory experiences showed non-linear relationships with microstates B and C. Belief about the source of perception was associated with distinct patterns of microstates C and E, suggesting partially dissociable processes related to source monitoring. Changes in ongoing mentation accompanying visual experiences were further associated with distinct, often nonlinear, dynamics of microstates related to visual, salience, and default-mode processing.</p>
+            <p>Together, these findings suggested that EEG microstate dynamics can characterize different perceptual experiences and their accompanying mentation across different states of consciousness in healthy individuals. Some of the microstate patterns were also consistent with previous reports in patients with schizophrenia.</p>
+          </div>
         </div>
       </div>
-
       <div class="schedule-item">
         <div class="sched-time">18:05</div>
         <div>
           <span class="sched-tag tag-oral">Oral</span>
           <div class="sched-title">EEG Microstate dynamics during an extended cognitive reaching task in adults with ADHD</div>
           <div class="sched-speaker">Martina De Cesaris — G. d'Annunzio University of Chieti-Pescara, Italy</div>
-          <button class="abstract-btn" onclick="openAbstract('EEG Microstate dynamics during an extended cognitive reaching task in adults with ADHD')">📄 Abstract</button>
+          <button class="abs-toggle" onclick="toggleAbstract(this)">Abstract</button>
+          <div class="abs-body">
+            <p>EEG microstates offer a temporally fine-grained window onto large-scale brain network dynamics and have emerged as candidate neurophysiological markers of Attention-Deficit/Hyperactivity Disorder (ADHD). Prior work has almost exclusively examined short resting-state recordings, showing shortened microstate A duration and altered microstate D metrics in adult with ADHD relative to controls. Task-related microstates research in ADHD has instead relied on stimulus-locked, ERP-derived segmentation, leaving the non-event-locked microstate architecture of prolonged task engagement largely unexplored. Recent findings from sustained-attention paradigms indicate that microstate parameters (notably classes C and E) drift with time-on-task, tracking shifts between externally oriented focus and mind-wandering. Building on this, we administered a visuo-spatial task aiming at analyzing a continuous period of task engagement to characterize microstate dynamics beyond conventional short resting-state windows.</p>
+            <p>Adults with ADHD (aADHD) and matched healthy-volunteers (HV) underwent 64-ch EEG recording during a 2-minute eyes-open resting condition, followed by 25-minute cue-target reaching task. During task participant had to reach with right finger a corresponding response-key based on the direction of a target arrow. Task recording was analyzed as a continuous signal and segmented into three blocks. Six microstates’ topographies were identified via modified k-means clustering and back-fitted to individual data. Duration, Occurrence, Coverage, and Complexity were computed for rest and each task block, and compared between groups using a repeated-measure analysis.</p>
+            <p>Preliminary results on 8 aADHD and 8 HV showed higher Duration, Occurrence and Coverage of microstate A, B and G, and lower in microstate C, D, and E in aADHD than HV during task, but not during rest. Moreover, only during task’s blocks aADHD showed greater microstates Complexity than HV. Consequently, specifically during task, aADHD appear to have higher auditory, visual and somatosensory networks activity (microstate A, B, G) with less tonic alertness and attentional control (microstate C, D, E) required by task.</p>
+          </div>
         </div>
       </div>
-
       <div class="schedule-item">
         <div class="sched-time">Evening</div>
         <div>
@@ -1320,47 +1339,59 @@
           </div>
         </div>
       </div>
-
     </div>
 
-    <!-- ─────────── DAY 4 · Friday 18 September ─────────── -->
+    <!-- ─────────── Friday 18 September ─────────── -->
     <div id="day4" class="day-content">
 
       <div class="session-band">
         <span class="band-time">09:30–10:45</span>
         <span class="band-title">Oral Session VI · Emerging Perspectives on Brain-State Dynamics</span>
+        <span class="band-chair">Chair: Pierpaolo Croce</span>
       </div>
-
       <div class="schedule-item">
         <div class="sched-time">09:30</div>
         <div>
           <span class="sched-tag tag-oral">Oral</span>
           <div class="sched-title">Convergent Minds: A Common EEG Microstate Signature of Meditation Across Traditions</div>
           <div class="sched-speaker">Christoph M. Michel — University of Geneva, Switzerland</div>
-          <button class="abstract-btn" onclick="openAbstract('Convergent Minds: A Common EEG Microstate Signature of Meditation Across Traditions')">📄 Abstract</button>
+          <button class="abs-toggle" onclick="toggleAbstract(this)">Abstract</button>
+          <div class="abs-body">
+            <p>Contemplative traditions differ widely in technique, yet many converge on a shared aim: quieting spontaneous mental activity in favor of a more settled, self-aware state. We tested whether this convergence has a common electrophysiological signature using 64-channel EEG recorded from a large sample of meditators (N=300) recorded at different places, spanning multiple traditions and levels of expertise, each contributing a pre-meditation baseline and a meditation period.</p>
+            <p>Microstate analysis identified five dominant scalp topographies, stable in shape across conditions and consistent with canonical microstate classes reported in the literature. Fitting these topographies back to each subject&#x27;s continuous recording revealed a consistent, reciprocal pattern: one map, source-localized to hippocampal and parahippocampal regions and functionally associated with mind-wandering, decreased in coverage during meditation, while two others, localized to posterior cingulate/precuneus and to temporoparietal/prefrontal regions and associated with a settled, present-centered sense of self and meta-awareness, increased. A composite index combining these measures showed a larger and more consistent effect than any individual measure, or than conventional spectral-power markers analyzed in parallel.</p>
+            <p>A post-meditation baseline period showed that most of these changes reverted once meditation ended, ruling out simple time-on-task or fatigue as an explanation, while one measure remained persistently elevated, suggesting a lasting shift in self-related processing beyond the meditative state itself.</p>
+            <p>These results suggest that despite substantial differences in technique and tradition, meditative practice converges on a common, reproducible electrophysiological signature distinguishable from simple rest, with implications for a tradition-independent, EEG-based marker of meditative depth.</p>
+          </div>
         </div>
       </div>
-
       <div class="schedule-item">
         <div class="sched-time">09:55</div>
         <div>
           <span class="sched-tag tag-oral">Oral</span>
           <div class="sched-title">Tracking Brain Adaptation to Mindfulness-Based Stress Reduction Through EEG Microstate Dynamics</div>
           <div class="sched-speaker">Antea D'Andrea — G. d'Annunzio University of Chieti-Pescara, Italy</div>
-          <button class="abstract-btn" onclick="openAbstract('Tracking Brain Adaptation to Mindfulness-Based Stress Reduction Through EEG Microstate Dynamics')">📄 Abstract</button>
+          <button class="abs-toggle" onclick="toggleAbstract(this)">Abstract</button>
+          <div class="abs-body">
+            <p>Introduction. Although it’s well established that Mindfulness-Based Stress Reduction (MBSR) consistently improves psychological functioning, the neural mechanisms supporting these effects remain partially understood. Evidence demonstrated that mindfulness training may reshape the temporal architecture of spontaneous brain activity by modifying the stability, transitions, and persistence of large-scale neural states. Resting-state EEG microstates provide a unique framework for investigating these fast brain dynamics, while nonlinear metrics capture their temporal complexity across multiple timescales.</p>
+            <p>Methods. A longitudinal study was conducted in twenty meditation-naïve adults completing an 8-week MBSR program. Resting-state EEG and neuropsychological assessments were collected before and after the intervention. Large-scale brain dynamics were quantified through EEG microstate analysis, whereas the Hurst exponent and Lempel–Ziv complexity were calculated to assess long-range temporal dependencies and sequence complexity, respectively.</p>
+            <p>Results. MBSR produced significant improvements in processing speed together with reductions in perceived stress and fatigue. At the neural level, mindfulness training induced a selective reconfiguration of intrinsic brain dynamics, characterized by decreased duration and temporal coverage of microstate C and increased occupancy of microstate E. Moreover, the Hurst exponent of the microstate sequence significantly decreased following training, indicating weaker long-range temporal correlations and a transition toward a more flexible, less persistent dynamical regime. By contrast, Lempel–Ziv complexity remained unchanged. Importantly, reductions in microstate C coverage were significantly associated with decreases in fatigue, providing evidence that neural dynamical reorganization parallels improvements in subjective well-being.</p>
+            <p>Conclusions. These findings indicate that MBSR reshapes the temporal organization of spontaneous brain activity, promoting greater dynamical flexibility without altering global sequence complexity. EEG microstates emerge as sensitive markers of large-scale brain reorganization, supporting their use for investigating the neural mechanisms through which mindfulness enhances psychological resilience.</p>
+          </div>
         </div>
       </div>
-
       <div class="schedule-item">
         <div class="sched-time">10:20</div>
         <div>
           <span class="sched-tag tag-oral">Oral</span>
           <div class="sched-title">Mapping and Characterizing Transient MEG Brain States During Distinct Meditation Practices via Hidden Markov Modeling</div>
           <div class="sched-speaker">Lorenza Guerriero / Laura Marzetti — G. d'Annunzio University of Chieti-Pescara, Italy</div>
-          <button class="abstract-btn" onclick="openAbstract('Mapping and Characterizing Transient MEG Brain States During Distinct Meditation Practices via Hidden Markov Modeling')">📄 Abstract</button>
+          <button class="abs-toggle" onclick="toggleAbstract(this)">Abstract</button>
+          <div class="abs-body">
+            <p>Meditation shapes large-scale brain dynamics, but its neural signatures depend heavily on expertise. While switching between Focused Attention (FA) and Open Monitoring (OM) is challenging for novices, expert practitioners navigate both seamlessly. Investigating the fast temporal organization of these practices is crucial to understanding the neural mechanisms underlying long-term training. In this study, we investigated brain states in Theravada Buddhist monks with thousands of hours of training to examine advanced neuroplasticity. We analyzed over 400 minutes of magnetoencephalography (MEG) data during resting state (REST), FA, and OM. Following source reconstruction, parcellation based on the 38-parcel Giles atlas and leakage correction, a Time-Delay Embedded Hidden Markov Model (TDE-HMM) was computed via the OSL-dynamics toolbox to identify transient brain states and assess condition-related modulations of fractional occupancy, power spectral density, and coherence across resting state and the two meditative practices.</p>
+            <p>Our results revealed a striking overlap between the two meditative conditions: the same predominant HMM power states symmetrically represented both FA and OM practices, while REST emerged as a fundamentally distinct baseline state. Overall, these findings indicate that long-term meditation practice induces a global, coordinated shift in large-scale network dynamics rather than fragmented, technique-specific changes. This FA-OM link suggests that for expert practitioners, the procedural boundaries between focused effort and open awareness dissolve into a shared &quot;meditative core&quot; network. This state stands in stark contrast to the unconstrained mind-wandering of REST, providing a dynamic systems-level account of meditation-related brain plasticity driven by lifetime expertise.</p>
+          </div>
         </div>
       </div>
-
       <div class="schedule-item">
         <div class="sched-time">10:45</div>
         <div>
@@ -1368,7 +1399,6 @@
           <div class="sched-title">Coffee break</div>
         </div>
       </div>
-
       <div class="schedule-item">
         <div class="sched-time">11:15</div>
         <div>
@@ -1377,50 +1407,67 @@
           <div class="sched-speaker">Yoshua Erenoldo Lima Carmona — President, BRAIN-AccelNet Student Network</div>
         </div>
       </div>
-
       <div class="session-band">
-        <span class="band-time">11:30–12:15</span>
+        <span class="band-time">11:30–13:00</span>
         <span class="band-title">Oral Session VI — continued · Emerging Perspectives on Brain-State Dynamics</span>
       </div>
-
       <div class="schedule-item">
         <div class="sched-time">11:30</div>
         <div>
           <span class="sched-tag tag-oral">Oral</span>
           <div class="sched-title">Two-brain EEG microstate analysis for investigating functional inter-brain dynamics during dyadic joint action</div>
           <div class="sched-speaker">Filippo Zappasodi — G. d'Annunzio University of Chieti-Pescara, Italy</div>
-          <button class="abstract-btn" onclick="openAbstract('Two-brain EEG microstate analysis for investigating functional inter-brain dynamics during dyadic joint action')">📄 Abstract</button>
         </div>
       </div>
-
       <div class="schedule-item">
         <div class="sched-time">11:55</div>
         <div>
           <span class="sched-tag tag-oral">Oral</span>
           <div class="sched-title">Where and When Local Brain Dynamics Shape TMS Response Variability</div>
           <div class="sched-speaker">Saeed Makkinayeri — G. d'Annunzio University of Chieti-Pescara, Italy</div>
-          <button class="abstract-btn" onclick="openAbstract('Where and When Local Brain Dynamics Shape TMS Response Variability')">📄 Abstract</button>
+          <button class="abs-toggle" onclick="toggleAbstract(this)">Abstract</button>
+          <div class="abs-body">
+            <p>Motor evoked potential (MEP) amplitude in response to single-pulse transcranial magnetic stimulation (TMS) varies substantially across trials, a variability thought to reflect fluctuations in the brain&#x27;s spontaneous neural state. Previous studies defined states based on static measures of oscillatory power or instantaneous phase within a predefined cortical region, leaving open where across the cortex, and when in the pre-stimulus period, transient reconfiguration of local activity relates to MEP amplitude. In 77 participants, we recorded EEG and EMG during ~1200 single TMS pulses over left motor cortex (inter-stimulus interval ~4 s). Source activity was reconstructed (LCMV beamformer, 100-region Schaefer atlas), and a time-delay embedded Hidden Markov Model identified three transient burst states per parcel from concatenated pre-stimulus activity (1.5 s per trial, all participants), each characterized spectrally using multitaper power estimation. For each parcel and participant, we computed a Burst Dynamics Index (BDI) — the sum of absolute burst-wise contrasts across states — comparing high- and low-MEP trials (highest/lowest amplitude quartiles), with group-level significance assessed via GLM and non-parametric permutation testing (p &lt; 0.05). Significant effects emerged as early as ~700 ms before the pulse, persisted until stimulation, and were confined to sensorimotor cortex underlying the stimulation site. Within this region, a low-power burst state showed reduced occupancy before high-MEP trials, while an alpha-dominant state showed the opposite, increasingly prevalent pattern over the same period. These findings show that MEP variability depends on how local cortical dynamics evolve across the pre-stimulus period, and that this dynamic reorganization is concentrated primarily within the motor cortex itself, rather than distributed across the broader cortical surface.</p>
+          </div>
         </div>
       </div>
-
       <div class="schedule-item">
         <div class="sched-time">12:20</div>
         <div>
           <span class="sched-tag tag-poster">Poster spotlight</span>
           <div class="sched-title">Cardiac-to-Cortical Information Flow Distinguishes Focused Attention from Open Monitoring Meditation: Evidence from Magnetoencephalography</div>
-          <div class="sched-speaker">Vittorio Aceto — G. d'Annunzio University of Chieti-Pescara, Italy</div>
-          <button class="abstract-btn" onclick="openAbstract('Cardiac-to-Cortical Information Flow Distinguishes Focused Attention from Open Monitoring Meditation: Evidence from Magnetoencephalography')">📄 Abstract</button>
+          <div class="sched-speaker">Delia Lucarelli — G. d'Annunzio University of Chieti-Pescara, Italy</div>
+          <button class="abs-toggle" onclick="toggleAbstract(this)">Abstract</button>
+          <div class="abs-body">
+            <p>Meditation is characterized by coordinated changes in neural and autonomic activity, yet the mechanisms through which the heart and brain interact across different meditation practices remain largely unexplored. Since meditative states rely on the integration of attentional control, interoceptive processing, and autonomic regulation, investigating heart-brain communication may provide novel insights into their underlying physiology. This study compared directional heart-brain information transfer during two widely practiced meditation techniques: Focused Attention (FA) and Open Monitoring (OM).</p>
+            <p>Ten experienced meditators underwent simultaneous electrocardiographic and magnetoencephalographic (MEG) recordings while performing FA and OM meditation. Cardiac dynamics were quantified from RR interval time series, whereas MEG signals were analysed within each cardiac cycle using time-frequency decomposition. Oscillatory activity was estimated in the theta, alpha, beta, and gamma frequency bands. Directional mutual information was employed to quantify information transfer in both the heart-to-brain and brain-to-heart directions, allowing comparison of coupling patterns between meditation styles.</p>
+            <p>A significant difference emerged exclusively for the ascending pathway from the heart to the brain. Specifically, heart-to-brain mutual information in the alpha band was significantly greater during FA than OM meditation (p &lt; .05, Cohen&#x27;s d = 0.84). No significant differences were observed for the descending brain-to-heart direction or for the remaining frequency bands.</p>
+            <p>These findings indicate that meditation style selectively influences ascending cardiac signalling to the cortex. The stronger heart-to-brain coupling observed during Focused Attention may reflect greater integration of interoceptive cardiac information with neural mechanisms supporting this meditation practice. Overall, the results emphasize the importance of bidirectional autonomic-central nervous system interactions in differentiating meditation states and provide new evidence for the role of cardiac signals in shaping cortical dynamics during contemplative practice.</p>
+          </div>
         </div>
       </div>
-
       <div class="schedule-item">
         <div class="sched-time">12:30</div>
+        <div>
+          <span class="sched-tag tag-poster">Poster spotlight</span>
+          <div class="sched-title">Optimized transition energy of the meditative brain revealed by network control theory</div>
+          <div class="sched-speaker">Roberto Guidotti — G. d'Annunzio University of Chieti-Pescara, Italy</div>
+          <button class="abs-toggle" onclick="toggleAbstract(this)">Abstract</button>
+          <div class="abs-body">
+            <p>Introduction. Long-term meditation is thought to rewire brain networks to support more efficient allocation of neural resources during attention and awareness. Here we use Network Control Theory (NCT) to test whether extensive practice reshapes the brain&#x27;s energetic landscape, making meditative states easier to reach and to sustain. We analysed fMRI functional connectivity from twelve Theravada Buddhist monks (mean experience 16.4 years) and ten novices during resting state (RS), focused attention (FA), and open monitoring (OM).</p>
+            <p>Methods. To characterise state transitions, we first estimated a representative state for each condition using a data-driven approach: a k-means clustering (k=10) of parcel-averaged BOLD signals, merging of centroids with cosine similarity above 0.7, and selection of the cluster with the highest fractional occupancy, yielding subject-specific RS, FA, and OM states. Using these as initial and target states within a linear time-invariant model - and an ENIGMA structural template as the system matrix to avoid circularity - we solved for the optimal control input and integrated it to quantify the energy needed to transition between states and to maintain each state, regressing out age.</p>
+            <p>Results. Transition energy was strongly group- and transition-specific. Entering and leaving focused attention (RS to FA and FA to RS) was less costly for experts, whereas OM to RS was more costly for them. Crucially, maintaining both meditative states was more energetically demanding for novices (FA: t = -5.89, p &lt; 0.001; OM: t = -2.61, p &lt; 0.01), indicating enhanced stability and effortless awareness in experts.</p>
+            <p>Conclusions. These transition results converge with controllability findings - higher average and lower modal controllability in experts - suggesting that trained brains bring formerly difficult-to-reach states into an easily accessible, low-cost repertoire. NCT thus exposes efficiency mechanisms of trained networks and may inform personalised, network-targeted mental-training and stimulation strategies.</p>
+          </div>
+        </div>
+      </div>
+      <div class="schedule-item">
+        <div class="sched-time">12:40</div>
         <div>
           <span class="sched-tag tag-session">Closing</span>
           <div class="sched-title">General discussion &amp; closing remarks</div>
         </div>
       </div>
-
     </div>
 
   </div>
@@ -1721,6 +1768,13 @@ Exit at Pescara Ovest (A14) or Sambuceto (A25) for the airport and city centre.<
 </footer>
 
 <script>
+  function toggleAbstract(btn) {
+    var body = btn.nextElementSibling;
+    var open = body.classList.toggle('open');
+    btn.classList.toggle('open', open);
+    btn.textContent = open ? 'Hide abstract' : 'Abstract';
+  }
+
   function switchDay(dayId, btn) {
     document.querySelectorAll('.day-content').forEach(d => d.classList.remove('active'));
     document.querySelectorAll('.day-tab').forEach(t => t.classList.remove('active'));
@@ -1766,232 +1820,7 @@ Exit at Pescara Ovest (A14) or Sambuceto (A25) for the airport and city centre.<
     if (e.key === 'ArrowRight') shiftLightbox(1);
     if (e.key === 'ArrowLeft')  shiftLightbox(-1);
   });
-
-const ABSTRACTS = {
-  'temporal stability of eeg microstates is reduced in individuals at clinical high risk for psychosis and associated with clinical outcomes': {
-    abstract: 'Introduction: Clinical criteria for identifying individuals at clinical high risk (CHR)  for psychosis have been established, but their predictive accuracy remains too limited to guide treatment decisions effectively. Identifying reliable biomarkers that reflect underlying mechanisms of illness and treatment response in CHR individuals is therefore a key research priority. In this study, we examined resting-state EEG microstates as a potential biomarker for this purpose. \n\nMethods: Resting-state EEG data were collected as part of the eight-site, case–control North American Prodrome Longitudinal Study-2 (NAPLS-2). Baseline EEG microstates were analyzed from healthy controls (HC, n=183) and individuals at clinical high risk for psychosis (CHR, n=460), including those who later converted to psychosis (CHR-C, n=56) and non-converters (CHR-NC, n=185), followed for 24 months. The CHR-NC group was further subdivided into remitted (CHR-R, n=70) and symptomatic (CHR-S, n=115) subgroups. \n\nResults: Across microstate classes, CHR participants showed shorter microstate durations (F = 6.8, p = .009, d = 0.22) and more frequent occurrences (F = 6.8, p = .009, d = 0.21) than healthy controls (HC), suggesting reduced microstate temporal stability. Among CHR subgroups, those who later converted to psychosis (CHR-C) showed greater instability compared to remitters (CHR-R) and HCs. Moreover, within the CHR group, lower microstate stability was linked to earlier conversion to psychosis. Finally, lower temporal stability of microstates was associated with increased positive symptoms and higher scores in attention tests.\n\nConclusion: EEG microstate stability, across all classes, was reduced in CHR participants compared to HC, and was especially diminished among those who later converted to psychosis. The link between lower stability and better attention suggests that this instability may, at least partly, reflect a compensatory mechanism for attention deficits. Overall, EEG microstate instability shows promise as a prognostic biomarker of clinical outcomes in CHR.',
-    author: 'Matthias Liebrand',
-    coauthors: 'Matthias Liebrand, MD, PhD; Holly K. Hamilton, PhD; Brian J. Roach, MS; Spero Nicholas, MS Peter M. Bachman, PhD; Aysenil Belger, PhD; Ricardo E. Carrión, PhD; Erica Duncan, MD; Jason K. Johannesen, PhD; Gregory A. Light, PhD; Margaret A. Niznikiewicz, PhD; Jean Addington, PhD; Carrie E. Bearden, PhD; Kristin S. Cadenhead, MD; Diana O. Perkins, MD; William S. Stone, PhD; Elaine F. Walker, PhD; Scott W. Woods, MD; Tyrone D. Cannon, PhD; Thomas Koenig, PhD; Daniel H. Mathalon, MD, PhD\n\nPlease find a complete list of the affilitions at: doi.org/10.1001/jamapsychiatry.2026.1084 ',
-    affiliation: 'University Hospital of Child and Adolescent Psychiatry and Psychotherapy, University of Bern, Bern, Switzerland'
-  },
-  'reduced temporal expression of resting-state eeg microstate c is associated with problematic media use in children and adolescents': {
-    abstract: 'Introduction\nProblematic media use (PMU) is an increasing mental health concern during childhood and adolescence. A recent resting-state EEG microstate study reported altered microstate dynamics in adults with problematic internet use, but evidence in younger populations is lacking. We therefore investigated the association between resting-state EEG microstates and PMU in children and adolescents.\nMethods\nForty-one children and adolescents (10–19 years) recruited at the Rostock site of the nationwide Res@t study underwent resting-state EEG recordings. EEG microstates were segmented using a data-supported five-class solution based on canonical microstate maps. Coverage, duration and occurrence of microstates A–E were extracted. PMU was quantified using a composite score derived from validated questionnaires assessing gaming, social media and streaming disorder symptoms. Associations between PMU and microstate parameters were analysed using multiple linear regression controlling for age, sex and psychotropic medication, with false discovery rate (FDR) correction across 15 primary tests. Exploratory analyses additionally adjusted for general psychopathology (Strengths and Difficulties Questionnaire).\nResults\nHigher PMU was consistently associated with reduced temporal expression of microstate C, reflected by lower coverage (partial r = −0.43), duration (r = −0.37) and occurrence (r = −0.45). Occurrence of microstate E was positively associated with PMU (r = 0.35). The strongest association narrowly missed significance after FDR correction (q = 0.054). Associations with microstate C remained after adjustment for hyperactivity and overall psychopathology but were attenuated after adjustment for internalizing symptoms.\nConclusions\nPMU was associated with a convergent reduction across three temporal characteristics of microstate C in children and adolescents. The concurrent increase in microstate E is consistent with recent adult findings, whereas the additional reduction of microstate C may reflect developmental aspects of PMU. These findings support resting-state EEG microstates as promising neurophysiological markers of problematic media use and warrant replication in larger cohorts.',
-    author: 'Christoph Berger',
-    coauthors: 'Oliver Labrenz, Lucie Wedel, Michael Kölch, Olaf Reis',
-    affiliation: 'University Medicine Rostock'
-  },
-  'microstate sequence entropy captures early cognitive decline beyond classical erp measures': {
-    abstract: 'Background. Protracted neurophysiological alterations precede clinical dementia, making its prodromal stages, subjective cognitive decline (SCD) and mild cognitive impairment (MCI), critical windows for early detection. Resting-state EEG, including microstate dynamics, is increasingly altered across these stages, yet event-related microstate changes remain largely unexplored and may capture aspects missed by amplitude-based metrics. Here, we introduce microstate sequence entropy (MS-Ent), a measure of the trial-to-trial topographic variability of evoked responses, applied to a sustained visuo-attentive task (three-choice vigilance task, 3CVT) ERPs.\nMethods. Healthy controls (HC, n=19), SCD (n=142) and MCI (n=42) performed the 3CVT. Polarity-sensitive microstate templates (K=3, chosen by the global-explained-variance elbow) were derived from single-subject grand-average ERPs and back-fitted to single trials. At each post-stimulus latency, MS-Ent was computed as the Shannon entropy of the across-trial distribution of microstate labels, with group differences localized by cluster-based permutation testing. For comparison, we extracted inter-trial voltage variability, model-free topographic entropy and classical ERP-component measures, comparing magnitudes via omega-squared effect size (ω²).\nResults. For rare non-target stimuli, MS-Ent differed across groups in a late window (287–461ms, matching P3b latency; cluster-corrected p=0.018). The effect was non-monotonic as MS-Ent was maximal in SCD and comparable in HC and MCI, consistent with the compensatory hyperactivity reported along the Alzheimer’s continuum. A trend at sensory processing latencies (102–219ms, p=0.080) instead followed the decline gradient (HC<SCD<MCI), suggesting graded loss of early response consistency. Higher MS-Ent predicted faster reaction times (Spearman ρ=−0.34, p<0.001), independent of diagnosis. Neither inter-trial voltage variability nor topographic entropy matched these effects, and P3b amplitude barely separated the groups (ω²=0.010); MS-Ent showed the largest effect of all measures (ω²=0.046).\nConclusions. Microstate sequence entropy captures stimulus- and stage-specific neural variability that classical time-domain measures miss, and warrants testing as a sensitive and behaviorally relevant marker of the earliest symptomatic phases of the Alzheimer\'s continuum.',
-    author: 'Michael Lassi',
-    coauthors: 'Lorenzo Gaetano Amato (The Biorobotics Institute and Department of Excellence in Robotics and AI, Sant’Anna School of Advanced Studies, Pisa, Italy)\nValentina Bessi (Department of Neuroscience, Psychology, Drug Research and Child Health, Careggi University Hospital, Florence, Italy)\nAntonello Grippo (IRCCS Fondazione Don Carlo Gnocchi, Florence, Italy)\nAlberto Mazzoni (The Biorobotics Institute and Department of Excellence in Robotics and AI, Sant’Anna School of Advanced Studies, Pisa, Italy)',
-    affiliation: 'The Biorobotics Institute and Department of Excellence in Robotics and AI, Sant’Anna School of Advanced Studies, Pisa, Italy'
-  },
-  'eeg microstate dynamics at rest, scrolling social-media, and working memory in psychiatric outpatients': {
-    abstract: 'Introduction: Four-class EEG microstate segmentation captures sub-second dynamics of large-scale brain networks and changes with cognitive state. We examine working-memory effects on microstate dynamics and characterize, for the first time, the dynamics of naturalistic social-media scrolling — a frequent everyday behavior — comparing it to an active working-memory task within the same subjects.\n\nMethods: 29-channel dry-electrode EEG (CGX Quick-32r, 500 Hz) was recorded in 288 psychiatric outpatients (≈50% male/female) across four within-subject conditions: eyes-open rest (eO), eyes-closed rest (eC), social-media scrolling (SM), and a working-memory task (WMc). Signal-quality gating yielded 1,278 recordings across 476 sessions (411 eC/299 eO/372 SM/196 WMc). Polarity-invariant modified k-means clustering at global-field-power peaks produced a canonical four-class solution (A–D), back-fitted to each recording to derive duration, occurrence, coverage, GFP, and transition probabilities. Within-subject contrasts against eO used Wilcoxon signed-rank tests with Benjamini–Hochberg FDR correction.\n\nResults: Canonical class distribution replicated at scale, with classes C and D showing longer mean durations than A and B in eC. Relative to eO, eC showed longer, more stable C/D maps (d = 0.70, 0.58) and reduced A/B occurrence. Both task conditions showed the mirror-image pattern — shortened C/D durations and increased occurrence — with coverage largely preserved. Scrolling produced a moderate effect (durations d = −0.60 to −0.80; occurrence d = +0.61 to +0.68); working memory produced a substantially larger effect (durations d ≈ −0.91 to −0.95; occurrence d ≈ +0.92; all FDR p < 10⁻¹¹). Effects were robust to one-recording-per-subject correction.\n\nConclusion: Scrolling social-media is not a resting state; it carries a task-like microstate signature — accelerated dynamics with increased salience/attention and frontoparietal/executive map expression — intermediate between eyes-open rest and active working memory, and identical in direction. This offers a scalable, physiologically grounded neural marker of everyday digital engagement in a clinical population.',
-    author: 'Rustin Berlow',
-    coauthors: '',
-    affiliation: 'ABSC'
-  },
-  'transcranial alternating current stimulation is associated with changes in eeg microstate dynamics in disorders of consciousness': {
-    abstract: 'Disorders of consciousness (DoC), including unresponsive wakefulness syndrome (UWS) and minimally conscious state (MCS), remain difficult to diagnose at the bedside. Electroencephalography (EEG) microstate analysis captures large-scale resting-state dynamics at high temporal resolution, but evidence on how neuromodulation reshapes these dynamics is limited. We evaluated the effect of a single 20-minute session of 40 Hz transcranial alternating current stimulation (tACS) over the bilateral dorsolateral prefrontal cortex (DLPFC) on resting-state EEG microstate parameters in DoC and their relationships with behavioral consciousness scores. Thirty-one patients (21 male; mean age 46.9 ± 16.2 years; 19 MCS, 12 UWS) underwent resting-state EEG immediately before and after a 2 mA, 40 Hz bilateral DLPFC tACS session. Microstate maps A–G were back-fitted to individual recordings, and mean duration, occurrence, coverage, and global explained variance (GEV) were extracted. Pre/post comparisons used paired t-tests with Benjamini–Hochberg correction; correlations with the Coma Recovery Scale–Revised (CRS-R) and the Simplified Evaluation of CONsciousness Disorders (SECONDs) used Spearman rank correlations. After tACS, the mean duration of microstate A decreased significantly (73.6 to 66.7 ms; t(30) = -3.19, p = 0.003, adjusted p = 0.023). Baseline GEV correlated with CRS-R (rho = 0.49, p = 0.005), and post-stimulation microstate E occurrence and coverage were inversely associated with CRS-R, while group-level CRS-R and SECONDs scores were unchanged. A single 40 Hz DLPFC tACS session produced measurable changes in resting-state microstate architecture without immediate behavioral improvement, supporting microstate-guided individualized neuromodulation in DoC.',
-    author: 'Eren Toplutaş',
-    coauthors: 'Fatma Aydın, Mehmet Berke İşler, Esra Turhal, Lütfü Hanoğlu\n¹ Brain and Cognition Research Center (BEYKOG), Istanbul Medipol University, Istanbul, Türkiye\n² Department of Neurology, Istanbul Medipol Mega University Hospital, Istanbul, Türkiye\n³ Institute of Health Sciences, Neuroscience PhD Program, Istanbul Medipol University, Istanbul, Türkiye\n⁴ International School of Medicine, Istanbul Medipol University, Istanbul, Türkiye\n⁵ Department of Computer Engineering, Istanbul Medipol University, Istanbul, Türkiye\n⁶ Istanbul Medipol University, Institute of Health Sciences, Department of Neuroscience MSc Program, Istanbul, Türkiye\n⁷ Istanbul Medipol University, Department of Neurology, School of Medicine, Istanbul, Turkey',
-    affiliation: 'Istanbul Medipol University'
-  },
-  'state-dependent eeg microstate dynamics differentiate patients with epilepsy and functional/dissociative seizures across a guided mindfulness paradigm': {
-    abstract: 'Background: Functional/dissociative seizures (FDS) are increasingly understood as disorders of large-scale brain network function. In a recent study, patients with FDS exhibited reduced dispositional mindfulness compared with healthy controls,1 and emerging evidence suggests that mindfulness is a promising therapeutic target.2 EEG microstate analysis provides a millisecond-resolution measure of large-scale brain network organization and has recently been linked to dispositional mindfulness. We therefore investigated whether microstate dynamics differ between patients with epilepsy and FDS during a guided mindfulness paradigm and whether microstate parameters relate to trait mindfulness in a mixed seizure disorder cohort. \nMethods: Participants completed the Five Facet Mindfulness Questionnaire Short Form (FFMQ-SF) and underwent a 10-minute guided mindfulness exercise with EEG recorded during pre-task, task, and post-task periods from 65 patients in the Epilepsy Monitoring Unit dataset reported by Rahman et al.1. EEG microstate analysis found the best explaining solution with five microstate classes (A-E). Temporal microstate parameters were compared between patients with epilepsy and those with FDS using Wilcoxon rank-sum tests (Glass rank-biserial correlation coefficient, rg, as the effect size). Transdiagnostic associations between microstate parameters and FFMQ subscales were assessed with correction for multiple comparisons. \nResults: During the pre-task resting period, patients with epilepsy showed a higher occurrence of microstate A than patients with FDS (W = 264, pcorr = .037, rg = .553). During the guided mindfulness task, the epilepsy group again demonstrated a higher occurrence of microstate A (W = 269, pcorr = .023, rg = .582) and additionally a higher occurrence of microstate D (W = 268, pcorr = .025, rg = .576). No significant between-group differences were observed during the post-task resting period. Across the full cohort, longer microstate C duration was associated with lower FFMQ “Non-judging” scores (r = −.29, corrected p < .05), while greater microstate E occurrence was associated with lower FFMQ “Describing” scores (r = −.25, corrected p < .05). \nConclusions: EEG microstate dynamics differentiated patients with epilepsy and FDS before and during, but not after, a guided mindfulness task, suggesting state-dependent alterations in large-scale brain network dynamics. Independent of diagnosis, specific facets of dispositional mindfulness were associated with microstates C and E, extending previous observations linking EEG microstates with mindfulness traits to a clinical population. These findings support EEG microstates as a promising marker for characterizing large-scale brain dynamics in FDS and provide a potential neurophysiological framework for investigating the mechanisms of mindfulness-based interventions in functional neurological disorders. \n1.	Rahman S, Maheshwari K, Rivera A, Chang V, Baig MU, Moscoso B, Chavez A, Anderson ED, Maheshwari A. Low levels of mindfulness in the Epilepsy Monitoring Unit. Epilepsy Behav. 2026;178:110956.  \n2.	Michaelis R, Meibert J, Alimov N, Kleinschnitz C, Popkirov S. Mindfulness-based stress reduction for functional neurological disorder: A feasibility study. J Psychosom Res. 2026;204:112581.',
-    author: 'Cosmina A. Duțică',
-    coauthors: 'Cosmina A. Duțică 1, Rosa Michaelis 1,2, Miralena I. Tomescu 3, Atul Maheshwari 4, Stoyan Popkirov 1 \n1.	Department of Neurology and Centre for Translational Neuro- and Behavioral Sciences (C-TNBS), University Medicine Essen, University of Duisburg-Essen, Essen, Germany \n2.	Department of Neurology, Knappschaft Kliniken University Hospital Bochum, Ruhr University Bochum, Bochum, Germany; Faculty of Health, University Witten/Herdecke, Witten, Germany \n3.	Department of Psychology and Educational Sciences, University "Stefan cel Mare" of Suceava, Suceava, Romania; \n4.	Department of Neurology & Department of Neuroscience, Baylor College of Medicine, 1 Baylor Plaza, Houston, TX 77030, USA ',
-    affiliation: '1.	Department of Neurology and Centre for Translational Neuro- and Behavioral Sciences (C-TNBS), University Medicine Essen, University of Duisburg-Essen, Essen, Germany '
-  },
-  'resting-state eeg microstates during pharmacotherapy of a depressive episode': {
-    abstract: 'Introduction: Previous studies of EEG microstates have pointed to abnormal temporal characteristics in depressed patients under resting conditions.   The aim of this study is to determine whether antidepressant pharmacotherapy influences changes in the activity of resting-state brain networks in patients in the depressive episode.\nMethods: We analysed resting-state EEG microstates in 8 patients in the moderate-to-severe depressive episode within bipolar disorder, depressive phase, and recurrent depression, and in 8 healthy controls. Data from patients were collected prior to stabilization of antidepressant medication (T1), 6 weeks after the first measurement (T2), and 6 months after the first measurement (T3). Controls were measured once (T1). The severity of depression was assessed using the Montgomery-Åsberg Depression Rating Scale (MADRS).\nResults: Pharmacotherapy led to clinical improvement in all patients with the MADRS scores as follows: 27.1±7.7 (T1); 8.5±7.7 (T2); 13.4±11.6 (T3). Five microstates (A-E) were identified in segmentation across all subjects and measurements. We observed a higher presence of microstate C in patients vs. healthy controls: mean duration 143±39 ms (T1) vs. 108±12, temporal coverage 40±13% (T1) vs. 25±6%; with a tendency to normalize over time for both mean duration 144±45 ms (T2), 134±41 ms (T3), and temporal coverage 34±13% (T2), 32±12% (T3).\nConclusion: The results indicated that the improvement of the clinical condition in patients during the course of pharmacotherapy of the depressive episode was accompanied by changes in the temporal parameters of resting EEG microstates. Microstate analysis appears to be a promising tool for assessing the effect of pharmacotherapy on the dynamics of resting large-scale brain networks in patients with depression.\nThis work was ficially supported by the Ministry of Education, Youth and Sports within the framework of specific university research (project MUNI/A/1769/2024) and by a grant from the Ministry of Health of the Czech Republic – RVO (FNBr, 65269705).',
-    author: 'Alena Damborská',
-    coauthors: 'Michal Horáček1, Jana Hořínková1,2, Pavel Křenek1,2, Eliška Bartečková1,2;\n1 Department of Psychiatry, Faculty of Medicine, Masaryk University, Brno, Czech Republic\n2 Department of Psychiatry, Brno University Hospital, Brno, Czech Republic\n',
-    affiliation: 'Department of Psychiatry, Faculty of Medicine, Masaryk University and Brno University Hospital, Brno, Czech Republic'
-  },
-  'beyond canonical eeg microstates: an eeg-energy landscape analysis framework for modeling complex dynamics': {
-    abstract: 'Classical EEG microstate analysis fundamentally relies on clustering, exclusively restricting data to Global Field Power (GFP) peaks to manage high-dimensional state spaces. This practice oversimplifies the data by imposing rigid temporal smoothing, which discards the continuous transitional dynamics present in neural activity. Instead, we utilize Energy Landscape Analysis (ELA), a framework initially introduced for fMRI, to establish a formal thermodynamic definition of EEG microstates. While EEG topographies are traditionally constrained to K=4 or 5 templates, by fitting a Pairwise Maximum Entropy Model (pMEM) this framework reveals metastable brain states as naturally emergent local minima within the underlying energy landscape. In this context, neural activity is rigorously modeled as dynamic traversals through this landscape, with transitions between states occurring when specific energy barriers are overcome. Furthermore, by quantifying the number and depth of these accessible local minima, ELA provides a direct mechanistic metric of cognitive flexibility, in which a restricted state space mathematically captures pathological network rigidity. To validate the downstream utility, we compared classical descriptive features (empirical dwell times and transition rates) against their thermodynamic drivers (average system energy and the total repertoire of unique accessible basins) across Healthy Control (HC) and Major Depressive Disorder (MDD) cohorts. Notably, the ELA features demonstrated enhanced predictive power, resulting in a significant increase in the area under the curve (ΔAUC=+0.17). In conclusion, the proposed EEG-ELA framework successfully recovers a naturally richer, thermodynamically grounded repertoire of metastable states, moving beyond the restrictive, predefined cluster limits of classical analysis.',
-    author: 'Anubhav',
-    coauthors: 'Kantaro Fujiwara (The University of Tokyo)',
-    affiliation: 'The University of Tokyo'
-  },
-  'temporal dynamics of eeg microstates during postural control in parkinson‘s disease': {
-    abstract: 'Parkinson\'s disease (PD) is a progressive neurodegenerative disorder marked by alterations in motor function that extend to balance and postural regulation. While EEG abnormalities in oscillatory activity and functional connectivity are well documented in PD, less is known about how large-scale brain dynamics behave during tasks that directly engage postural control. Here we examine EEG microstate organisation during a virtual-reality postural-control task, the BioVRSea, comparing early-stage PD patients (n = 30) and matched healthy controls (n = 26). EEG microstates—brief, quasi-stable scalp topographies representing global neural states—provide a robust framework for characterising the rapid temporal structure of whole-brain activity. Although task-based microstate approaches exist, their application to PD remains limited, with most studies confined to the resting state. Topographical analyses showed pronounced between-group differences in microstates D and E, whose group-averaged maps diverged markedly from canonical configurations in PD. Because these maps were not topographically equivalent across groups, between-group comparisons of temporal parameters were restricted to the topographically comparable microstates A–C; on these, PD patients showed increased duration and coverage of microstates A and B across all task phases. A transition-probability analysis, similarly restricted to A–C, revealed a single Group × Phase interaction (A→C). These differences were stable across phases, indicating phase-invariant, group-level differences in microstate organisation observed in treated, early-stage PD. Because patients were assessed ON medication and no clinical or behavioural correlates were available, these findings represent candidate task-state EEG microstate alterations requiring validation rather than established disease-specific markers.',
-    author: 'Sneha S Shetty, Prewal Fredlin Fernandes',
-    coauthors: 'Co-authors\n\nLorena Guerrini (1,2); Federica Pescaglia (1); Ida Maruotto (1); Romain Aubonnet (3); Halldór Jónsson Jr (1,4); Hannes Petersen (5,6); Gylfi Örn Þormar (7); Giorgio Di Lorenzo (3,8); Mahmoud Hassan (1,9); Paolo Gargiulo (1,10)\n\nAffiliations\n\n1.Institute of Biomedical and Neural Engineering, Reykjavik University, Reykjavik, Iceland\n2.Department of Engineering, University of Campania Luigi Vanvitelli, Aversa, Italy\n3.Laboratory of Psychophysiology and Cognitive Neuroscience, Department of System Medicine, University of Rome Tor Vergata, Rome, Italy\n4.Department of Orthopaedics, Landspitali University Hospital, Reykjavik, Iceland\n5.Faculty of Medicine, University of Iceland, Reykjavik, Iceland\n6.Akureyri Hospital, Akureyri, Iceland\n7.Department of Neurology, Landspitali University Hospital, Reykjavik, Iceland\n8.IRCCS Fondazione Santa Lucia, Rome, Italy\n9.MINDIG, Rennes, France\n10.Department of Science, Landspitali University Hospital, Reykjavik, Iceland',
-    affiliation: 'Reykjavik University'
-  },
-  'eeg microstates and fmri networks: is there a simple link?': {
-    abstract: 'Introduction\nSimultaneous EEG-fMRI provides valuable insights into the relationship between microstates (MS) and large-scale brain networks, despite technical challenges. Although nearly twenty years have passed since the first studies, findings remain inconsistent, often due to limited sample sizes. Using a larger cohort of 54 healthy subjects and a general linear model (GLM) approach, we investigated the link between microstates and fMRI networks.\nMethods\nDuring an 18-minute simultaneous EEG-fMRI recording, participants underwent three conditions: eyes closed, fixation on a cross, and natural viewing. Following preprocessing, microstate analysis identified 5 distinct classes based on subject- and group-level clustering. Only global field power (GFP) peaks were backfitted, with intermediate samples labeled according to the closest peak. Two separate GLM analyses were conducted using regressors based on global explained variance (GEV), mean duration, time coverage, and occurrence: (1) for each microstate class separately, and (2) for all classes together to investigate global microstate dynamics.\nResults\nThe individual GLM analysis (1) revealed several smaller significant clusters (pFWE < 0.05 at the cluster level), predomitly for the GEV regressor. MS A was associated with activations in the inferior frontal gyrus and Brodmann areas (BA) 6 and 9; MS B with the precentral gyrus and BA 6; and MS C with the precentral and postcentral gyri. The occurrence regressor showed activation in the middle occipital gyrus and BA 18 for MS A. The global dynamics GLM (2) revealed widespread clusters covering the precentral and postcentral gyri and BA 4 and 6.\nConclusion\nWhile the GLM approach revealed significant clusters, our findings suggest that the link between microstates and fMRI networks is more complex as we expected robust clusters for each microstate. Instead, we hypothesize that microstates modulate network connectivity and influence information flow among them.',
-    author: 'Tomáš Jordánek',
-    coauthors: 'Thomas Koenig (University Hospital of Psychiatry, Bern)\nMartin Lamoš (Central European Institute of Technology – CEITEC, Masaryk University, Brno)\nRadek Mareček (Central European Institute of Technology – CEITEC, Masaryk University, Brno)\n',
-    affiliation: 'Masaryk University Brno, Faculty of Medicine; Central European Institute of Technology – CEITEC, Masaryk University, Brno'
-  },
-  'the effect of ketamine on meg microstates': {
-    abstract: 'At subanaesthetic doses, ketamine, an NMDA receptor antagonist, is considered a “non-classic” psychedelic. Demonstrating rapid and long-lasting therapeutic effects in individuals with mental health disorders, ketamine research has paved the way for the resurgence of research into using psychedelics to treat mental health and broader neurological disorders. While the effects of ketamine and other psychedelics on fMRI resting-state networks is well studied, with network effects found to correlate with both subjective and therapeutic effects, their effects on M/EEG microstates, including changes across the drug-effect period, is at present largely unexplored.\n\nWe will present MEG microstate analysis of 80 min continuous resting-state recordings from 6 healthy participants: 10 min pre-drug administration, 20 min sub-anaesthetic dose ketamine bolus and infusion, and 50 min post infusion. Analysis will be performed on source-level data, using the +microstates toolbox, in 2 min segments across the drug-effect period, in line with VAS “high” rating recordings.\n\nWe aim to investigate how ketamine alters microstate activity across the dynamic drug-effect period, and the relationships between microstate activity and variables such as subjective effect (as measured by VAS “high” rating), frequency and pharmacodynamics modelling results.\n\nWe hope that integration of microstate analysis into a wider pharmacodynamics modelling pipeline will provide insights into the mechanisms of psychedelics in humans.',
-    author: 'Victoria Smart',
-    coauthors: 'Dr Alex Shaw, University of Exeter; Prof Marc Goodfellow, University of Exeter',
-    affiliation: 'University of Exeter'
-  },
-  'deep clustering for eeg microstate analysis: convergent validation with modified k-means': {
-    abstract: 'Introduction. Microstate analysis parses continuous EEG into a sequence of quasi-stable topographies, conventionally extracted with the modified k-means algorithm. We ask whether a representation-learning approach recovers all five microstates (A–E), and how cluster-quality metrics should be compared across methods that preprocess topographies differently.\n\nMethods. We introduce a deep clustering pipeline — a one-dimensional convolutional autoencoder with a polarity-invariant clustering layer that learns a latent representation optimised for microstate extraction — and validate it against a custom modified k-means implementation on two independent resting-state, eyes-closed datasets: LEMON (n = 61) and a test-retest dataset (n = 60). Microstate solutions were compared by map similarity, global explained variance, and temporal-parameter reliability. Cluster-quality metrics were computed under matched preprocessing (mean-centring, L2-normalisation, polarity-alignment) for both methods.\n\nResults. The two algorithms converged on near-identical microstate solutions across both datasets: grand-mean map correlations exceeded r > 0.99 for all five microstates (A–E), backfitted global explained variance was indistinguishable between methods (r > 0.999), and duration reliability ranged from good to excellent (ICC > 0.90 in LEMON; > 0.75 in test-retest). A matched-preprocessing recomputation of cluster-separation metrics, validated in a representative participant, reduced previously apparent between-method differences from several orders of magnitude to modest, direction-mixed effects — indicating that large differences in cluster quality reflect differential topography preprocessing rather than\nthe algorithm itself.\n\nConclusion. Two fundamentally different algorithms independently recover equivalent canonical microstates, providing convergent validation of microstate solutions. Fair comparison of clustering methods requires matched topography preprocessing; once applied, deep clustering corroborates rather than replaces modified k-means.',
-    author: 'Arjun Vinayak Chikkankod',
-    coauthors: 'Thomas Koenig (University of Bern, Switzerland), Sarah Jane Delany (Technological University Dublin, Ireland)',
-    affiliation: 'Technological University Dublin, Ireland'
-  },
-  'from gfp and stability to backfitting credibility: microstate-equivalent electric dipoles for eeg microstate validation': {
-    abstract: 'Introduction: EEG microstate analysis relies on the observation that high global field power (GFP) samples tend to exhibit lower topographic dissimilarity (TD), motivating the operational use of GFP peaks for microstate fitting. However, GFP measures field strength, not scalp-potential geometry, and does not necessarily predict canonical-map resemblance or winner-takes-all assignment credibility. We introduce and characterize the microstate-equivalent electric dipole (MEED), a low-dimensional representation designed to capture the geometric structure of canonical microstate maps.\n\nMethods: MEED uses a scalp-centred dipole as a geometric scaffold, summarizing scalp-potential shape by dipole azimuth, elevation, and projection strength. MEED captures topographies of meta-microstate solutions with >95% explained variance, organizing lateralized linear gradients and radial frontal/posterior configurations in a common representation. Because MEED is a linear projection, TD can be decomposed exactly into MEED-explained and residual components, quantifying whether topographic change reflects movement between gradient-like smooth maps or unresolved instability. MEED may therefore predict similarity to the winning topography during backfitting and assess assignment credibility beyond GFP, independently of the fitted microstate solution.\n\nResults: Across 190 resting-state EEG recordings from the LEMON dataset (Babayan et al., 2019, doi.org/10.1038/sdata.2018.308), MEED-space distance reproduced the GFP-stability law observed for TD,  and the MEED-explained fraction of TD accounted for the residual disagreement between the two measures. In leave-one-subject-out prediction of winning-template similarity, GFP explained 11.7% of variance, whereas projection strength explained 62.6%, with marginal improvement when adding GFP (63.4%). Projection strength also showed modest but consistent association with microstate assignment confidence and entropy, indicating that it indexes canonical-map resemblance and assignment reliability beyond GFP.\n\nConclusions: These findings address the methodological concern that winner-takes-all labels can conceal more complex evidence: MEED separates field strength, template geometry, and transition-related instability. Rather than replacing standard microstates, it provides an interpretable validation layer for template comparability, backfitting credibility, and data-driven optimization of microstate workflows.',
-    author: 'Leonardo Corsi',
-    coauthors: 'Piergiuseppe Liuzzi (IRCCS Fondazione Don Carlo Gnocchi ETS, Florence, Italy); Calogero Maria Oddo (Sant\'Anna School of Advanced Studies, Pisa, Italy); Andrea Mannini (IRCCS Fondazione Don Carlo Gnocchi ETS, Florence, Italy)',
-    affiliation: 'IRCCS Fondazione Don Carlo Gnocchi ETS, Florence, Italy; Sant\'Anna School of Advanced Studies, Pisa, Italy'
-  },
-  'are eeg microstates robust to the choice of clustering algorithm? modified k-means, aahc and taahc across k = 4–7': {
-    abstract: 'Introduction. Microstate analysis segments continuous EEG into a sequence of quasi-stable scalp topographies, most often extracted with modified k-means. Hierarchical alternatives — atomize-and-agglomerate hierarchical clustering (AAHC) and its topographic variant (TAAHC) — are widely used but rest on a different clustering principle. Whether these algorithm families recover the same microstates, and whether their agreement is stable as the number of states k varies, remains underexamined.\n\nMethods. Resting-state, eyes-closed EEG from two independent datasets — LEMON (n = 60) and a within-session test–retest dataset (n = 60) — was clustered independently with modified k-means, AAHC and TAAHC for k = 4–7. For each algorithm pair, microstate maps were matched by polarity-invariant assignment and compared by spatial (Pearson) correlation; global explained variance (GEV) was computed per algorithm. Agreement was summarised per subject and across each cohort.\n\nResults (preliminary). Analyses at k = 5 are complete in both datasets; the full k = 4–7 sweep is in progress. At k = 5, the three algorithms produced closely matching topographies. Mean inter-method map correlations were 0.92 (k-means–AAHC), 0.92 (k-means–TAAHC) and 0.96 (AAHC–TAAHC) in LEMON, and 0.93, 0.94 and 0.98 respectively in the test–retest dataset. In both cohorts the two hierarchical methods agreed most strongly, while k-means diverged modestly from both. GEV differed by ≤0.015 across algorithms within each dataset.\n\nConclusion. Preliminary results indicate that resting-state microstates for k = 5 are largely robust to the choice of clustering algorithm, reproducibly across two datasets, with a small but consistent gap between centroid- and hierarchy-based methods. The complete k = 4–7 analysis, characterising how cross-algorithm agreement depends on the number of microstates, will be presented.',
-    author: 'Sneha S Shetty, Prewal Fredlin Fernandes',
-    coauthors: 'Arjun Vinayak Chikkankod (Technological University Dublin, Ireland)',
-    affiliation: 'Sahyadri College of Engineering and Management '
-  },
-  'structural regularities in microstate transitions revealed by a grammar induction algorithm': {
-    abstract: 'Introduction: EEG microstate analysis describes scalp potential topographies as a sequence of discrete, quasi-stable spatial configurations, providing a symbolic representation of large-scale brain dynamics, whose temporal organization carries information which extends beyond the properties of individual microstate classes. Existing approaches characterize sequence organization using transition statistics, information-theoretical descriptors, or predefined motifs, but do not directly infer the grammar underlying those sequences. \nMethods: We used a grammar induction algorithm called ‘Sequitur’ to infer grammatical rules from EEG resting-state microstate sequences without prior assumptions about their structure. Alongside other conventional information-theoretical measures, we introduced the Grammar Randomness Index (GRI) to quantify the amount of information contained inside the extracted rules.  Grammar-based descriptors were evaluated using shuffled and first-order Markov surrogate sequences and compared between eyes closed and eyes open resting-state conditions. \nResults: Grammar induction revealed a restricted repertoire of recurrent low-entropy motifs largely shared across participants. These motifs were not reproduced by Markov surrogates, indicating that they cannot be explained solely by first-order transition statistics. Inferred grammars were dominated by short motifs, primarily binary loops, revealing that microstate sequences are highly compressible and organized around reusable grammatical patterns. GRI differentiated empirical sequences from both surrogate classes in the eyes closed condition and showed the largest effect size among all metrics in discriminating eyes closed from eyes open sequences. \nConclusion: Grammar induction provides complementary information on the temporal organization of microstate sequences by directly characterizing the grammatical organization underlying their dynamics.',
-    author: 'Fabio Strappazzon',
-    coauthors: 'Pierpaolo Croce, Filippo Zappasodi',
-    affiliation: 'Gabriele D\'nannunzio University of  Chieti-Pescara'
-  },
-  'the maintenance of attention over time influences the dynamics of eeg microstates': {
-    abstract: 'Introduction: Human attention is inherently transient and limited in span to only a few moments without lapsing. The intrinsic dynamics of large-scale neurocognitive networks are thought to contribute to these lapses and result in the unavoidable fluctuations in attention that constrain its span. However, it remains unclear how the millisecond temporal dynamics of specific electrophysiological brain states contribute to the endogenous maintece of attention or the onset of attentional lapses. In the present study, we investigated whether the strength and millisecond dynamics of brain electric microstates differentiate states of focus from inattention and contribute to the endogenous maintece of attention over short and long timescales. \n\nMethods: We recorded 128-channel EEG while participants maintained their attention during the wait time delay of trials in the Sustained Attention to Cue Task (SACT) and segmented the EEG into a categorized time series of microstates based on data-driven clustering of topographic voltage patterns. The SACT requires attention to be maintained at a cued location for a length of time to correctly detect a briefly presented target stimulus amidst an array of distractors.\n\nResults: The findings revealed that the prevalence and rate of occurrence of microstates C and E in the wait time delay of trials differentiated trials in which the target stimulus was correctly detected from incorrectly detected. These same microstates were also implicated in the maintece of attention over short and long timescales, with their time-varying dynamics changing systematically during the wait time delay of trials and over the course of the task session. \n\nConclusions: Together, these findings demonstrate the sensitivity of microstates to variation in attentional states and suggest that the millisecond dynamics of these brain states contribute to the maintece of attention over time.',
-    author: 'Anthony P. Zanesco',
-    coauthors: 'Abigail M. Gross, Delanie J. Spivey, Braxton M. Stevenson, Lexi F. Horn, & Sophia R. Zanelli; University of Kentucky',
-    affiliation: 'University of Kentucky'
-  },
-  'assaying brain dynamics during artistic performance using eeg microstates': {
-    abstract: 'EEG microstates are quasi-stable configurations of scalp electrical activity that reflect large-scale brain dynamics1. Although extensively investigated during resting-state EEG, their application to continuous, real-world behaviors remains largely unexplored. Advances in Mobile Brain-Body Imaging (MoBI) and adaptive noise canceling algorithms enable the acquisition of high-quality EEG during naturalistic behavior, including artistic domains such as music2,3, acting4, and dance5,6. Here, we present an EEG microstate framework, based on the methodological foundations7, for continuous MoBI recordings acquired during artistic performance, enabling the investigation of large-scale brain dynamics beyond resting-state paradigms.\nThree MoBI datasets including professional butoh dancers (The Slowest Wave5), contemporary dancers (Livewire6), and musicians (Music in Medicine3) were analyzed (N=9 participants). Recordings contained 28-channel EEG (1 kHz), 4-channel EOG (1 kHz), and head-motion IMU recordings (128 Hz). EEG preprocessing combined band-pass filtering, adaptive H-Infinity filters for ocular8 and motion9 artifact removal, Artifact Subspace Reconstruction, Independent Component Analysis, and dipole fitting10. Denoised EEG was downsampled to 250 Hz, and microstate topographies were extracted at Global Field Power peaks. The optimal number of microstate classes was determined using the metacriterion11, and temporal parameters (mean duration, occurrence, and coverage) were quantified. The metacriterion identified twelve microstate classes that explained 62% of the global variance.\nThe seven canonical microstates (A–G) were consistently identified across datasets, while five additional topographies (H–L) emerged during artistic performance. Across datasets, microstate J exhibited the greatest temporal parameters, suggesting a stable neural state common across artistic modalities. In contrast, microstate E showed increased occurrence and coverage in butoh and music compared with contemporary dance, whereas its duration remained stable. These findings demonstrate the feasibility of applying EEG microstate analysis to continuous MoBI recordings in real-world artistic settings. The emergence of additional microstate topographies suggests that complex naturalistic behaviors recruit neural states beyond those observed during resting-state EEG.',
-    author: 'Yoshua Erenoldo Lima Carmona',
-    coauthors: 'Jose L. Contreras-Vidal (IUCRC BRAIN, University of Houston)',
-    affiliation: 'IUCRC BRAIN, University of Houston'
-  },
-  'tracking brain adaptation to mindfulness-based stress reduction through eeg microstate dynamics': {
-    abstract: 'Introduction. Although it’s well established that Mindfulness-Based Stress Reduction (MBSR) consistently improves psychological functioning, the neural mechanisms supporting these effects remain partially understood. Evidence demonstrated that mindfulness training may reshape the temporal architecture of spontaneous brain activity by modifying the stability, transitions, and persistence of large-scale neural states. Resting-state EEG microstates provide a unique framework for investigating these fast brain dynamics, while nonlinear metrics capture their temporal complexity across multiple timescales.\n\nMethods. A longitudinal study was conducted in twenty meditation-naïve adults completing an 8-week MBSR program. Resting-state EEG and neuropsychological assessments were collected before and after the intervention. Large-scale brain dynamics were quantified through EEG microstate analysis, whereas the Hurst exponent and Lempel–Ziv complexity were calculated to assess long-range temporal dependencies and sequence complexity, respectively.\n\nResults. MBSR produced significant improvements in processing speed together with reductions in perceived stress and fatigue. At the neural level, mindfulness training induced a selective reconfiguration of intrinsic brain dynamics, characterized by decreased duration and temporal coverage of microstate C and increased occupancy of microstate E. Moreover, the Hurst exponent of the microstate sequence significantly decreased following training, indicating weaker long-range temporal correlations and a transition toward a more flexible, less persistent dynamical regime. By contrast, Lempel–Ziv complexity remained unchanged. Importantly, reductions in microstate C coverage were significantly associated with decreases in fatigue, providing evidence that neural dynamical reorganization parallels improvements in subjective well-being.\n\nConclusions. These findings indicate that MBSR reshapes the temporal organization of spontaneous brain activity, promoting greater dynamical flexibility without altering global sequence complexity. EEG microstates emerge as sensitive markers of large-scale brain reorganization, supporting their use for investigating the neural mechanisms through which mindfulness enhances psychological resilience.',
-    author: 'Antea D\'Andrea',
-    coauthors: 'Croce Pierpaolo, Department of Neuroscience, Imaging and Clinical Sciences, University of Chieti-Pescara, Chieti, Abruzzo, Italy;  Institute for Advanced Biomedical Technologies, University of Chieti-Pescara, Chieti, Abruzzo, Italy\n\n\nL\'Abbate Teresa, Department of Engineering and Geology, University of Chieti-Pescara, Pescara, Abruzzo, Italy\n\nPless Bruno, UBneuro Institute of Neuroscience, University of Barcelona, Barcelona, Catalonia, Spain\n\nGuidotti Roberto, Department of Neuroscience, Imaging and Clinical Sciences, University of Chieti-Pescara, Chieti, Abruzzo, Italy;  Institute for Advanced Biomedical Technologies, University of Chieti-Pescara, Chieti, Abruzzo, Italy\n \n\nDi Biase Giada,  Kaleidos Center of Psychology and Psychotherapy, Chieti, Abruzzo Italy\n\nRomano Giuseppe, School of Cognitive Psychotherapy (SPC), Rome, Italy\n\nPizzella vittorio, Department of Neuroscience, Imaging and Clinical Sciences, University of Chieti-Pescara, Chieti, Abruzzo, Italy;  Institute for Advanced Biomedical Technologies, University of Chieti-Pescara, Chieti, Abruzzo, Italy\n\n\nMarzetti LauraDepartment of Engineering and Geology, University of Chieti-Pescara, Pescara, Abruzzo, Italy;  Institute for Advanced Biomedical Technologies, University of Chieti-Pescara, Chieti, Abruzzo, Italy\n',
-    affiliation: 'Department of Neuroscience, Imaging and Clinical Sciences, University of Chieti-Pescara, Chieti, Abruzzo, Italy;  Institute for Advanced Biomedical Technologies, University of Chieti-Pescara, Chieti, Abruzzo, Italy'
-  },
-  'mapping and characterizing transient meg brain states during distinct meditation practices via hidden markov modeling': {
-    abstract: 'Meditation shapes large-scale brain dynamics, but its neural signatures depend heavily on expertise. While switching between Focused Attention (FA) and Open Monitoring (OM) is challenging for novices, expert practitioners navigate both seamlessly. Investigating the fast temporal organization of these practices is crucial to understanding the neural mechanisms underlying long-term training. In this study, we investigated brain states in Theravada Buddhist monks with thousands of hours of training to examine advanced neuroplasticity. We analyzed over 400 minutes of magnetoencephalography (MEG) data during resting state (REST), FA, and OM. Following source reconstruction, parcellation based on the 38-parcel Giles atlas and leakage correction, a Time-Delay Embedded Hidden Markov Model (TDE-HMM) was computed via the OSL-dynamics toolbox to identify transient brain states and assess condition-related modulations of fractional occupancy, power spectral density, and coherence across resting state and the two meditative practices.\nOur results revealed a striking overlap between the two meditative conditions: the same predomit HMM power states symmetrically represented both FA and OM practices, while REST emerged as a fundamentally distinct baseline state. Overall, these findings indicate that long-term meditation practice induces a global, coordinated shift in large-scale network dynamics rather than fragmented, technique-specific changes. This FA-OM link suggests that for expert practitioners, the procedural boundaries between focused effort and open awareness dissolve into a shared "meditative core" network. This state stands in stark contrast to the unconstrained mind-wandering of REST, providing a dynamic systems-level account of meditation-related brain plasticity driven by lifetime expertise.',
-    author: 'Lorenza Guerriero/Laura Marzetti',
-    coauthors: 'Riccardo Aceto1, Saeed Makkinayeri1, Alessio Basti1, Pierpaolo Croce1, Delia Lucarelli1, Giulia Pieramico1, Antonino Raffone2, Vittorio Pizzella1, Laura Marzetti1\n1 University G. D’Annunzio of Chieti-Pescara, Italy\n2 Sapienza University of Rome, Italy',
-    affiliation: 'Università Chieti-Pescara'
-  },
-  'cardiac-to-cortical information flow distinguishes focused attention from open monitoring meditation: evidence from magnetoencephalography': {
-    abstract: 'Meditation is characterized by coordinated changes in neural and autonomic activity, yet the mechanisms through which the heart and brain interact across different meditation practices remain largely unexplored. Since meditative states rely on the integration of attentional control, interoceptive processing, and autonomic regulation, investigating heart-brain communication may provide novel insights into their underlying physiology. This study compared directional heart-brain information transfer during two widely practiced meditation techniques: Focused Attention (FA) and Open Monitoring (OM).\nTen experienced meditators underwent simultaneous electrocardiographic and magnetoencephalographic (MEG) recordings while performing FA and OM meditation. Cardiac dynamics were quantified from RR interval time series, whereas MEG signals were analysed within each cardiac cycle using time-frequency decomposition. Oscillatory activity was estimated in the theta, alpha, beta, and gamma frequency bands. Directional mutual information was employed to quantify information transfer in both the heart-to-brain and brain-to-heart directions, allowing comparison of coupling patterns between meditation styles.\nA significant difference emerged exclusively for the ascending pathway from the heart to the brain. Specifically, heart-to-brain mutual information in the alpha band was significantly greater during FA than OM meditation (p < .05, Cohen\'s d = 0.84). No significant differences were observed for the descending brain-to-heart direction or for the remaining frequency bands.\nThese findings indicate that meditation style selectively influences ascending cardiac signalling to the cortex. The stronger heart-to-brain coupling observed during Focused Attention may reflect greater integration of interoceptive cardiac information with neural mechanisms supporting this meditation practice. Overall, the results emphasize the importance of bidirectional autonomic-central nervous system interactions in differentiating meditation states and provide new evidence for the role of cardiac signals in shaping cortical dynamics during contemplative practice.',
-    author: 'Delia Lucarelli',
-    coauthors: 'Vittorio Aceto3, Alessio Basti3, Antea D’Andrea1,2, Roberto Guidotti1,2, Antonino Raffone4, Vittorio Pizzella1,2, Laura Marzetti2,3\n\n1Department of Neuroscience, Imaging and Clinical Sciences, G. d’Annunzio University Chieti-Pescara, Chieti, Italy\n2Institute for Advanced Biomedical Technologies, G. d’Annunzio University Chieti-Pescara, Chieti, Italy\n3Department of Engineering and Geology, G. d’Annunzio University Chieti-Pescara, Pescara, Italy\n4Department of Psychology, Sapienza University of Rome, Rome, Italy\n',
-    affiliation: 'Department of Neuroscience, Imaging and Clinical Sciences, G. d’Annunzio University Chieti-Pescara, Chieti, Italy'
-  },
-  'where and when local brain dynamics shape tms response variability': {
-    abstract: 'Motor evoked potential (MEP) amplitude in response to single-pulse transcranial magnetic stimulation (TMS) varies substantially across trials, a variability thought to reflect fluctuations in the brain\'s spontaneous neural state. Previous studies defined states based on static measures of oscillatory power or instantaneous phase within a predefined cortical region, leaving open where across the cortex, and when in the pre-stimulus period, transient reconfiguration of local activity relates to MEP amplitude. In 77 participants, we recorded EEG and EMG during ~1200 single TMS pulses over left motor cortex (inter-stimulus interval ~4 s). Source activity was reconstructed (LCMV beamformer, 100-region Schaefer atlas), and a time-delay embedded Hidden Markov Model identified three transient burst states per parcel from concatenated pre-stimulus activity (1.5 s per trial, all participants), each characterized spectrally using multitaper power estimation. For each parcel and participant, we computed a Burst Dynamics Index (BDI) — the sum of absolute burst-wise contrasts across states — comparing high- and low-MEP trials (highest/lowest amplitude quartiles), with group-level significance assessed via GLM and non-parametric permutation testing (p < 0.05). Significant effects emerged as early as ~700 ms before the pulse, persisted until stimulation, and were confined to sensorimotor cortex underlying the stimulation site. Within this region, a low-power burst state showed reduced occupancy before high-MEP trials, while an alpha-domit state showed the opposite, increasingly prevalent pattern over the same period. These findings show that MEP variability depends on how local cortical dynamics evolve across the pre-stimulus period, and that this dynamic reorganization is concentrated primarily within the motor cortex itself, rather than distributed across the broader cortical surface.',
-    author: 'Saeed Makkinayeri',
-    coauthors: 'Alessio Basti, Roberto Guidotti, Delia Lucarelli, Giulia Pieramico, Gian Luca Romani, Vittorio Pizzella, Laura Marzetti, all affiliated with University of Chieti - Pescara',
-    affiliation: 'University of Chieti - Pescara'
-  },
-  'limited evidence for associations between eeg microstates and spontaneous thought': {
-    abstract: 'Introduction. Although resting-state activity has been studied for more than 25 years in fMRI (Biswal & Uddin, 2025), only four studies have investigated associations between EEG microstates and spontaneous thought using the Amsterdam Resting-State Questionnaire (ARSQ; Diaz et al., 2014), with inconsistent findings across samples (Pipinis et al., 2017; Tarailis et al., 2021; Zanesco et al., 2021, 2026). The present study aimed to assess the robustness of these associations in a larger sample.\n\nMethods. Participants (n = 325) completed a 5-min resting-state EEG recording (BIOSEMI 64 channels) followed by the 54-item ARSQ. EEG data were preprocessed in MNE-Python using REST re-referencing, 2-20 Hz filtering, and ICA. Microstates were extracted with the Pycrostates toolbox (Férat et al., 2022) following a standard pipeline (see Chenot et al., 2024). The optimal solution consisted of four microstates, from which occurrences and mean-duration metrics were calculated. ARSQ items were grouped into seven factors according to Diaz et al. (2014). Bravais-Pearson correlations were computed between microstate metrics and ARSQ factors. \n\nResults. The results are reported in Table 1 and show that once corrected, no significant correlation was found.\n\nDiscussion. In a relatively large sample, our study reveals that if associations between spontaneous thought and spatio-temporal dynamics exist, they are likely to be small, in the range of 1 to 3% of explained variance. These findings are consistent with previous studies, as most reported associations have not been replicated across independent samples, suggesting that some of them may reflect false positives. More generally, our findings challenge the historical view that microstates represent “atoms of thought” (Lehmann et al., 1998). They also echo the reproducibility crisis in the MRI field, where it has been suggested that reproducible brain-wide association studies may require thousands of individuals as effect sizes are likely to be small (Marek et al., 2022).',
-    author: 'Quentin Chenot',
-    coauthors: 'Caroline Hamery (Université Paris Cité, Institut Pasteur, AP-HP, INSERM, CNRS, Fondation Pour l’Audition, Institut de l’Audition, IHU reConnect, F-75012 Paris, France)\nSébastien Scannella (Fédération ENAC ISAE-SUPAERO ONERA, Université de Toulouse, France.)',
-    affiliation: 'Fédération ENAC ISAE-SUPAERO ONERA, Université de Toulouse, France.'
-  },
-  'comparative eeg microstate analysis of psilocin': {
-    abstract: 'Abstract\n\nIntroduction This study investigates the effects of psilocin on the temporal dynamics and spatial stability of EEG microstates—electrophysiological correlates of large-scale brain networks—in the broadband frequency range (1–40 Hz) in awake, resting-state rats.\n\nMethods EEG data were acquired using 21 epidurally implanted electrodes in freely moving adult rats (N = 9). Recordings were conducted prior to drug administration (Baseline) and at 20 (T20) and 50 minutes (T50) following a subcutaneous injection of psilocin (4 mg/kg). Microstate analysis (1–40 Hz) used the AAHC clustering algorithm, identifying five optimal classes. We quantified changes in mean duration, occurrence frequency, fractional coverage, and network transitions (syntax).\n\nResults Psilocin significantly altered microstate temporal dynamics. Microstate 2 showed a prolonged mean duration at both T20 and T50 compared to baseline, while the occurrence rate of Microstate 1 was significantly reduced. Regarding fractional coverage, a domice shift occurred: the coverage of Microstates 1 and 4 decreased, which was compensated by an increase in Microstates 2 and 5. Network syntax analysis revealed disrupted bidirectional transitions between Microstates 1 and 4, shifting activity toward Microstates 2 and 5. The topographies (spatial distributions) of the microstates remained highly stable across all time points.\n\nConclusion Psilocin induces a widespread reorganization of rat brain dynamics within the 1–40 Hz spectrum. It specifically alters temporal parameters and network syntax, redistributing overall time from Microstates 1 and 4 toward Microstates 2 and 5. The spatial invariance of the topographies confirms that these captured states represent genuine dynamic shifts rather than artifacts of topographical deformation.',
-    author: 'Václava Piorecká',
-    coauthors: 'Cestmir Vejmola - 1 National Institute of Mental Health and 3 Third Faculty of  Medicine,  Charles University in Prague; Inga Griškova-Bulanova - 4 Institute of Biosciences, Vilnius University and 5 Institute of Translational Medicine, Vilnius University; Tomas Palenicek - 1 National Institute of Mental Health and 3 Third Faculty of  Medicine,  Charles University in Prague',
-    affiliation: '1 National Institute of Mental Health, 2 Faculty of Biomedical Engineering, Czech Technical University in Prague'
-  },
-  'resting-state eeg microstates across frequency bands: a comparative study of ocd and schizophrenia': {
-    abstract: 'Obsessive-compulsive disorder (OCD) and schizophrenia share overlapping clinical features including intrusive thoughts, compulsive behaviors, and impaired cognitive control, yet their underlying neural circuit dynamics differ substantially. Microstate analysis of resting-state EEG provides a temporally precise window into large-scale network organization. This study examined whether frequency-specific microstate parameters could reliably distinguish OCD from schizophrenia.\nResting-state eyes-closed EEG was recorded from 50 patients with OCD (32.7 ± 11.7 years) and 50 patients with schizophrenia (31.4 ± 10.8 years) at Asayesh Rehabilitation Clinic, Iran. Four canonical microstate classes (A–D) were derived for the broadband signal and five frequency bands (delta, theta, alpha, beta, high-beta). Microstate parameters (duration, occurrence, contribution, and transition probabilities) were compared between groups using Welch’s t-test, with false discovery rate (FDR) correction applied within each parameter family.\nAt the broadband (1-20 Hz) level, Microstate D showed nominally higher occurrence in OCD relative to schizophrenia (p raw = 0.024), but this did not survive FDR correction (p FDR= 0.119). Across delta, alpha, beta, and high-beta bands, no parameters survived correction. In the theta band (4–8 Hz), two Microstate D parameters survived FDR correction, including Contribution D (OCD: 0.254 ± 0.053 vs. schizophrenia: 0.218 ± 0.062; p FDR= 0.011; Cohen’s D = 0.61) and Duration D (OCD: 0.119 ± 0.015 s vs. schizophrenia: 0.109 ± 0.015 s; p FDR= 0.003; Cohen’s D=0.70). OCD patients exhibited both longer duration and greater proportional contribution of this microstate.\nTheta-band Microstate D dynamics, reflecting prolonged and more domit activation of a specific large-scale network configuration, are selectively elevated in OCD compared to schizophrenia. Given the established role of theta oscillations in frontal-cingulate error monitoring and cognitive control, these findings suggest that hyperactive default-mode or salience network engagement during the theta band may represent a candidate EEG-based biomarker for differential diagnosis.',
-    author: 'Vahid Asayesh',
-    coauthors: 'Vahid Asayesh (NPCindex Research Institute, Tabriz, Iran. Asayesh Psychiatric Clinic, Tabriz, Iran.),\nSepideh Akhtari-Khosroshahi (NPCindex Research Institute, Tabriz, Iran.),\nMehdi Dehghani (NPCindex Research Institute, Tabriz, Iran.),\nMajid Torabi (NPCindex Research Institute, Tabriz, Iran. Asayesh Psychiatric Clinic, Tabriz, Iran.).',
-    affiliation: 'NPCindex Research Institute, Tabriz, Iran. '
-  },
-  'convergent minds: a common eeg microstate signature of meditation across traditions': {
-    abstract: 'Contemplative traditions differ widely in technique, yet many converge on a shared aim: quieting spontaneous mental activity in favor of a more settled, self-aware state. We tested whether this convergence has a common electrophysiological signature using 64-channel EEG recorded from a large sample of meditators (N=300) recorded at different places, spanning multiple traditions and levels of expertise, each contributing a pre-meditation baseline and a meditation period.\nMicrostate analysis identified five domit scalp topographies, stable in shape across conditions and consistent with canonical microstate classes reported in the literature. Fitting these topographies back to each subject\'s continuous recording revealed a consistent, reciprocal pattern: one map, source-localized to hippocampal and parahippocampal regions and functionally associated with mind-wandering, decreased in coverage during meditation, while two others, localized to posterior cingulate/precuneus and to temporoparietal/prefrontal regions and associated with a settled, present-centered sense of self and meta-awareness, increased. A composite index combining these measures showed a larger and more consistent effect than any individual measure, or than conventional spectral-power markers analyzed in parallel.\nA post-meditation baseline period showed that most of these changes reverted once meditation ended, ruling out simple time-on-task or fatigue as an explanation, while one measure remained persistently elevated, suggesting a lasting shift in self-related processing beyond the meditative state itself.\nThese results suggest that despite substantial differences in technique and tradition, meditative practice converges on a common, reproducible electrophysiological signature distinguishable from simple rest, with implications for a tradition-independent, EEG-based marker of meditative depth.',
-    author: 'Monika Stasytytė',
-    coauthors: 'Chuong Ngo, Lionel A. Newman , Rodrigo Elizalde, Thomas Canellas,· Erkin Bek, Christoph M. Michel',
-    affiliation: 'All Here SA; University of Geneva, Switzerland'
-  },
-  'hemispheric dominance of metaphor processing for chinese-english bilinguals: dvf and erps evidence': {
-    abstract: 'Figurative language such as metaphor has aroused the interest of researchers for centuries as metaphors are pervasive in our daily life. However, the studies investigating the lateralization of metaphor processing have gained conflicting findings. The hemispheric domice of second language metaphorical processing is even less clear and only scarcely studied. This study investigated whether metaphors are predomitly processed in the right or left hemisphere when using Chinese and English metaphors in Chinese-English speakers. The role of familiarity in processing of metaphorical and literal expressions in both the first and second language was studied with brain-event-related potentials using a divided-visual-field paradigm. \n    Twenty-five Chinese-English bilinguals participated in this experiment. They were asked to perform plausibility judgments for Chinese (L1) and English (L2) familiar and unfamiliar metaphorical and literal sentences. The behavioral results show that participants consume longer time when understanding unfamiliar metaphoric sentences than unfamiliar literal sentences, which are both longer than familiar literal and familiar metaphorical sentences in both languages. Moreover, it takes longer to understand English expressions than Chinese in all sentence conditions which shows a L1 advantage. Meanwhile, the EEG results obtained using parameter-free cluster permutation statistics suggest a different pattern of brain responses for metaphor processing in L1 and L2, and that both metaphoricity and familiarity influence the brain response pattern of both Chinese and English metaphor processing. However, the brain responses were distributed bilaterally across hemispheres, suggesting no clear evidence for lateralization of processing of metaphorical meanings. \n    The results obtained using parameter-free cluster permutation statistics suggest a different pattern of brain responses for metaphor processing in L1 and L2, and that both metaphoricity and familiarity influence the brain response pattern of both Chinese and English metaphor processing. However, the brain responses were distributed bilaterally across hemispheres, suggesting no clear evidence for lateralization of processing of metaphorical meanings. This is inconsistent with the Graded Salience Hypothesis and Fine-Coarse Semantic Coding Theory, which posited a right hemisphere advantage of non-salient and coarse semantic processing.',
-    author: 'Xichu Zhu',
-    coauthors: 'Xichu Zhu, Hongjun Chen, Susannah C.S.A. Otieno, Fengyu Cong, Paavo H.T. Leppänen',
-    affiliation: 'University of Jyväskylä'
-  },
-  'eeg microstates, acute phase negative symptoms of schizophrenia and antipsychotic treatment response': {
-    abstract: 'EEG microstates are transient scalp topographies reflecting whole-brain electric potential that remain quasi-stable for 60-120 ms. Microstates exhibit alterations across all phases of schizophrenia; especially an increased microstate C and a decreased microstate D were linked to aberrant salience. We aimed to investigate the relationship of microstates with illness severity in the positive, negative, disorganized, excited and depressed symptoms domains, and with response to antipsychotics. Forty-five inpatients were clinically evaluated at admission and 40 patients were also assessed after 6 weeks, to determine response to treatment; patients and 31 healthy controls underwent a 5-min resting-state EEG with 128-electrodes, to assess microstates A-E. The severity of negative symptoms was negatively associated with microstate C time coverage (trend = - 0.5249; P = 0.0078) and duration (trend = -0.737; P = 0.0001). In responders vs non-responders to treatment, microstate C had increased time coverage (p = 0.0052; d = -0.979), duration (P = 0.0168; d = -0.836) and global explained variance (GEV; P = 0.0046; d = -0.995), microstate D occurrence was reduced (P = 0.0044; d = -1.010), microstate E time coverage (p = 0.0148; d = 0.853), occurrence (P = 0.0037; d = 1.030) and GEV were reduced (P = 0.0115; d = 0.885). All the above reported findings remained significant when controlling for multiple comparisons.In conclusion, findings corroborate the hypothesis that the microstate CD imbalance is a key pathophysiology mechanism of schizophrenia, herein not only related to negative symptoms, but also predicting the response to antipsychotics, together with microstate E dynamics.',
-    author: 'Marco de Pieri ',
-    coauthors: 'Vincent Rochas, Dafni Apostolopoulou, Matthias Kirschner, Thomas Koenig, Stefan Kaiser',
-    affiliation: 'Geneva University hospital'
-  },
-  'eeg microstate dynamics associated with perceptual experiences among different altered states of consciousness paradigms': {
-    abstract: 'EEG microstates have emerged as candidate endophenotypes for schizophrenia. Hallucinations and uncontrolled thoughts are often reported symptoms in patients with schizophrenia; however, studies in clinical populations make it difficult to determine whether altered microstate dynamics are specifically associated with these symptoms or with psychosis more broadly. \nThe altered states of consciousness paradigm in healthy populations provides useful models for addressing this question. During the hypnagogic state at sleep onset, vivid dream-like experiences emerge, accompanied by uncontrolled thinking and perceptual images. During Ganzfeld, where participants are exposed to unstructured visual and auditory input during wakefulness, hallucinatory experiences occur by misinterpreting internally generated experiences as external perception. Here, we used EEG microstate analysis together with subjective experience reports to investigate the large-scale brain dynamics associated with perceptual experiences across these two states. \nOur empirical results show that, during the transition to sleep, eyes-closed EEG indicated that dream-like experiences in the hypnagogic state were associated with decreased microstate B and increased microstate D, suggesting increased visual imagery and decreased reflective awareness. During eyes-open Ganzfeld stimulation, increased visual complexity of hallucinatory experiences showed non-linear relationships with microstates B and C. Belief about the source of perception was associated with distinct patterns of microstates C and E, suggesting partially dissociable processes related to source monitoring. Changes in ongoing mentation accompanying visual experiences were further associated with distinct, often nonlinear, dynamics of microstates related to visual, salience, and default-mode processing.\nTogether, these findings suggested that EEG microstate dynamics can characterize different perceptual experiences and their accompanying mentation across different states of consciousness in healthy individuals. Some of the microstate patterns were also consistent with previous reports in patients with schizophrenia.',
-    author: 'Thomas Koenig',
-    coauthors: 'Xinlin Wang, Daniel Erlacher, Institute of Sport Science, University of Bern, Bern 3012, Switzerland',
-    affiliation: 'Universtity Hospital of Psychiatry Bern'
-  },
-  'eeg microstate dynamics during an extended cognitive reaching task in adult with adhd': {
-    abstract: 'EEG microstates offer a temporally fine-grained window onto large-scale brain network dynamics and have emerged as candidate neurophysiological markers of Attention-Deficit/Hyperactivity Disorder (ADHD). Prior work has almost exclusively examined short resting-state recordings, showing shortened microstate A duration and altered microstate D metrics in adult with ADHD relative to controls. Task-related microstates research in ADHD has instead relied on stimulus-locked, ERP-derived segmentation, leaving the non-event-locked microstate architecture of prolonged task engagement largely unexplored. Recent findings from sustained-attention paradigms indicate that microstate parameters (notably classes C and E) drift with time-on-task, tracking shifts between externally oriented focus and mind-wandering. Building on this, we administered a visuo-spatial task aiming at analyzing a continuous period of task engagement to characterize microstate dynamics beyond conventional short resting-state windows.\nAdults with ADHD (aADHD) and matched healthy-volunteers (HV) underwent 64-ch EEG recording during a 2-minute eyes-open resting condition, followed by 25-minute cue-target reaching task. During task participant had to reach with right finger a corresponding response-key based on the direction of a target arrow. Task recording was analyzed as a continuous signal and segmented into three blocks. Six microstates’ topographies were identified via modified k-means clustering and back-fitted to individual data. Duration, Occurrence, Coverage, and Complexity were computed for rest and each task block, and compared between groups using a repeated-measure analysis.\nPreliminary results on 8 aADHD and 8 HV showed higher Duration, Occurrence and Coverage of microstate A, B and G, and lower in microstate C, D, and E in aADHD than HV during task, but not during rest. Moreover, only during task’s blocks aADHD showed greater microstates Complexity than HV. Consequently, specifically during task, aADHD appear to have higher auditory, visual and somatosensory networks activity (microstate A, B, G) with less tonic alertness and attentional control (microstate C, D, E) required by task.',
-    author: 'Martina De Cesaris',
-    coauthors: '1. Filippo Zappasodi - University G. d\'Annunzio of Chieti-Pescara\n2. Valentina Sebastiani - University G. d\'Annunzio of Chieti-Pescara; SPDC Psychiatric clinic of SS. Annunziata University Hospital of Chieti\n3. Mauro Pettorruso - University G. d\'Annunzio of Chieti-Pescara; SPDC Psychiatric clinic of SS. Annunziata University Hospital of Chieti\n4. Giovanni Martinotti - University G. d\'Annunzio of Chieti-Pescara; SPDC Psychiatric clinic of SS. Annunziata University Hospital of Chieti\n5. Pierpaolo Croce - University G. d\'Annunzio of Chieti-Pescara\n6. Marcella Brunetti - University G. d\'Annunzio of Chieti-Pescara',
-    affiliation: 'University G. d\'Annunzio of Chieti-Pescara'
-  },
-  'optimized transition energy of the meditative brain revealed by network control theory': {
-    abstract: 'Introduction\nLong-term meditation is thought to rewire brain networks to support more efficient allocation of neural resources during attention and awareness. Here we use Network Control Theory (NCT) to test whether extensive practice reshapes the brain\'s energetic landscape, making meditative states easier to reach and to sustain. We analysed fMRI functional connectivity from twelve Theravada Buddhist monks (mean experience 16.4 years) and ten novices during resting state (RS), focused attention (FA), and open monitoring (OM).\n\nMethods\nTo characterise state transitions, we first estimated a representative state for each condition using a data-driven approach: a k-means clustering (k=10) of parcel-averaged BOLD signals, merging of centroids with cosine similarity above 0.7, and selection of the cluster with the highest fractional occupancy, yielding subject-specific RS, FA, and OM states. Using these as initial and target states within a linear time-invariant model—and an ENIGMA structural template as the system matrix to avoid circularity—we solved for the optimal control input and integrated it to quantify the energy needed to transition between states and to maintain each state, regressing out age.\n\nResults\nTransition energy was strongly group- and transition-specific. Entering and leaving focused attention (RS→FA and FA→RS) was less costly for experts, whereas OM→RS was more costly for them. Crucially, maintaining both meditative states was more energetically demanding for novices (FA: t=−5.89, p<0.001; OM: t=−2.61, p<0.01), indicating enhanced stability and effortless awareness in experts. \n\nConclusions\nThese transition results converge with controllability findings—higher average and lower modal controllability in experts—suggesting that trained brains bring formerly difficult-to-reach states into an easily accessible, low-cost repertoire. NCT thus exposes efficiency mechanisms of trained networks and may inform personalised, network-targeted mental-training and stimulation strategies.',
-    author: 'Roberto Guidotti',
-    coauthors: '',
-    affiliation: 'University "G. D\'Annunzio" Chieti-Pescara'
-  }
-};
-
-function normaliseTitle(t) {
-  return t.toLowerCase().replace(/\s+/g,' ').trim();
-}
-function openAbstract(rawTitle) {
-  const key = normaliseTitle(rawTitle);
-  const data = ABSTRACTS[key];
-  document.getElementById('modal-title').textContent = rawTitle;
-  if (data) {
-    let auth = data.author;
-    if (data.affiliation) auth += ' — ' + data.affiliation;
-    document.getElementById('modal-authors').textContent = auth;
-    document.getElementById('modal-body').textContent = data.abstract;
-  } else {
-    document.getElementById('modal-authors').textContent = '';
-    document.getElementById('modal-body').innerHTML = '<span class=\'no-abstract\'>Abstract not available for this presentation.</span>';
-  }
-  document.getElementById('abstractModal').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeAbstractModal(e) {
-  if (e && e.target !== document.getElementById('abstractModal')) return;
-  document.getElementById('abstractModal').classList.remove('open');
-  document.body.style.overflow = '';
-}
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') {
-    document.getElementById('abstractModal').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-});
-
 </script>
-
-<!-- ABSTRACT MODAL -->
-<div class="abstract-modal" id="abstractModal" onclick="closeAbstractModal(event)">
-  <div class="abstract-box">
-    <button class="abstract-box-close" onclick="closeAbstractModal()">&times;</button>
-    <div class="abstract-tag">Abstract</div>
-    <div class="abstract-title" id="modal-title"></div>
-    <div class="abstract-authors" id="modal-authors"></div>
-    <div class="abstract-body" id="modal-body"></div>
-  </div>
-</div>
 </body>
 </html>
+
